@@ -1,0 +1,9 @@
+.datepickerInput input{
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+}
+
+.datepickerInput svg{
+    padding-top: 17px !important;
+    padding-bottom: 13px !important;
+}

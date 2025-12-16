@@ -1,0 +1,242 @@
+"use client";
+import { useAuth } from "@/context/UserContext";
+import BannerSectionCardHome from "@/components/Front/BannerSectionCardHome";
+import FeaturSection from "@/components/Front/FeaturSection";
+import FeaturSectionWord from "@/components/Front/FeaturSectionWord";
+import PartnerSection from "@/components/Front/PartnerSection";
+import SearchBar from "@/components/Front/SearchBar";
+import Link from "next/link";
+import Image from "next/image";
+import { getCookie } from "cookies-next";
+import { useSearchParams,usePathname,useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+
+import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
+
+
+const HomeComponent = ({ blogs, vendors, bannerContent, categories, states, homeBannerText }) => {
+const {user,isLoding,isInfoLoding,logout}  = useAuth();
+const backgroundImage = bannerContent?.hero_background;
+const { metaData, loading } = useAuth();
+
+const [isActive, setIsActive] = useState(false);
+const [profileUrl, setProfileUrl] = useState("");
+const cookie = getCookie('token');
+const pathname = usePathname()
+const  UserType  = getCookie('user-type');
+const [UserTypeName, setUserTypeName] = useState("");
+
+
+
+  const [mounted, setMounted] = useState(false);
+ useEffect(() => {
+    setMounted(true);
+  }, []);
+
+   if (!mounted) return null;
+
+  return (
+    <>
+      <section className="hero-section">
+        <div className="container mx-auto px-4 flex flex-row gap-4 items-center">
+          <div className="hero-content">
+            <h1>Exceptional commercial <strong>cleaning delivered</strong> by passionate people</h1>
+            <p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services.</p>
+            <div className="hero-button inline-block mt-6 ">
+              {UserType == 1 || !user ? (
+              <RequestQuotebtn user={user} categories={categories} />
+              ): ''}
+
+             
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <SearchBar   homeMeta={bannerContent} categories={categories} states={states} />
+
+
+      {/* Featured Suppliers Section */}
+      <section className="featured-suppliers-sections">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <div className="columnleft contentleft">
+              <em>Property Maintenance Contractors Marketplace</em>
+              <h3>Your one-stop-shop for contractor sourcing & management.</h3>
+            </div>
+            <div className="columnright contentright p-10">
+              <h6>Save time, money and headaches when dealing with vendors through our simplified and vetted marketplace.</h6>
+              <Link href="/register" className="button-signup">
+                <em><Image src="images/finger.svg" alt="finger" width={10} height={6} /></em> 
+                Sign Up Today
+              </Link>
+            </div>
+          </div>
+        </div>
+
+
+       <BannerSectionCardHome  />
+
+      </section>
+
+     
+      {/* Welcome Section */}
+
+
+      <FeaturSectionWord blogs={blogs} homeBannerText={homeBannerText} />
+
+      
+
+      {/* Why Choose Us */}
+      <section className="whychoose-sections mt-24">
+        <div className="container mx-auto">
+          <div className="whychoose-innerrow">
+            <div className="title">
+              <h5>Why Choose Us?</h5>
+            </div>
+            <div className="whychoose-fourbox">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <div className="whychoose-iconbox">
+                  <div className="icon">
+                    <Image src="images/vendor-icon-enhance-1.png" alt="enhance" width={60} height={60} />
+                  </div>
+                  <h6>Enhance Your Profile</h6>
+                  <p>Add photos, videos, and more to build your brand.</p>
+                </div>
+
+                <div className="whychoose-iconbox">
+                  <div className="icon">
+                    <Image src="images/vendor-icon-exposure-1.png" alt="exposure" width={60} height={60} />
+                  </div>
+                  <h6>Increase Exposure</h6>
+                  <p>Get noticed and network with hundreds of companies.</p>
+                </div>
+
+                <div className="whychoose-iconbox">
+                  <div className="icon">
+                    <Image src="images/vendor-icon-costs-1.png" alt="costs" width={60} height={60} />
+                  </div>
+                  <h6>Cut Marketing Costs</h6>
+                  <p>Reach qualified clients for as little as $75 per year.</p>
+                </div>
+
+                <div className="whychoose-iconbox">
+                  <div className="icon">
+                    <Image src="images/vendor-icon-handshake.png" alt="handshake" width={60} height={60} />
+                  </div>
+                  <h6>Respond To Bids And Get Awarded Contracts</h6>
+                  <p>Premium subscribers can respond to bid requests and manage contracts.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Four Profile section */}
+      <section className="fourprofile-section">
+        <div className="container mx-auto items-center">
+          <div className="flex flex-col md:flex-row gap-4 items-center">
+
+            <div className="w-full md:w-[60%]">
+              <div className="fourprofile-leftcontent">
+                <span>PROPERTY MAINTENANCE CONTRACTORS MARKETPLACE</span>
+                <h3>Your one-stop-shop for contractor sourcing & management.</h3>
+                <p>Save time, money and headaches when dealing with vendors through our simplified and vetted marketplace.</p>
+                <Link href="register" className="btnsignup">Sign Up Today</Link>
+              </div>
+            </div>
+
+            <div className="w-full md:w-[40%]">
+              <div className="fourprofile-listing">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+                  {/* CARD 1 */}
+                  <div className="bg-white rounded-xl shadow-xl p-4">
+                    <Image src="images/profile-pic1.jpg" alt="profile1" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <div className="mt-4">
+                      <h3 className="font-semibold text-lg flex items-center">
+                        M. Martinson
+                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
+                      </h3>
+                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
+                        <span className="text-gray-500">Profession</span>
+                        <span className="font-semibold ml-1">Electrician</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CARD 2 */}
+                  <div className="bg-white rounded-xl shadow-xl p-4">
+                    <Image src="images/profile-pic2.jpg" alt="profile2" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <div className="mt-4">
+                      <h3 className="font-semibold text-lg flex items-center">
+                        O. Richarleson
+                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
+                      </h3>
+                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
+                        <span className="text-gray-500">Profession</span>
+                        <span className="font-semibold ml-1">Plumber</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CARD 3 */}
+                  <div className="bg-white rounded-xl shadow-xl p-4">
+                    <Image src="images/profile-pic3.jpg" alt="profile3" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <div className="mt-4">
+                      <h3 className="font-semibold text-lg flex items-center">
+                        V. Lomanovies
+                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
+                      </h3>
+                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
+                        <span className="text-gray-500">Profession</span>
+                        <span className="font-semibold ml-1">Carpenter</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CARD 4 */}
+                  <div className="bg-white rounded-xl shadow-xl p-4">
+                    <Image src="images/profile-pic4.jpg" alt="profile4" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <div className="mt-4">
+                      <h3 className="font-semibold text-lg flex items-center">
+                        J. Mitchell
+                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
+                      </h3>
+                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
+                        <span className="text-gray-500">Profession</span>
+                        <span className="font-semibold ml-1">Carpenter</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Section */}
+      <section className="partner-Vendor-sections">
+        <div className="container mx-auto items-center justify-items-center">
+          <div className="partner-Vendor-content">
+            <h3>Partner with Vendor Guide.</h3> 
+            <p>Take the step to join our esteemed community by signing up today and becoming a valued member of our trusted vendor network.</p>
+            <Link href="/register"
+             className="px-6 py-2 border border-white text-white bg-transparent rounded-lg hover:bg-white/10 transition">Sign Up Today</Link>
+          </div>
+        </div>
+      </section>
+
+      
+    </>
+  );
+};
+
+export default HomeComponent;
