@@ -3,6 +3,7 @@
 const allowedDevOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
+  
 ];
 
 const nextConfig = {
@@ -14,9 +15,9 @@ const nextConfig = {
   },
 
   env: {
-    BASE_API_URL: "http://vendorguide.local/api/",
-    BASE_LARAVEL_URL: "http://vendorguide.local/",
-    NEXT_PUBLIC_API_URL: "http://vendorguide.local/api/",
+    BASE_API_URL: "https://dtm.vendorguideonline.com/api/",
+    BASE_LARAVEL_URL: "https://dtm.vendorguideonline.com/",
+    NEXT_PUBLIC_API_URL: "https://dtm.vendorguideonline.com/api/",
     NEXT_PUBLIC_GOOGLE_MAP_API_KEY: "AIzaSyAu0nuFuRxKY9akmvj3AqEBZByIc1vQP3g",
     GOOGLE_MAP_API_KEY: "AIzaSyAu0nuFuRxKY9akmvj3AqEBZByIc1vQP3g---",
     NEXT_PUBLIC_STRIPE_PUBLIC_KEY:
@@ -42,7 +43,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://vendorguide.local/:path*",
+        destination: "https://dtm.vendorguideonline.com/:path*",
       },
     ];
   },
