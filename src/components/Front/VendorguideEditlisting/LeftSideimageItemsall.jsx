@@ -8,24 +8,24 @@ const LeftSideimageItemsall = (props) =>{
   const [vendorData,setVendorData] = useState([
   
     {
-        img:"/../images&icons/vender_edit_listing/img1.jpg",
+        img:"/images&icons/vender_edit_listing/img1.jpg",
 
 
     },
     {
-        img:"/../images&icons/vender_edit_listing/img2.jpg",
+        img:"/images&icons/vender_edit_listing/img2.jpg",
        
       
 
     },
     {
-        img:"/../images&icons/vender_edit_listing/img3.jpg",
+        img:"/images&icons/vender_edit_listing/img3.jpg",
        
        
 
     },
     {
-        img:"/../images&icons/vender_edit_listing/img4.jpg",
+        img:"/images&icons/vender_edit_listing/img4.jpg",
        
 
     }

@@ -2,12 +2,18 @@
 import HeroSection from "@/components/Front/HeroSection";
 import { useAuth } from "@/context/UserContext";
 import Image from "next/image";
-import patternImage from "@/../public/images&icons/signup/pattern1.png";
-import icon1 from "@/../public/images&icons/signup/icon1.png";
-import icon2 from "@/../public/images&icons/signup/icon2.png";
-import icon3 from "@/../public/images&icons/signup/icon3.png";
+
 import StripSubscriptionForm from "@/app/(front)/plan/[slug]/StripSubscriptionForm";
 const Page = ({params}) => {
+
+
+const patternImage = "/images&icons/signup/pattern1.png";
+const icon1 = "/images&icons/signup/icon1.png";
+const icon2 = "/images&icons/signup/icon2.png";
+const icon3 = "/images&icons/signup/icon3.png";
+
+
+
     const slug = params.slug;
     const {metaData,loading,user} = useAuth();
     const advertiseMeta = metaData?.advertise;

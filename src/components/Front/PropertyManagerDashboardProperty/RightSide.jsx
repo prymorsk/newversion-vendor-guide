@@ -9,7 +9,7 @@ const RightSide = (props) =>{
           </div>
           <div className="">
              <Image   width="100"  height="100"
-              src="/../../images&icons/dashboard/image2.png"
+              src="/images&icons/dashboard/image2.png"
               alt=""
               className="w-[30rem] h-75 float-right mx-auto"
             />

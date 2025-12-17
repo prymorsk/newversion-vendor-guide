@@ -2,14 +2,14 @@
 "use client"; 
 import { useEffect, useRef, useState } from 'react';
 import { PageFlip } from 'page-flip';
-import pageimage from "@/../../public/images&icons/resources/Asset1.jpg";
-import pageimage2 from "@/../../public/images&icons/resources/Asset2.jpg";
+
 import filpcss  from  "./Style.module.css";
 import Image from 'next/image';
 import axios from 'axios';
 
 const PageFlipComponent = ({slug,bannerContent,magazineData}) => {
-
+const pageimage = "/images&icons/resources/Asset1.jpg";
+const pageimage2 = "/images&icons/resources/Asset2.jpg";
   const id = slug;
   const bookRef = useRef(null);
   const [latitude, setLatitude] = useState('');

@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import vendorDefult from "@/../../public/images&icons/vendor-default.jpg";
 import PropartyForm from "@/components/PropartyForm";
 import VendorContactMailForm from "@/components/VendorContactMailForm";
 import Modal from "@/components/Modal";
 import { getCookie } from "cookies-next";
 
 const DetailsRight = ({ filterData, user }) => {
+  const vendorDefult = "/images&icons/vendor-default.jpg";
+
   const [categoryData, setCategoryData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenMail, setIsModalOpenMail] = useState(false);

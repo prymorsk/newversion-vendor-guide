@@ -8,11 +8,13 @@ import {useForm} from "@/hooks/useForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { toast } from 'react-toastify';
-import userDefult from "@/../../public/images&icons/profile.png"
 import { getCookie } from "cookies-next";
 import { useEffect } from "react";
 
 const AddForm = ({onClose,employees,setEmployees}) => {
+
+    const userDefult = "/images&icons/profile.png"
+
     const [isLoding, setIsLoding] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');

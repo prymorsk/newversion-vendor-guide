@@ -6,19 +6,19 @@ import Image from "next/image";
 const BannerSection = (props) => {
     const [vendorData,setVendorData] = useState([
       {
-          img:"images&icons/img1.png"
+          img:"/images&icons/img1.png"
       },
       {
-          img:"images&icons/img2.png"   
+          img:"/images&icons/img2.png"   
       },
       {
-          img:"images&icons/img3.png"
+          img:"/images&icons/img3.png"
       },
       {
-          img:"images&icons/img4.png"
+          img:"/images&icons/img4.png"
       },
       {
-          img:"images&icons/img5.jpg"
+          img:"/images&icons/img5.jpg"
       }
     ]) 
 

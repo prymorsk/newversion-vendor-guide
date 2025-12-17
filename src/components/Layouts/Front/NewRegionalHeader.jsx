@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Logo from "/public/images&icons/SVG/logo.svg";
 import Image from "next/image";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +12,9 @@ const Header = () => {
     setShowMenu((current) => !current);
     event.target.parentNode.nextElementSibling.classList.toggle("hidden");
   };
+
+ const Logo = "/images&icons/SVG/logo.svg";
+ 
   return (
     <>
       <header>
@@ -26,7 +28,7 @@ const Header = () => {
                 <Image
                   width="100"
                   height="100"
-                  src=" /../../images&icons/SVG/logo_white.svg"
+                  src=" /images&icons/SVG/logo_white.svg"
                   className="mr-3 h-3 sm:h-6 w-full"
                   alt=""
                 />
@@ -46,7 +48,7 @@ const Header = () => {
                       width="100"
                       height="100"
                       className="h-8 w-8 rounded-full ltr:xl:mr-2 rtl:xl:ml-2"
-                      src="/../../images&icons/profile.png"
+                      src="/images&icons/profile.png"
                       alt="Header Avatar"
                     />
                     <div>

@@ -8,11 +8,11 @@ import {useForm} from "@/hooks/useForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { toast } from 'react-toastify';
-import userDefult from "@/../../public/images&icons/profile.png"
 import { getCookie } from "cookies-next";
 
 const EditForm = ({user,onClose,manager,setManagers}) => {
-    
+    const userDefult = "/images&icons/profile.png";
+
     const [isLoding, setIsLoding] = useState(false);
     const [firstName, setFirstName] = useState(user?.first_name?user.first_name:'');
     const [lastName, setLastName] = useState(user?.last_name?user.last_name:'');

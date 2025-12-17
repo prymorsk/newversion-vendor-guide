@@ -8,16 +8,16 @@ const allowedDevOrigins = [
 
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: true,
+  //swcMinify: true,
 
   images: {
     unoptimized: true,
   },
 
   env: {
-    BASE_API_URL: "https://dtm.vendorguideonline.com/api/",
-    BASE_LARAVEL_URL: "https://dtm.vendorguideonline.com/",
-    NEXT_PUBLIC_API_URL: "https://dtm.vendorguideonline.com/api/",
+    BASE_API_URL: "https://dev.vendorguideonline.com/api/",
+    BASE_LARAVEL_URL: "https://dev.vendorguideonline.com/",
+    NEXT_PUBLIC_API_URL: "https://dev.vendorguideonline.com/api/",
     NEXT_PUBLIC_GOOGLE_MAP_API_KEY: "AIzaSyAu0nuFuRxKY9akmvj3AqEBZByIc1vQP3g",
     GOOGLE_MAP_API_KEY: "AIzaSyAu0nuFuRxKY9akmvj3AqEBZByIc1vQP3g---",
     NEXT_PUBLIC_STRIPE_PUBLIC_KEY:
@@ -43,7 +43,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://dtm.vendorguideonline.com/:path*",
+        destination: "https://dev.vendorguideonline.com/:path*",
       },
     ];
   },

@@ -39,7 +39,7 @@ const LeftSideplan = (props) =>{
                   <div className="pt-3 gap-x-4 text-right block">
                     <h2 className="flex items-end text-right font-medium text-[#221F20] text-lg">
                        <Image   width="100"  height="100"
-                        src="../images&icons/vender_edit_listing/paypal.png"
+                        src="/images&icons/vender_edit_listing/paypal.png"
                         alt=""
                         className="w-16 mx-3"
                       />
@@ -135,7 +135,7 @@ const LeftSideplan = (props) =>{
                         className="flex items-center font-semibold text-[#221F20] md:text-xl text-sm "
                       >
                          <Image   width="100"  height="100"
-                          src="../images&icons/vender_edit_listing/paypal.png"
+                          src="/images&icons/vender_edit_listing/paypal.png"
                           alt=""
                           className="w-16 me-3"
                         />

@@ -14,11 +14,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getCookie } from "cookies-next";
 import { useAuth } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
-import userDefult from "@/../../public/images&icons/profile.png"
 import AddressAutocomplete from "./AddressAutocomplete";
 
 const ProfileForm = ({user,userAllInfo}) => {
-  
+  const userDefult = "/images&icons/profile.png";
+
     const [imageId, setImageId] = useState(user?.image_id);
     const [isImageLoading, setImageIsLoading] = useState(false);
     const [error, setError] = useState(null);

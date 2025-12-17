@@ -6,7 +6,7 @@ const RightSidelogo = (props) =>{
        <div className="text-center pb-6">
                 <div className="">
                    <Image   width="100"  height="100"
-                    src="/../images&icons/vender_edit_listing/brandstar.jpg"
+                    src="/images&icons/vender_edit_listing/brandstar.jpg"
                     alt="Product screenshot"
                     className="mx-auto w-[26rem] px-6"
                   />

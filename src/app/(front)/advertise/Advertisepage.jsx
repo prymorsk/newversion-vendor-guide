@@ -1,6 +1,5 @@
 "use client";
 
-import TopBarImage from "/public/images&icons/advertise/banner1.jpg";
 import FeaturSection2 from "@/components/Front/FeaturSection2";
 import AdvertiseTable from "@/components/Front/AdvertiseTable";
 import Link from "next/link";
@@ -12,6 +11,8 @@ import LoadingComponents from "@/components/LoadingComponents";
 
 const Advertisepage = ({ bannerContent }) => {
   const [mounted, setMounted] = useState(false);
+  
+const TopBarImage = "/images&icons/advertise/banner1.jpg";
 
   const pagemetaData = bannerContent;
   const { metaData, loading, user } = useAuth();

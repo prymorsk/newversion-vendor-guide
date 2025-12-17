@@ -7,7 +7,7 @@ const LeftSidebanner = (props) =>{
         <div className="md:pt-10 py-10 md:py-5 lg:pt-8 text-center md:text-left">
                 <div className="">
                    <Image   width="100"  height="100"
-                    src="/../images&icons/vender_edit_listing/sportbanner.jpg"
+                    src="/images&icons/vender_edit_listing/sportbanner.jpg"
                     alt="Product screenshot"
                     className="mx-auto md:mx-0  md:w-16 lg:w-[50rem]"
                   />

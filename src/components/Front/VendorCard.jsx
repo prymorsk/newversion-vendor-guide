@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Modal from "@/components/Modal";
 import PropartyForm from "@/components/PropartyForm";
-import vendorDefult from "@/../../public/images&icons/vendor-default.jpg";
 import { getCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 import Companyinfo from "./Companyinfo";
@@ -14,6 +13,9 @@ import PaginationCustum from "../Common/Paginations";
 import LoadingComponents from "../LoadingComponents";
 
 const VendorCard = (props) => {
+
+  const vendorDefult = "/images&icons/vendor-default.jpg";
+
   const { user, renderFieldError } = useAuth();
   const searchParams = useSearchParams();
 
