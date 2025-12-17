@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
 
@@ -60,6 +61,9 @@ export default async function Home() {
   const homeBannerText = await getPages('home-banner-text', { cache: 'force-cache' });
 
   return (
+        
+    <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+
     <HomeComponent
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
@@ -67,5 +71,6 @@ export default async function Home() {
       categories={categories}
       states={states}
     />
+    </Suspense>
   );
 }

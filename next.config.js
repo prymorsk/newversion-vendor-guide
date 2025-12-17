@@ -26,9 +26,9 @@ const nextConfig = {
     SITE_ID: "Vendor Guide",
   },
 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  //eslint: {
+   // ignoreDuringBuilds: true,
+  //},
 
   async redirects() {
     return [
