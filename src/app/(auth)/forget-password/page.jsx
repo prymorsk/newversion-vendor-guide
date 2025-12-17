@@ -3,69 +3,7 @@ import Right from "@/components/Front/Auth/Right";
 // import LoginForm from "./LoginForm";
 import ForgetPasswordForm from "./ForgetPasswordForm";
 
-// Dynamic metadata (Next.js 15)
-export async function generateMetadata({ params }) {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}seo-meta-show/forget`,
-      { cache: "no-store" }
-    );
 
-    if (!response.ok) {
-      return {};
-    }
-
-    const contentType = response.headers.get("content-type");
-    if (!contentType?.includes("application/json")) {
-      throw new Error("Invalid Content-Type");
-    }
-
-    const seoMetaData = await response.json();
-    const metaData = seoMetaData?.data || {};
-
-    const slug = metaData?.slug || "forget-password";
-    const pageUrl = `/${slug}`;
-
-    return {
-      alternates: {
-        canonical: pageUrl,
-        languages: {
-          "en-US": pageUrl,
-        },
-      },
-      title: metaData?.title || "Forget Password",
-      description: metaData?.description || "",
-      openGraph: {
-        title: metaData?.title || "",
-        description: metaData?.description || "",
-        url: pageUrl,
-        siteName: process.env.SITE_NAME,
-        images: [
-          {
-            url: metaData?.image_url || "",
-            secure_url: metaData?.image_url || "",
-            width: 725,
-            height: 405,
-            alt: metaData?.title || "",
-          },
-        ],
-        locale: "en_US",
-        type: "website",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: metaData?.title || "",
-        description:
-          metaData?.short_description || metaData?.description || "",
-        images: [metaData?.image_url || ""],
-        site: process.env.SITE_ID,
-      },
-    };
-  } catch (error) {
-    console.error("Metadata error:", error);
-    return {};
-  }
-}
 
 const Page = () => {
   return (
