@@ -11,7 +11,7 @@ import { getCookie } from "cookies-next";
 import { useSearchParams,usePathname,useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
-import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
+import RequestQuotebtnHome from "@/components/Front/RequestQuotebtnHome";
 
 
 const HomeComponent = ({ blogs, vendors, bannerContent, categories, states, homeBannerText }) => {
@@ -26,6 +26,8 @@ const pathname = usePathname()
 const  UserType  = getCookie('user-type');
 const [UserTypeName, setUserTypeName] = useState("");
 
+const LogoHome = "/images/hero-image.jpg";
+
 
 
   const [mounted, setMounted] = useState(false);
@@ -33,19 +35,21 @@ const [UserTypeName, setUserTypeName] = useState("");
     setMounted(true);
   }, []);
 
-   if (!mounted) return null;
+   //if (!mounted) return null;
 
   return (
     <>
-      <section className="hero-section">
+      <section className="hero-section" style={{
+      backgroundImage: LogoHome
+      ? `url(${LogoHome})`
+      : "none",
+      }}>
         <div className="container mx-auto px-4 flex flex-row gap-4 items-center">
-          <div className="hero-content">
+          <div className="customrbutton hero-content">
             <h1>Exceptional commercial <strong>cleaning delivered</strong> by passionate people</h1>
             <p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services.</p>
-            <div className="hero-button inline-block mt-6 ">
-              {UserType == 1 || !user ? (
-              <RequestQuotebtn user={user} categories={categories} />
-              ): ''}
+            <div className="hero-button inline-block mt-6 button ">
+              {UserType == 1 || !user ? (<RequestQuotebtnHome user={user} categories={categories} />): ''}
 
              
             </div>
@@ -68,7 +72,7 @@ const [UserTypeName, setUserTypeName] = useState("");
             <div className="columnright contentright p-10">
               <h6>Save time, money and headaches when dealing with vendors through our simplified and vetted marketplace.</h6>
               <Link href="/register" className="button-signup">
-                <em><Image src="images/finger.svg" alt="finger" width={10} height={6} /></em> 
+                <em><Image src="/images/finger.svg" alt="finger" width={10} height={6} /></em> 
                 Sign Up Today
               </Link>
             </div>
@@ -100,7 +104,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                 <div className="whychoose-iconbox">
                   <div className="icon">
-                    <Image src="images/vendor-icon-enhance-1.png" alt="enhance" width={60} height={60} />
+                    <Image src="/images/vendor-icon-enhance-1.png" alt="enhance" width={60} height={60} />
                   </div>
                   <h6>Enhance Your Profile</h6>
                   <p>Add photos, videos, and more to build your brand.</p>
@@ -108,7 +112,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                 <div className="whychoose-iconbox">
                   <div className="icon">
-                    <Image src="images/vendor-icon-exposure-1.png" alt="exposure" width={60} height={60} />
+                    <Image src="/images/vendor-icon-exposure-1.png" alt="exposure" width={60} height={60} />
                   </div>
                   <h6>Increase Exposure</h6>
                   <p>Get noticed and network with hundreds of companies.</p>
@@ -116,7 +120,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                 <div className="whychoose-iconbox">
                   <div className="icon">
-                    <Image src="images/vendor-icon-costs-1.png" alt="costs" width={60} height={60} />
+                    <Image src="/images/vendor-icon-costs-1.png" alt="costs" width={60} height={60} />
                   </div>
                   <h6>Cut Marketing Costs</h6>
                   <p>Reach qualified clients for as little as $75 per year.</p>
@@ -124,7 +128,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                 <div className="whychoose-iconbox">
                   <div className="icon">
-                    <Image src="images/vendor-icon-handshake.png" alt="handshake" width={60} height={60} />
+                    <Image src="/images/vendor-icon-handshake.png" alt="handshake" width={60} height={60} />
                   </div>
                   <h6>Respond To Bids And Get Awarded Contracts</h6>
                   <p>Premium subscribers can respond to bid requests and manage contracts.</p>
@@ -156,7 +160,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                   {/* CARD 1 */}
                   <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="images/profile-pic1.jpg" alt="profile1" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <Image src="/images/profile-pic1.jpg" alt="profile1" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
                     <div className="mt-4">
                       <h3 className="font-semibold text-lg flex items-center">
                         M. Martinson
@@ -171,7 +175,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                   {/* CARD 2 */}
                   <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="images/profile-pic2.jpg" alt="profile2" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <Image src="/images/profile-pic2.jpg" alt="profile2" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
                     <div className="mt-4">
                       <h3 className="font-semibold text-lg flex items-center">
                         O. Richarleson
@@ -186,7 +190,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                   {/* CARD 3 */}
                   <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="images/profile-pic3.jpg" alt="profile3" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <Image src="/images/profile-pic3.jpg" alt="profile3" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
                     <div className="mt-4">
                       <h3 className="font-semibold text-lg flex items-center">
                         V. Lomanovies
@@ -201,7 +205,7 @@ const [UserTypeName, setUserTypeName] = useState("");
 
                   {/* CARD 4 */}
                   <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="images/profile-pic4.jpg" alt="profile4" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
+                    <Image src="/images/profile-pic4.jpg" alt="profile4" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
                     <div className="mt-4">
                       <h3 className="font-semibold text-lg flex items-center">
                         J. Mitchell

@@ -13,7 +13,8 @@ import { Button } from "primereact/button";
 import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
 
 // ✅ Public folder images should be referenced via URL
-const Logo = "/images&icons/SVG/logo.svg";
+//const Logo = "/images&icons/SVG/logo.svg";
+
 
 const Header = ({ categories, magazines, sitesetting }) => {
   const { user, isLoding, isInfoLoding, logout } = useAuth();
@@ -26,6 +27,11 @@ const Header = ({ categories, magazines, sitesetting }) => {
   const [UserTypeName, setUserTypeName] = useState("");
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(true);
+
+
+const LogoMain = "/image/1700727849.png";
+
+const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
 
   useEffect(() => {
     const handleScroll = () => setScrollPosition(window.scrollY);
@@ -50,9 +56,9 @@ const Header = ({ categories, magazines, sitesetting }) => {
   const menuClick = () => setIsActive(false);
   const toggleMenu = () => setShowMenu(current => !current);
 
-  console.log('user logged in ..........');
+  console.log('user.');
   console.log(user);
-  console.log('user logged in end ..........');
+  console.log('user.');
 
   return (
     <>
@@ -61,7 +67,7 @@ const Header = ({ categories, magazines, sitesetting }) => {
           <div className="header-logo">
             <Link href="/">
               <Image
-                src={sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : Logo}
+                src={Logo}
                 width={350}
                 height={48}
                 alt="logo"
@@ -70,8 +76,12 @@ const Header = ({ categories, magazines, sitesetting }) => {
           </div>
 
           {/* Header menu */}
+
+          
+
+
           <div className="header-menu">
-            <ul className="flex space-x-8 text-white font-medium">
+            <ul className={`flex space-x-8 font-medium ${ Logo ? "text-white" : "text-black"}`}>
               <li className="relative group cursor-pointer flex items-center">
                 <span className="flex items-center">
                   Solutions
@@ -152,7 +162,7 @@ const Header = ({ categories, magazines, sitesetting }) => {
                 <li><Link href="/login" onClick={menuClick}>Login</Link></li>
               )}
 
-              <li className="button">
+              <li className="button ">
                 {(UserType == 1 || !user) && <RequestQuotebtn user={user} categories={categories} />}
               </li>
             </ul>

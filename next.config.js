@@ -25,9 +25,9 @@ const nextConfig = {
    * Kept exactly as-is to avoid breaking existing code
    */
   env: {
-    BASE_API_URL: "https://dev.vendorguideonline.com/api/",
-    BASE_LARAVEL_URL: "https://dev.vendorguideonline.com/",
-    NEXT_PUBLIC_API_URL: "https://dev.vendorguideonline.com/api/",
+    BASE_API_URL: "http://vendorguide.local/api/",
+    BASE_LARAVEL_URL: "http://vendorguide.local/",
+    NEXT_PUBLIC_API_URL: "http://vendorguide.local/api/",
     NEXT_PUBLIC_GOOGLE_MAP_API_KEY:
       "AIzaSyAu0nuFuRxKY9akmvj3AqEBZByIc1vQP3g",
     GOOGLE_MAP_API_KEY:
@@ -59,7 +59,7 @@ const nextConfig = {
       {
         source: "/api/:path*",
         destination:
-          "https://dev.vendorguideonline.com/api/:path*",
+          "http://vendorguide.local/api/:path*",
       },
     ];
   },

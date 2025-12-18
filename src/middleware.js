@@ -79,6 +79,6 @@ export const config = {
     "/vendor/:path*",
     "/company/:path*",
     "/plan/:path*",
-    "/advertise",
+    
   ],
 };

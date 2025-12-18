@@ -68,7 +68,7 @@ const RequestQuotebtn = ({ user, categories }) => {
     <>
       <Link
         href="/search"
-        className="flex flex-row gap-4 justify-between items-center"
+        className="flex flex-row gap-4 justify-between items-center clickrqbutton "
         onClick={(e) => {
           e.preventDefault();
           openModal();
@@ -86,7 +86,7 @@ const RequestQuotebtn = ({ user, categories }) => {
       </Link>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h1 className="request_title text-3xl font-medium">Request a Quote!</h1>
+        <h1 className="request_title text-3xl font-medium ">Request a Quote!</h1>
         {user ? (
           UserType !== "0" ? (
             <PropartyForm
@@ -103,10 +103,10 @@ const RequestQuotebtn = ({ user, categories }) => {
           )
         ) : (
           <>
-            <p className="request_paragraph text-xl mt-2">
+            <p className="request_paragraph text-xl mt-2 ">
               Kindly login or register to request a quote
             </p>
-            <div className="request_button flex justify-center gap-x-2 mt-4 sm:mt-10">
+            <div className="request_button flex justify-center gap-x-2 mt-4 sm:mt-10 ">
               <Link
                 href="/login"
                 className="text-white bg-[#B13634] block hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-normal rounded-lg text-xs sm:text-base lg:text-[1.1rem] px-2 sm:px-4 py-2"

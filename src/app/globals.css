@@ -792,7 +792,7 @@ header.main-header {
 }
 
 
-section.hero-section{background:url('/images/hero-image.jpg'); padding:260px 0px 197px;}
+section.hero-section{background:url('/images/hero-image.jpg'); padding:260px 0px 197px; }
 
 section.inner.hero-section.vdetial{background:url('/images/details-img.jpg') no-repeat; min-height:300px; background-size:cover; position:relative;}
 section.inner.hero-section.commonpage{background:url('/images/details-img.jpg') no-repeat; min-height:350px; background-size:cover;
@@ -1215,3 +1215,5 @@ section.innerpage-wapper-sections .infobox-details {
     font-family: 'Sora';
     font-weight: bold;
 }
+
+.custom-text-black{color: #000 !important;}

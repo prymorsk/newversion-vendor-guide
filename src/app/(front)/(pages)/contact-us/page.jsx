@@ -79,7 +79,7 @@ const SlugPages = async ({params}) => {
   const pageMeta = await getPostMeta();
   return (
     <>
-                    <Suspense fallback={<div>Loading form...</div>}>
+                    <Suspense fallback={<div></div>}>
 
       <ContentPage page='contact-us' pageData={pages?.data} bannerContent={pageMeta.data}/>
                       </Suspense>

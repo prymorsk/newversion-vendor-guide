@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import NewRegionalHeader from "@/components/Layouts/Front/NewRegionalHeader";
-import Footer from "@/components/Layouts/Front/Footer";
+import FooterAuth from "@/components/Layouts/Front/FooterAuth";
 import Header from "@/components/Layouts/Front/Header";
 import { UserProvider } from "@/context/UserContext";
 import {
@@ -32,7 +32,7 @@ export default async function AuthLayout({ children }) {
         
         {children}
 
-        <Footer
+        <FooterAuth
           homeBannerText={homeBannerText?.data || {}}
           blogs={blogs || []}
           sitesetting={sitesetting?.data || {}}

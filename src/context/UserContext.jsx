@@ -61,10 +61,25 @@ export function UserProvider({ children }) {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
         axios.defaults.headers.common.token = token;
 
-        const res = await axios.post("user-info");
+        const resultdd = await axios.post("user-info");
 
-        if (res.data?.success) {
+       const res=resultdd.data;
+        console.log('loadUserInfo ..............');
+        console.log(res);
+        console.log('res.data ..............');
+        console.log(res.data);
+                console.log('res.data data company ..............');
+
+        console.log(res.data.data.company);
+                        console.log('res.data data.id ..............');
+
+        console.log(res.data.data['id']);
+
+ 
+        if (res.success) {
           const type = res.data.data.type;
+        console.log('loadUserInfo endd ..............');
+        console.log(type);
 
           if (type === 1) setUser(res.data.data.managers);
           if (type === 0) setUser(res.data.data.vendor);
