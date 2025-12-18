@@ -6,6 +6,7 @@ export async function GET(request) {
   const token = request.cookies.get("token")?.value;
   const type = request.cookies.get("user-type")?.value;
 
+   console.log('src-app-proxy-auth-route .....');
   const isPublicPath =
     pathname === "/login" ||
     pathname === "/register" ||
@@ -33,9 +34,13 @@ export async function GET(request) {
       );
     }
     if (type === "2") {
-      return NextResponse.redirect(
-        new URL("/company/dashboard", request.url)
-      );
+
+   console.log('src-app-proxy-auth-route .....');
+
+
+
+      
+      
     }
   }
 

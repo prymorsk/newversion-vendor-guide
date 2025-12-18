@@ -14,6 +14,8 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
   let parts = pathname.split("/");
 
   const isBlogPage = pathname.includes("/blog"); // ✅ check if URL is blog
+  const islogin = pathname.includes("/login"); // ✅ check if URL is blog
+  const isregister = pathname.includes("/register"); // ✅ check if URL is blog
 
   return (
     <>
