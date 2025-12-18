@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Right from "@/components/Front/Auth/Right";
 import ForgetPasswordForm from "./ForgetPasswordForm";
 
+<<<<<<< HEAD
 export const dynamic = "force-dynamic"; // ✅ REQUIRED for Next.js 16
 
 export async function generateMetadata() {
@@ -58,6 +59,9 @@ export async function generateMetadata() {
     return {};
   }
 }
+=======
+
+>>>>>>> 4b51692dfc395da39252076a0dd1f78e569419ed
 
 const Page = () => {
   return (
