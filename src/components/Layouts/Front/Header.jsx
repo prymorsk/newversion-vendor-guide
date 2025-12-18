@@ -50,6 +50,10 @@ const Header = ({ categories, magazines, sitesetting }) => {
   const menuClick = () => setIsActive(false);
   const toggleMenu = () => setShowMenu(current => !current);
 
+  console.log('user logged in ..........');
+  console.log(user);
+  console.log('user logged in end ..........');
+
   return (
     <>
       <header className="main-header">

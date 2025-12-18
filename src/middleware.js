@@ -18,15 +18,25 @@ export function middleware(request) {
     pathname === "/vendor/login" ||
     pathname === "/company/login";
 
+  /* ---------------- Not logged in → private pages ---------------- */
+  if (!token && !isPublicPath) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
   /* ---------------- Vendor subscription rule ---------------- */
-  if (type === "0" && token && !pathname.startsWith("/plan")) {
-    return NextResponse.redirect(
-      new URL("/advertise", request.url)
-    );
+  if (
+    token &&
+    type === "0" &&
+    !isSubscribe &&
+    !pathname.startsWith("/plan") &&
+    !pathname.startsWith("/advertise") &&
+    !isPublicPath
+  ) {
+    return NextResponse.redirect(new URL("/advertise", request.url));
   }
 
   /* ---------------- Logged-in user visiting public pages ---------------- */
-  if (isPublicPath && token) {
+  if (token && isPublicPath) {
     if (type === "1") {
       return NextResponse.redirect(
         new URL("/manager/dashboard", request.url)
@@ -42,13 +52,6 @@ export function middleware(request) {
         new URL("/company/dashboard", request.url)
       );
     }
-  }
-
-  /* ---------------- Not logged in, trying private page ---------------- */
-  if (!isPublicPath && !token) {
-    return NextResponse.redirect(
-      new URL("/login", request.url)
-    );
   }
 
   /* ---------------- Role-based access protection ---------------- */
@@ -76,5 +79,6 @@ export const config = {
     "/vendor/:path*",
     "/company/:path*",
     "/plan/:path*",
+    "/advertise",
   ],
 };

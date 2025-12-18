@@ -2,8 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "@/lib/axios";
-import { setCookie, getCookie, deleteCookie, hasCookie } from "cookies-next";
-import { useRouter } from "next/navigation";
+import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,8 +11,6 @@ import { useForm } from "@/hooks/useForm";
 const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
-  const router = useRouter();
-
   const [user, setUser] = useState(null);
   const [userAllInfo, setUserAllInfo] = useState(null);
   const [sitesetting, setSiteSetting] = useState(null);
@@ -23,28 +20,26 @@ export function UserProvider({ children }) {
   const [isInfoLoding, setIsInfoLoding] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const { setErrors, renderFieldError, navigate } = useForm();
+  const { renderFieldError, navigate } = useForm();
 
   /* ------------------ Load common site data ------------------ */
   useEffect(() => {
     const loadCommonData = async () => {
       try {
-        const res1 = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}site_setting`
-        );
-        const data1 = await res1.json();
-        setSiteSetting(data1.data);
+        const [res1, res2] = await Promise.all([
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}post-meta`),
+        ]);
 
-        const res2 = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}post-meta`
-        );
+        const data1 = await res1.json();
         const data2 = await res2.json();
+
+        setSiteSetting(data1.data);
         setMetaData(data2.data);
       } catch (err) {
         console.error(err);
       } finally {
         setIsInfoLoding(false);
-        setLoading(false);
       }
     };
 
@@ -53,44 +48,36 @@ export function UserProvider({ children }) {
 
   /* ------------------ Load user info if token exists ------------------ */
   useEffect(() => {
-    if (!hasCookie("token")) return;
+    const token = getCookie("token");
+
+    if (!token) {
+      setLoading(false);
+      return;
+    }
 
     const loadUserInfo = async () => {
       try {
         setIsLoding(true);
-
-        axios.defaults.headers.common.Authorization = `Bearer ${getCookie(
-          "token"
-        )}`;
-        axios.defaults.headers.common.token = getCookie("token");
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+        axios.defaults.headers.common.token = token;
 
         const res = await axios.post("user-info");
 
         if (res.data?.success) {
-          setCookie("token", res.data.data.token, { maxAge: 3600 });
-          setCookie("user-type", res.data.data.type, { maxAge: 3600 });
-          setCookie(
-            "isSubscribe",
-            res.data.data?.vendor?.subscriptions?.stripe_status,
-            { maxAge: 3600 }
-          );
+          const type = res.data.data.type;
 
-          if (res.data.data.type === 1)
-            setUser(res.data.data.managers);
-          if (res.data.data.type === 0)
-            setUser(res.data.data.vendor);
-          if (res.data.data.type === 2)
-            setUser(res.data.data.company);
+          if (type === 1) setUser(res.data.data.managers);
+          if (type === 0) setUser(res.data.data.vendor);
+          if (type === 2) setUser(res.data.data.company);
 
           setUserAllInfo(res.data.data);
           setIsLogin(true);
         }
-      } catch (error) {
-        if (error?.response?.data?.message === "Unauthenticated") {
-          logout();
-        }
+      } catch {
+        logout();
       } finally {
         setIsLoding(false);
+        setLoading(false);
       }
     };
 
@@ -98,36 +85,47 @@ export function UserProvider({ children }) {
   }, []);
 
   /* ------------------ Auth Actions ------------------ */
-
   const login = async (formData) => {
     try {
       setIsLoding(true);
-      const res = await axios.post("auth/login", formData);
+      const resulsts = await axios.post("auth/login", formData);
 
-      if (res.data.success) {
-        deleteCookie("token");
-        deleteCookie("user-type");
-        deleteCookie("isSubscribe");
+      const res = resulsts.data;
 
-        setCookie("token", res.data.data.token, { maxAge: 3600 });
-        setCookie("user-type", res.data.data.type, { maxAge: 3600 });
+         console.log('type ..............');
+        console.log(resulsts);
+        console.log(res);
+        console.log(res.data);
+        console.log(res.data.data);
+        console.log(res.data.data.id);
 
+
+
+   console.log('type .............. end');
+
+      if (res.success) {
+        // Correct destructure according to API response
+        const token = res.data.token; // top level
+        const type = res.data.data.type; // inside data
+
+     
+
+        // Set cookies
+        setCookie("token", token, { maxAge: 3600, path: "/", sameSite: "lax" });
+        setCookie("user-type", type, { maxAge: 3600, path: "/", sameSite: "lax" });
+
+        // Update state
+        setIsLogin(true);
         setUserAllInfo(res.data.data);
 
-        if (res.data.data.type === 1) {
-          setUser(res.data.data.managers);
-          router.push("/manager/dashboard");
-        }
-        if (res.data.data.type === 0) {
-          setUser(res.data.data.vendor);
-          router.push("/vendor/dashboard");
-        }
-        if (res.data.data.type === 2) {
-          setUser(res.data.data.company);
-          router.push("/company/dashboard");
-        }
-
+        // Show toast first, then redirect
         toast.success(res.data.message);
+
+        setTimeout(() => {
+          if (type === 1) window.location.href = "/manager/dashboard";
+          if (type === 0) window.location.href = "/vendor/dashboard";
+          if (type === 2) window.location.href = "/company/dashboard";
+        }, 500); // delay ensures toast shows
       }
     } catch (error) {
       handleErrors(error);
@@ -140,9 +138,13 @@ export function UserProvider({ children }) {
     deleteCookie("token");
     deleteCookie("user-type");
     deleteCookie("isSubscribe");
+
     setUser(null);
     setUserAllInfo(null);
-    router.push("/login");
+    setIsLogin(false);
+
+    // Force full navigation
+    window.location.href = "/login";
   };
 
   const handleErrors = (error) => {
@@ -167,7 +169,6 @@ export function UserProvider({ children }) {
         isLoding,
         isInfoLoding,
         loading,
-        register: null,
         login,
         logout,
         renderFieldError,
