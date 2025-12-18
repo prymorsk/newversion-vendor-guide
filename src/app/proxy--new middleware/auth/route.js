@@ -25,20 +25,19 @@ export async function GET(request) {
   if (isPublicPath && token) {
     if (type === "1") {
       return NextResponse.redirect(
-        new URL("/manager/dashboard", request.url)
+        new URL("/manager/dashboard22", request.url)
       );
     }
     if (type === "0") {
       return NextResponse.redirect(
-        new URL("/vendor/dashboard", request.url)
+        new URL("/vendor/dashboard22", request.url)
       );
     }
     if (type === "2") {
 
-   console.log('src-app-proxy-auth-route .....');
-
-
-
+   creturn NextResponse.redirect(
+        new URL("/company/dashboard22", request.url)
+      );
       
       
     }
