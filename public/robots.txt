@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://vendorguideonline.com/sitemap.xml
+
+
+
+
+
+

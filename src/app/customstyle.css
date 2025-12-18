@@ -1,0 +1,46 @@
+
+/*9May24*/
+
+
+.vendorstatecity {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.vendorstatedesc {
+    min-height: 60px;
+}
+
+@media (max-width:1400px){
+    .imageicon_right {
+        display:none;
+    }
+    .imageicon_left {
+       display:none;
+    }
+}
+@media (max-width:1600px){
+    .imageicon_right {
+        right: 31.5rem;
+        max-width: 100px;
+        top: 50%;
+    }
+    .imageicon_left {
+        left: 31rem;
+        max-width: 100px;
+        top: 50%;
+    }
+}
+@media (min-width:1400px){
+    .imageicon_right {
+        right: 31.5rem;
+        max-width: 125px;
+        top: 50%;
+    }
+    .imageicon_left {
+        left: 31rem;
+        max-width: 125px;
+        top: 50%;
+    }
+}
