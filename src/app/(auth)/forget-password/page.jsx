@@ -1,24 +1,17 @@
 import { Suspense } from "react";
 import Right from "@/components/Front/Auth/Right";
-// import LoginForm from "./LoginForm";
 import ForgetPasswordForm from "./ForgetPasswordForm";
 
-// Dynamic metadata (Next.js 15)
-export async function generateMetadata({ params }) {
+export const dynamic = "force-dynamic"; // ✅ REQUIRED for Next.js 16
+
+export async function generateMetadata() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}seo-meta-show/forget`,
-      { cache: "no-store" }
+      { cache: "no-store" } // dynamic fetch
     );
 
-    if (!response.ok) {
-      return {};
-    }
-
-    const contentType = response.headers.get("content-type");
-    if (!contentType?.includes("application/json")) {
-      throw new Error("Invalid Content-Type");
-    }
+    if (!response.ok) return {};
 
     const seoMetaData = await response.json();
     const metaData = seoMetaData?.data || {};
@@ -43,7 +36,6 @@ export async function generateMetadata({ params }) {
         images: [
           {
             url: metaData?.image_url || "",
-            secure_url: metaData?.image_url || "",
             width: 725,
             height: 405,
             alt: metaData?.title || "",
@@ -76,20 +68,17 @@ const Page = () => {
 
       <section className="innerpage-wapper-sections">
         <div className="container mx-auto">
-          <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8 flex-col lg:flex-row gap-10 bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
-            <h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato lg:px-10">
+          <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8 flex-col lg:flex-row gap-10 border border-gray-300 leading-relaxed text-gray-800">
+            <h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] font-semibold">
               Forget Password
             </h1>
 
             <div className="container mx-auto overflow-hidden xl:px-24 lg:px-8 md:px-12">
               <div className="mx-auto max-w-7xl">
                 <div className="lg:mx-auto max-w-4xl grid grid-cols-2 md:gap-x-16 md:gap-y-16 lg:max-w-none">
-
-                  {/* ✅ Suspense added (no tags removed) */}
                   <Suspense fallback={<div>Loading...</div>}>
                     <ForgetPasswordForm />
                   </Suspense>
-
                   <Right />
                 </div>
               </div>

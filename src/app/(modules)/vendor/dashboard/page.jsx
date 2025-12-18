@@ -1,5 +1,6 @@
 import TabComponent from "../components/TabComponent";
 import DashboardTopPage from "./DashboardTopPage";
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: 'Vendor Guide | Dashboard'

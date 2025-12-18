@@ -56,8 +56,6 @@ const ResourceListCards = (props) => {
 
   return (
     <>
-      <div className="z-50">
-        <div className="max_container mx-auto max-w-2xl px-10 pb-6 sm:px-6 lg:py-12 lg:max-w-7xl 2xl:max-w-screen-2xl lg:px-8 xl:mt-44 lg:mt-36">
           <div className="text-center py-10 sm:py-0">
             <Link
               href="#"
@@ -112,8 +110,7 @@ const ResourceListCards = (props) => {
               )}
             </>
           )}
-        </div>
-      </div>
+        
     </>
   );
 };

@@ -1,5 +1,6 @@
 import Right from "@/components/Front/Auth/Right";
 import ResetPasswordForm from "@/components/ResetPasswordForm";
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: 'Vendor Guide | Sign UP',

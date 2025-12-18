@@ -1,4 +1,5 @@
 import TableData from "./TableData";
+export const dynamic = "force-dynamic";
 
 const Page = ({ params }) => {
   const id = params.bid;

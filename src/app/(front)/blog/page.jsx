@@ -1,6 +1,8 @@
 import Resourcespage from "./Resourcepage";
 import { getPostMeta,getMagazineAllData } from "@/app/lib/server-api";
 // or Dynamic metadata
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({params}) {
   
   

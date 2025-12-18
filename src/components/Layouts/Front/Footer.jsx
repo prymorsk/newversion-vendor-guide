@@ -3,28 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useAuth } from "@/context/UserContext";
-import { useState, useEffect } from "react";
-import { faPhoneVolume, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faLinkedin, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import FeaturSection from "@/components/Front/FeaturSection";
-
-// Images from public folder are referenced via URL
-const flogo = "/images&icons/SVG/logo_white.svg";
-const starImg = "/images&icons/SVG/star.svg";
-const PhoneIcon = "/images&icons/telephone.png";
-const envelopeIcon = "/images&icons/envelope.png";
-const mapIcon = "/images&icons/mapicon.png";
-
-const images = [
-  "/images/details-img-sldier.png",
-  "/images/details-img-sldier.png",
-  "/images/details-img-sldier.png",
-  "/images/details-img-sldier.png",
-];
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
   const pathname = usePathname();
@@ -32,9 +13,7 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
   const vendorslugValue = searchParams.get('vendorslug');
   let parts = pathname.split("/");
 
-  console.log('start blogs');
-  console.log(blogs);
-  console.log('end blogs');
+  const isBlogPage = pathname.includes("/blog"); // ✅ check if URL is blog
 
   return (
     <>
@@ -61,7 +40,8 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
         </section>
       )}
 
-      <FeaturSection blogs={blogs} homeBannerText={homeBannerText} />
+      {/* ✅ Hide FeatureSection on blog pages */}
+      {!isBlogPage && <FeaturSection blogs={blogs} homeBannerText={homeBannerText} />}
 
       {/* Footer Section */}
       <footer className="bg-[#2A2A2A] text-white rounded-t-[80px] py-10">
@@ -70,7 +50,7 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
             <h2 className="text-3xl font-bold text-white">
               <div className="footer-logo">
                 <Link href="/">
-                  <Image src="/image/1700727849.png" alt="logo" width={350} height={48} />
+                  <Image src="/images&icons/SVG/logo_white.svg" alt="logo" width={350} height={48} />
                 </Link>
               </div>
             </h2>
@@ -88,12 +68,8 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
               <h3 className="font-semibold mb-4 text-white">Advertise</h3>
-              <p className="flex items-center gap-2 mb-2 text-white">
-                <span>📞</span> 952-460-0305
-              </p>
-              <p className="flex items-center gap-2 text-white">
-                <span>✉</span> info@vendorguideonline.com
-              </p>
+              <p className="flex items-center gap-2 mb-2 text-white">📞 952-460-0305</p>
+              <p className="flex items-center gap-2 text-white">✉ info@vendorguideonline.com</p>
             </div>
 
             <div>

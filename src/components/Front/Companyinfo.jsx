@@ -96,13 +96,10 @@ const Companyinfo = (props) => {
 
   return (
     <>
-      <div className="search-section bg-[#f7f9f8]">
         <div className="isolate px-6 lg:px-8">
           <div className="mx-auto max-w-2xl py-5 lg:py-12 md:pt-10 lg:pt-8">
             <div className="text-center">
-              <h1 className="xl:text-5xl lg:text-4xl text-3xl font-bold tracking-tight text-[#221F20] md:text-4xl">
-                Search Results
-              </h1>
+              
 
               <p className="d-block lg:mt-2 mt-3 lg:text-xl text-sm leading-3 text-[#221F20] font-semibold hidden">
                 {props.searchWord &&
@@ -261,7 +258,6 @@ const Companyinfo = (props) => {
 
           </div>
         </div>
-      </div>
     </>
   );
 };

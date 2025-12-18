@@ -1,4 +1,3 @@
-
 "use client";
 import Graph from "@/components/Front/NewRegionalmanagerDashboard/Graph";
 import Sideli from "@/components/Common/Sideli";
@@ -6,67 +5,69 @@ import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import LoadingComponents from "@/components/LoadingComponents";
+import { toast } from "react-toastify";
 
 const DashboardTopPage = () => {
-  const [isPageLoading,setIsPageLoading] = useState(true);
-  const [dashboardData,setDashboardData] = useState(null);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [dashboardData, setDashboardData] = useState(null);
+
   useEffect(() => {
-    
     const loadDashboardData = async () => {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${getCookie('token')}`;
-      await axios.get(`bid-graph-chart-day?token=${getCookie('token')}`, {}).then(response => {
+      try {
+        const token = getCookie("token");
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+        const response = await axios.get(`bid-graph-chart-day?token=${token}`);
         const res = response.data?.data;
         setDashboardData(res);
-        setIsPageLoading(false)
-          // console.log(response.data.data.side_bar);
-      }).catch(error => {
-          
-          // console.log(error.response.data);
-          var errors = error?.response?.data?.data;
-          if(errors){
-              const errorArray = Object.keys(errors).map((key) => {
-                  toast.error(errors[key][0], {
-                      position: "top-right",
-                      autoClose: 5000,
-                      hideProgressBar: false,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                      theme: "colored",
-                  });
-                  
-              });
-          }else if(error?.response?.data?.message){
-              toast.error(error?.response?.data?.message, {
-                  position: "top-right",
-                  autoClose: 5000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                  theme: "colored",
-              });
-          }
-          
-      });
-      
-    }
+      } catch (error) {
+        const errors = error?.response?.data?.data;
+        if (errors) {
+          Object.keys(errors).forEach((key) => {
+            toast.error(errors[key][0], {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          });
+        } else if (error?.response?.data?.message) {
+          toast.error(error.response.data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+      } finally {
+        setIsPageLoading(false);
+      }
+    };
+
     loadDashboardData();
-  }, [])
+  }, []);
+
+  if (isPageLoading) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <LoadingComponents />
+      </div>
+    );
+  }
+
   return (
-    <>
-    { isPageLoading ? 
-        <div className="flex justify-center items-center h-full">
-            <LoadingComponents />
-        </div> :
-        <div className="grid grid-cols-3 sm:gap-16 ">
-          <Sideli dashboardData={dashboardData} />
-          <Graph dashboardData={dashboardData} />
-        </div>
-    }
-    </>
+    <div className="grid grid-cols-3 sm:gap-16">
+      <Sideli dashboardData={dashboardData} />
+      <Graph dashboardData={dashboardData} />
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import MessageComponent from "@/components/MessageComponent";
+export const dynamic = "force-dynamic";
 
 export default function page({params}) {
     const bidId = params.id[0];

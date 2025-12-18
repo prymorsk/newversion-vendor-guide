@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 
 import ContentPage from "@/app/(front)/(pages)/ContentPage";
 
 import { getPages,getPostMeta } from "@/app/lib/server-api";
+export const dynamic = "force-dynamic"; // ✅ REQUIRED for Next.js 16
 
 // or Dynamic metadata
 export async function generateMetadata({params}) {
@@ -77,8 +79,11 @@ const SlugPages = async ({params}) => {
   const pageMeta = await getPostMeta();
   return (
     <>
-    
+                    <Suspense fallback={<div>Loading form...</div>}>
+
       <ContentPage page='contact-us' pageData={pages?.data} bannerContent={pageMeta.data}/>
+                      </Suspense>
+
     </>
   );
 };

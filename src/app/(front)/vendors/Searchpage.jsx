@@ -8,11 +8,17 @@ const Searchpage = ({ bannerContent, states }) => {
 
   return (
     <>
-      <TopBannerSearch 
-        title="Search Results" 
-        backgroundimage={searchMeta} 
-        vendors={''} 
-      />
+
+    <section id="hero_section" className="inner hero-section commonpage" 
+      style={{
+      backgroundImage: searchMeta
+      ? `url(${searchMeta})`
+      : "none",
+      }}
+      >
+      {/* Hero Section */}
+      </section>
+      
       {/* <BannerSectionCard /> */}
       <SearchAllData states={states} />
     </>

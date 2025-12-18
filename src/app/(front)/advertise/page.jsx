@@ -1,5 +1,6 @@
 import Advertisepage from "./Advertisepage";
 import { getPostMeta } from "@/app/lib/server-api";
+export const dynamic = "force-dynamic";
 
 // or Dynamic metadata
 export async function generateMetadata({params}) {

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
+export const dynamic = "force-dynamic";
 
 // Dynamic metadata with caching
 export async function generateMetadata({ params }) {

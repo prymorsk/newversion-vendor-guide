@@ -1,6 +1,7 @@
 
 import { getPostMeta,getMagazineData } from "@/app/lib/server-api";
 import PageFlipComponent from "./PageFlipComponent";
+export const dynamic = "force-dynamic";
 
 // or Dynamic metadata
 export async function generateMetadata({params}) {

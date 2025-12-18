@@ -1,5 +1,6 @@
 import ContentPage from "@/app/(front)/(pages)/ContentPage";
 import { getPages, getPostMeta } from "@/app/lib/server-api";
+export const dynamic = "force-dynamic";
 
 // Dynamic metadata for Next.js 15
 export async function generateMetadata({ params }) {

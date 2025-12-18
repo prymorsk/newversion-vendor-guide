@@ -1,5 +1,6 @@
 import Searchpage from "@/app/(front)/vendors/Searchpage";
 import { getPostMeta, getStates } from "@/app/lib/server-api";
+export const dynamic = "force-dynamic";
 
 // Dynamic metadata
 export async function generateMetadata({ params }) {

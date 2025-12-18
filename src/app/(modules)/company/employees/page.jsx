@@ -1,15 +1,12 @@
+import { Suspense } from "react";
 import Employeepage from "./Employeepage";
 
-export const metadata = {
-  title: 'Vendor Guide | Employees'
-}
+export const dynamic = "force-dynamic";
 
-const Employees = () => {
-  
-
+export default function Page() {
   return (
-      <Employeepage/>
+    <Suspense fallback={null}>
+      <Employeepage />
+    </Suspense>
   );
-};
-
-export default Employees;
+}

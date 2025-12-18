@@ -1,9 +1,6 @@
 
 import Profilepage from './Profilepage';
-
-export const metadata = {
-    title: 'Vendor Guide | Profile'
-  }
+export const dynamic = "force-dynamic";
 
 const Page = () => {
     return (

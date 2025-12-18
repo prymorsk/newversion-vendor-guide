@@ -1,53 +1,59 @@
 import LoginForm from "./LoginForm"; // client component
 
-// Dynamic metadata (server-side)
-export async function generateMetadata({ params }) {
+export const dynamic = "force-dynamic"; // ✅ REQUIRED in Next.js 16
+
+export async function generateMetadata() {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}seo-meta-show/login`
+      `${process.env.NEXT_PUBLIC_API_URL}seo-meta-show/login`,
+      { cache: "no-store" } // ✅ dynamic fetch
     );
 
     if (!response.ok) return {};
 
-    const contentType = response.headers.get("Content-Type");
-    if (!contentType || !contentType.includes("application/json")) {
+    const contentType = response.headers.get("content-type");
+    if (!contentType?.includes("application/json")) {
       throw new Error("Invalid Content-Type");
     }
 
     const seoMetaData = await response.json();
     const metaData = seoMetaData?.data || {};
 
+    const slug = metaData?.slug || "login";
+    const pageUrl = `/${slug}`;
+
     return {
       alternates: {
-        canonical: `/${metaData?.slug || "login"}`,
-        languages: { "en-US": `/${metaData?.slug || "login"}` },
+        canonical: pageUrl,
+        languages: {
+          "en-US": pageUrl,
+        },
       },
-      title: metaData?.title || "",
+      title: metaData?.title || "Login",
       description: metaData?.description || "",
       openGraph: {
-        title: metaData?.title || "",
+        title: metaData?.title || "Login",
         description: metaData?.description || "",
-        url: `/${metaData?.slug || "login"}`,
+        url: pageUrl,
         siteName: process.env.SITE_NAME,
         images: [
           {
             url: metaData?.image_url || "",
-            secure_url: metaData?.image_url || "",
             width: 725,
             height: 405,
-            alt: metaData?.title || "",
+            alt: metaData?.title || "Login",
           },
         ],
         locale: "en_US",
         type: "website",
       },
       twitter: {
-        card: metaData?.title || "",
-        title: metaData?.title || "",
-        description: metaData?.short_description || metaData?.description || "",
-        url: `/${metaData?.slug || "login"}`,
+        card: "summary_large_image", // ✅ FIXED (was invalid)
+        title: metaData?.title || "Login",
+        description:
+          metaData?.short_description || metaData?.description || "",
         images: [metaData?.image_url || ""],
-        siteId: process.env.SITE_ID,
+        site: process.env.SITE_ID, // ✅ FIXED (siteId → site)
       },
     };
   } catch (error) {
@@ -56,7 +62,7 @@ export async function generateMetadata({ params }) {
   }
 }
 
-const Page = async () => {
+const Page = () => {
   return (
     <>
       <section className="inner hero-section commonpage">
@@ -77,7 +83,7 @@ const Page = async () => {
 
                   <LoginForm />
 
-                  <div className="md:col-span-1 lg:col-span-1 col-span-12 order-2 sm:order-1">
+                  <div className="md:col-span-1 col-span-12">
                     <div className="bg-[url('/images&icons/loginback.jpg')] h-full bg-cover bg-no-repeat"></div>
                   </div>
 
@@ -88,8 +94,6 @@ const Page = async () => {
           </div>
         </div>
       </section>
-
-      
     </>
   );
 };

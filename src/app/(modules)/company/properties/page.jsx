@@ -1,15 +1,12 @@
-
+import { Suspense } from "react";
 import Propertypage from "./Propertypage";
 
-export const metadata = {
-  title: 'Vendor Guide | Properties'
-}
+export const dynamic = "force-dynamic";
 
-const Properties = () => {
-  
+export default function Page() {
   return (
-    <Propertypage/>
+    <Suspense fallback={null}>
+      <Propertypage />
+    </Suspense>
   );
-};
-
-export default Properties;
+}
