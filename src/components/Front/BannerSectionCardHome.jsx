@@ -8,9 +8,11 @@ import { useAuth } from "@/context/UserContext";
 
 const CACHE_KEY_COORDS = "user_coords";
 const CACHE_KEY_VENDORS = "vendors_data";
-const CACHE_EXPIRY_MS = 2 * 60 * 1000; // 2 minutes
+const CACHE_EXPIRY_MS = 1 * 60 * 1000; // 2 minutes
 
 const BannerSectionCardHome = () => {
+
+  console.log('checking feature...');
   const { loading } = useAuth();
 
   const [latitude, setLatitude] = useState(null);
