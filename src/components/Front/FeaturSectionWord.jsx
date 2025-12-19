@@ -30,22 +30,24 @@ const FeaturSectionWord = ({ blogs, homeBannerText }) => {
               </div>
             </div>
 
-            <div className="w-full md:w-[60%]">
-              <div className="welcome-intro-content">
-                <div className="title">
-                  <span>Welcome to</span>
-                  <h2>Vendor Guide Online</h2>
-                </div>
-                <div className="paragraph">
-                {bannerDescription && (
-                <div
-                className="mt-3 text-lg sm:text-xl lg:text-[1.400rem] lg:leading-9 text-[#221F20] font-medium font-lato"
-                dangerouslySetInnerHTML={{ __html: bannerDescription }}
-                ></div>
-                )}
-                </div>
-              </div>
-            </div>
+             <div class="w-full md:w-[60%]">
+		  	<div class="welcome-intro-content">
+		  		<div class="title">
+		  			<span>Welcome to</span>
+		  			<h2>Vendor Guide Online</h2>
+		  		</div>
+		  		<div class="paragraph">
+		  			<p>Welcome to VendorGuideOnline.com, the ultimate online search destination for apartment managers seeking top-notch vendors, suppliers, and service providers for their multi-family properties. </p>
+					<p>Whether you need expert apartment painting, reliable multi-family roofing, comprehensive apartment renovation, smart tech installation, or so much more, we've got you covered. </p>
+					<p>Our platform connects you with skilled professionals in over 90 categories, including those specializing in advertising and promotion, apartment turns, resident screening, property restoration, apartment cleaning, and building exteriors services, with vendors that are experienced in the nuances of working in the multi-family industry. </p>
+					<p>Discover a wide array of trusted suppliers and service providers, ensuring your apartment property’s needs are met with the highest quality and efficiency.</p>
+		  		</div>
+
+		  	</div>
+
+		  </div>
+
+            
           </div>
         </div>
 
