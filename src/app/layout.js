@@ -26,37 +26,39 @@ export const metadata = {
 
 export default function RootLayout({ children, ...props }) {
   return (
-    <UserProvider>
-      <html lang="en">
-        <head>
-          <meta name="DC.title" content="Vendor Guide" />
-          <meta name="geo.region" content="US-MN" />
-          <meta name="geo.placename" content="Minnetonka" />
-          <meta name="geo.position" content="44.940509;-93.463894" />
-          <meta name="ICBM" content="44.940509, -93.463894" />
+    <html lang="en">
+      <head>
+        <meta name="DC.title" content="Vendor Guide" />
+        <meta name="geo.region" content="US-MN" />
+        <meta name="geo.placename" content="Minnetonka" />
+        <meta name="geo.position" content="44.940509;-93.463894" />
+        <meta name="ICBM" content="44.940509, -93.463894" />
 
-          {/* jQuery + GSAP */}
-          <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" />
-          <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" />
+        {/* jQuery + GSAP */}
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" />
 
-          {/* Simpli.fi base tag */}
-          <Script async src="https://tag.simpli.fi/sifitag/1b1b4113-f234-4312-aec9-3563eea748cd" />
+        {/* Simpli.fi base tag */}
+        <Script
+          async
+          src="https://tag.simpli.fi/sifitag/1b1b4113-f234-4312-aec9-3563eea748cd"
+        />
 
-          <link
-            href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/tailwind.min.css"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
-            rel="stylesheet"
-          />
+        <link
+          href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+          rel="stylesheet"
+        />
 
-          {/* open on Production */}
-          {/* <GTM /> */}
-          
-        </head>
+        {/* open on Production */}
+        {/* <GTM /> */}
+      </head>
 
-        <body className={myFont.className}>
+      <body className={myFont.className}>
+        <UserProvider>
           {/* Google Tag Manager (noscript) */}
           <noscript>
             <iframe
@@ -71,10 +73,9 @@ export default function RootLayout({ children, ...props }) {
 
           <ToastContainer />
 
-          {/* <TAGFOOTER />  */}
-
-        </body>
-      </html>
-    </UserProvider>
-  )
+          {/* <TAGFOOTER /> */}
+        </UserProvider>
+      </body>
+    </html>
+  );
 }

@@ -49,7 +49,7 @@ Thumbs.db
 # Large media files
 *.mp4
 *.zip
-*.config.js
+
 *.tiff
 *.avi
 *.flv

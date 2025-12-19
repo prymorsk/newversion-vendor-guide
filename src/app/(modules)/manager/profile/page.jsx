@@ -1,11 +1,12 @@
+import { Suspense } from "react";
+import Profilepage from "./Profilepage";
 
-import Profilepage from './Profilepage';
 export const dynamic = "force-dynamic";
 
-const Page = () => {
-    return (
-        <Profilepage/>
-    );
-};
-
-export default Page;
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <Profilepage />
+    </Suspense>
+  );
+}

@@ -55,6 +55,7 @@ const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
   const toggleclassName = () => setIsActive(!isActive);
   const menuClick = () => setIsActive(false);
   const toggleMenu = () => setShowMenu(current => !current);
+  const imagsrc = user ? user.image_url : null;
 
   console.log('user.');
   console.log(user);
@@ -136,19 +137,44 @@ const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
               {user?.name ? (
                 <li>
                   <div className="head_profile_dropdown relative px-4 md:px-0 py-2 lg:py-3 border-b border-gray-100 lg:border-0">
-                    <button type="button" className="flex gap-x-4 items-center border-gray-50 text-white" onClick={toggleMenu}>
-                      <div>
-                        <span className="align-text-bottom text-[#221F20] text-base font-lato">
-                          {isLoding ? <span>Loading...</span> : `${user?.name} (${UserTypeName})`}
-                          <FontAwesomeIcon icon={faAngleDown} className="ps-2 text-[#B13634]" />
-                        </span>
-                      </div>
-                    </button>
+                
+
+<div className="dropdown relative">
+                  <button
+                    type="button"
+                    className="flex gap-x-4 items-center px-4 py-2  border-gray-50 text-white dropdown-toggle"
+                    id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    onClick={toggleMenu}
+                  >
+                    <Image
+                      width="100"
+                      height="100"
+                      className="h-8 w-8 rounded-full ltr:xl:mr-2 rtl:xl:ml-2"
+                      src={imagsrc ? imagsrc : userDefult}
+                      alt="Header Avatar 444"
+                    />
+                    <div className="w-50">
+                      <span className="text-left block align-middle text-white text-xs font-lato">
+                        {isLoding ? (
+                            <span>Loading...</span>
+                        ) : user?.name } ({UserTypeName}) <FontAwesomeIcon icon={faAngleDown}  />
+                      </span>
+                      {/* <span className="text-white block text-xs">
+                        Portfolio Manager
+                      </span> */}
+                    </div>
+                  </button>
+</div>
+
+
 
                     <div className="head_profile_dropdown-menu absolute top-[2rem] left-0 z-40 w-28 list-none rounded bg-white hidden shadow-solid-primary" id="profile/log">
                       <div className="border border-gray-50">
                         <div className="dropdown-item">
-                          <Link className="px-3 py-2 hover:bg-gray-50/50 block" href={profileUrl} onClick={menuClick}>Dashboard</Link>
+                          <Link className="px-3 py-2 hover:bg-gray-50/50 block custom-text-black" href={profileUrl} onClick={menuClick}>Dashboard</Link>
                         </div>
                         <hr className="border-gray-50" />
                         <div className="dropdown-item">

@@ -1,27 +1,23 @@
-import TabComponent from "../components/TabComponent";
-import DashboardTopPage from "./DashboardTopPage";
-export const dynamic = "force-dynamic";
 
+import { Suspense } from "react";
+import VendorDashboard from "./VendorDashboard";
+
+export const dynamic = "force-dynamic";
 export const metadata = {
   title: 'Vendor Guide | Dashboard'
 }
-
- function Dashboard() {
-
+export default function Page() {
   return (
-    <>
-      <section className="top_grid">
-        <div className="px-20">
-           <DashboardTopPage />
-        </div>
-      </section>
-      <section className="pt-14">
-        <div className="px-10">
-          <TabComponent/>
-        </div>
-      </section>
-    </>
+    <Suspense fallback={null}>
+      <VendorDashboard />
+    </Suspense>
   );
-};
+}
 
-export default Dashboard;
+
+
+
+
+
+
+

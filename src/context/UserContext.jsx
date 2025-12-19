@@ -1,195 +1,510 @@
 "use client";
+import React, { createContext, use, useContext, useEffect, useState } from 'react';
+//import axios from 'axios'; // Import Axios properly
+import axios from '@/lib/axios';
+import { setCookie,getCookie,deleteCookie,hasCookie } from 'cookies-next';
+import { NextResponse } from 'next/server';
+import {useForm} from "@/hooks/useForm";
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { createContext, useContext, useEffect, useState } from "react";
-import axios from "@/lib/axios";
-import { setCookie, getCookie, deleteCookie } from "cookies-next";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-import { useForm } from "@/hooks/useForm";
-
-const UserContext = createContext(null);
+const UserContext = createContext();
 
 export function UserProvider({ children }) {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const [userAllInfo, setUserAllInfo] = useState(null);
-  const [sitesetting, setSiteSetting] = useState(null);
-  const [metaData, setMetaData] = useState(null);
+  const [sitesetting, setSiteSetting] = useState();
+  const [metaData, setMetaData] =useState();
   const [isLogin, setIsLogin] = useState(false);
   const [isLoding, setIsLoding] = useState(false);
   const [isInfoLoding, setIsInfoLoding] = useState(true);
   const [loading, setLoading] = useState(true);
+  // const [formErrors, setFormErrors] = useState(false);
+  const token = getCookie('token');
+  const is_module_type = getCookie('type');
+  
+  const { errors,setErrors, renderFieldError, navigate } = useForm();
 
-  const { renderFieldError, navigate } = useForm();
-
-  /* ------------------ Load common site data ------------------ */
   useEffect(() => {
-    const loadCommonData = async () => {
+    const loadUserCommonInfo = async () => {
+  
       try {
-        const [res1, res2] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}post-meta`),
-        ]);
-
-        const data1 = await res1.json();
-        const data2 = await res2.json();
-
-        setSiteSetting(data1.data);
-        setMetaData(data2.data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setIsInfoLoding(false);
-      }
-    };
-
-    loadCommonData();
-  }, []);
-
-  /* ------------------ Load user info if token exists ------------------ */
-  useEffect(() => {
-    const token = getCookie("token");
-
-    if (!token) {
-      setLoading(false);
-      return;
-    }
-
-    const loadUserInfo = async () => {
-      try {
-        setIsLoding(true);
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-        axios.defaults.headers.common.token = token;
-
-        const resultdd = await axios.post("user-info");
-
-       const res=resultdd.data;
-        console.log('loadUserInfo ..............');
-        console.log(res);
-        console.log('res.data ..............');
-        console.log(res.data);
-                console.log('res.data data company ..............');
-
-        console.log(res.data.data.company);
-                        console.log('res.data data.id ..............');
-
-        console.log(res.data.data['id']);
-
- 
-        if (res.success) {
-          const type = res.data.data.type;
-        console.log('loadUserInfo endd ..............');
-        console.log(type);
-
-          if (type === 1) setUser(res.data.data.managers);
-          if (type === 0) setUser(res.data.data.vendor);
-          if (type === 2) setUser(res.data.data.company);
-
-          setUserAllInfo(res.data.data);
-          setIsLogin(true);
+        const response2 = await fetch(`${process.env.BASE_API_URL}site_setting`, {
+          method: 'GET',
+        });
+        // console.log('done');
+        if (!response2.ok) {
+          throw new Error('Failed to submit the data. Please try again.');
         }
-      } catch {
-        logout();
-      } finally {
-        setIsLoding(false);
-        setLoading(false);
+        // Handle response if necessary
+        const dataProp = await response2.json();
+        // console.log(dataProp.data);
+        setSiteSetting(dataProp.data); 
+      } catch (error) {
+        console.error(error)
       }
-    };
+    
+    }
+    loadUserCommonInfo();
+    setIsInfoLoding(false);
 
-    loadUserInfo();
+    const  loadMetaData = async () =>{
+      try{
+        const response22 =  await fetch(`${process.env.BASE_API_URL}post-meta`,{
+          method:'GET'
+        });
+        if (!response22.ok) {
+          throw new Error('Failed to submit the data. Please try again.');
+        }
+          const dropData1 = await response22.json();
+          // console.log(dropData);
+          setMetaData(dropData1.data);
+          setLoading(false);
+      }catch (error){
+        console.error(error);
+      }
+    }
+    loadMetaData();
+    
+  },[]);
+
+  useEffect(() => {
+    const userInfo = async (formData) => {
+    
+      setIsLoding(true);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${getCookie('token')}`;
+    axios.defaults.headers.common['token'] = `${getCookie('token')}`;
+     if(formData)
+     {
+     formData.append('token',getCookie('token'));
+     }
+
+      await axios.post(`user-info`, formData).then(response => {
+          const res = response.data;
+      
+      
+      console.log('users data all check...');
+
+          console.log(res.data);
+       console.log('users data all check not reflecting...');
+      
+          setIsLoding(false);
+          if(res.success==true) {
+              // deleteCookie('token')
+              // deleteCookie('name')
+              // deleteCookie('user-type')
+              // deleteCookie('isSubscribe')
+              setCookie('token', res.data.token,{maxAge: 3600 });
+              setCookie('user-type', res.data.data.type,{maxAge: 3600 });
+              setCookie('isSubscribe', res.data.data?.vendor?.subscriptions?.stripe_status,{maxAge: 3600 });
+              
+              if(res.data.data.type==1){
+                setUser(res.data.data.managers)
+              }
+              if(res.data.data.type==0)
+        {
+                setUser(res.data.data.vendor)
+              }
+              if(res.data.data.type==2){
+                setUser(res.data.data.company)
+              }
+              setUserAllInfo(res.data.data);
+          }
+      }).catch(error => {
+
+          setIsLoding(false);
+      //console.log('users data all errors...');
+           //console.log(error?.response?.data?.message);
+           console.log(error?.response?.data?.message);
+          if(error?.response?.data?.message=="Unauthenticated"){
+            if(hasCookie('token')){
+              deleteCookie('token')
+              deleteCookie('user-type')
+              deleteCookie('isSubscribe')
+              setUser(null); 
+              router.push(`/login`);
+            }
+          }
+          var errors = error?.response?.data?.data;
+          if(errors){
+              const errorArray = Object.keys(errors).map((key) => {
+                  toast.error(errors[key][0], {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                  });
+                  
+              });
+          }else if(error?.response?.data?.message){
+              toast.error(error?.response?.data?.message, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "colored",
+              });
+          }
+          
+      });
+    };
+    if(hasCookie('token')){
+      userInfo();
+    }
+    setIsLoding(false);
   }, []);
 
-  /* ------------------ Auth Actions ------------------ */
-  const login = async (formData) => {
-    try {
-      setIsLoding(true);
-      const resulsts = await axios.post("auth/login", formData);
+  const forgetpassword = async (formData) => {
+    setIsLoding(true);
+  
+  axios.defaults.headers.common['Authorization'] = `Bearer ${getCookie('token')}`;
+  
+    await axios.post(`forget-password`, formData).then(response => {
+        // console.log(response.data.data);
+        const res = response.data;
 
-      const res = resulsts.data;
-
-         console.log('type ..............');
-        console.log(resulsts);
-        console.log(res);
-        console.log(res.data);
-        console.log(res.data.data);
-        console.log(res.data.data.id);
-
-
-
-   console.log('type .............. end');
-
-      if (res.success) {
-        // Correct destructure according to API response
-        const token = res.data.token; // top level
-        const type = res.data.data.type; // inside data
-
-     
-
-        // Set cookies
-        setCookie("token", token, { maxAge: 3600, path: "/", sameSite: "lax" });
-        setCookie("user-type", type, { maxAge: 3600, path: "/", sameSite: "lax" });
-
-        // Update state
-        setIsLogin(true);
-        setUserAllInfo(res.data.data);
-
-        // Show toast first, then redirect
-        toast.success(res.data.message);
-
-        setTimeout(() => {
-          if (type === 1) window.location.href = "/manager/dashboard";
-          if (type === 0) window.location.href = "/vendor/dashboard";
-          if (type === 2) window.location.href = "/company/dashboard";
-        }, 500); // delay ensures toast shows
+        if (res.status === 429) {
+          // Handle rate limit exceeded, maybe implement retry logic
+          console.warn('Rate limit exceeded. Retry after some time.');
+          return null; // or throw an error
       }
-    } catch (error) {
-      handleErrors(error);
-    } finally {
-      setIsLoding(false);
-    }
+
+
+        setIsLoding(false);
+        if(res.status==true) {
+          toast.success(res.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+             
+        }
+    }).catch(error => {
+        setIsLoding(false);
+        // console.log(error.response.data);
+        var errors = error?.response?.data?.data;
+        if(errors){
+            const errorArray = Object.keys(errors).map((key) => {
+                toast.error(errors[key][0], {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                
+            });
+        }else if(error?.response?.data?.message){
+            toast.error(error?.response?.data?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+        
+    });
   };
 
-  const logout = () => {
-    deleteCookie("token");
-    deleteCookie("user-type");
-    deleteCookie("isSubscribe");
+  const resetpassword = async (formData) => {
+    setIsLoding(true);
+    
+    
+    axios.defaults.headers.common['Authorization'] = `Bearer ${getCookie('token')}`;
+  axios.defaults.headers.common['token'] = `${getCookie('token')}`;
+     if(formData){
+   formData.append('token',getCookie('token'));
+   }
+    
+    await axios.post(`reset-password`, formData).then(response => {
+        //
+        const res = response.data;
+        // console.log(res);
 
-    setUser(null);
-    setUserAllInfo(null);
-    setIsLogin(false);
 
-    // Force full navigation
-    window.location.href = "/login";
+        if (res.status === 429) {
+          // Handle rate limit exceeded, maybe implement retry logic
+          console.warn('Rate limit exceeded. Retry after some time.');
+          return null; // or throw an error
+      }
+        setIsLoding(false);
+
+        if(res.status==true) {
+          if(hasCookie('token')){
+            deleteCookie('token')
+            deleteCookie('user-type')
+            setUser(null); 
+            router.push(`/login`);
+          }
+          toast.success(res.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+             
+        }else if(res.status==false){
+          toast.error(res.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+
+    }).catch(error => {
+        setIsLoding(false);
+        console.log(error.response.data);
+        var errors = error?.response?.data?.data;
+        if(errors){
+            const errorArray = Object.keys(errors).map((key) => {
+                toast.error(errors[key][0], {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                
+            });
+        }else if(error?.response?.data?.message){
+            toast.error(error?.response?.data?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+        
+    });
   };
 
-  const handleErrors = (error) => {
-    const errors = error?.response?.data?.data;
-    if (errors) {
-      Object.values(errors).forEach((msg) =>
-        toast.error(msg[0], { theme: "colored" })
-      );
-    } else if (error?.response?.data?.message) {
-      toast.error(error.response.data.message, { theme: "colored" });
+  const register = async (formData) => {
+    setIsLoding(true);
+    await axios.post(`auth/register`, formData).then(response => {
+        // console.log(response.data.data);
+        if (response.data.status === 429) {
+          // Handle rate limit exceeded, maybe implement retry logic
+          console.warn('Rate limit exceeded. Retry after some time.');
+          return null; // or throw an error
+      }
+        setIsLoding(false);
+        if(response.data.success==true) {
+            
+            
+             toast.success(response.data.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            
+            
+            
+            
+            
+            router.push(`/login`);
+        }
+    }).catch(error => {
+        setIsLoding(false);
+        // console.log(error.response.data);
+        var errors = error?.response?.data?.data;
+        if(errors){
+            const errorArray = Object.keys(errors).map((key) => {
+                toast.error(errors[key][0], {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            });
+        }else if(error?.response?.data?.message){
+            toast.error(error?.response?.data?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+        
+    });
+  };
+
+  const login = async (formData) => {
+    setIsLoding(true);
+    await axios.post(`auth/login`, formData).then(response => {
+        const res = response.data;
+        // console.log(res.data.data);
+        if (res.status === 429) {
+          // Handle rate limit exceeded, maybe implement retry logic
+          console.warn('Rate limit exceeded. Retry after some time.');
+          return null; // or throw an error
+      }
+        if(res.success==true) {
+            deleteCookie('token')
+            deleteCookie('name')
+            deleteCookie('user-type')
+            deleteCookie('isSubscribe')
+            setCookie('token', res.data.token,{maxAge: 3600 });
+            setCookie('user-type', res.data.data.type,{maxAge: 3600 });
+            setCookie('isSubscribe', res.data.data?.vendor?.subscriptions?.stripe_status,{maxAge: 3600 });
+            // setUser(res.data.data)
+            // router.push(`/`);
+            setUserAllInfo(res.data.data)
+            if(res.data.data.type==1){
+              setUser(res.data.data.managers)
+              router.push(`/manager/dashboard`);
+            }
+            if(res.data.data.type==0){
+              setUser(res.data.data.vendor);
+              router.push(`/vendor/dashboard`);
+            }
+            if(res.data.data.type==2){
+              setUser(res.data.data.company);
+              router.push(`/company/dashboard`);
+            }
+            toast.success(res.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+        }
+        setIsLoding(false);
+    }).catch(error => {
+        setIsLoding(false);
+        var errors = error?.response?.data?.data;
+        if(errors){
+            const errorArray = Object.keys(errors).map((key) => {
+                toast.error(errors[key][0], {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                
+            });
+        }else if(error?.response?.data?.message){
+            toast.error(error?.response?.data?.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        }
+        
+    });
+  };
+
+  const updateprofile = async (formData) => {
+      
+    setIsLoding(true);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${getCookie('token')}`;
+  axios.defaults.headers.common['token'] = `${getCookie('token')}`;
+if(formData){
+   formData.append('token',getCookie('token'));
+   }  
+        await axios.post(`user-profile-update`, formData).then(response => {
+            // console.log(response);
+            setIsLoding(false);
+            // onClose(true)
+            // if(response.data.success == true){
+            toast.success(response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
+              // }
+        }).catch(error => {
+            setIsLoding(false);
+            if(error?.response?.data?.errors) {
+                setErrors(error.response.data.errors);
+            }
+        });
+    
+    
+    
+  };
+
+  const logout = (e) => {
+    e.preventDefault();
+    if(hasCookie('token')){
+      deleteCookie('token')
+      deleteCookie('user-type')
+      deleteCookie('isSubscribe')
+      setUser(null); 
+      setUserAllInfo(null); 
+      router.push(`/login`);
     }
   };
 
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        userAllInfo,
-        sitesetting,
-        metaData,
-        isLogin,
-        isLoding,
-        isInfoLoding,
-        loading,
-        login,
-        logout,
-        renderFieldError,
-        navigate,
-      }}
-    >
+    <UserContext.Provider value={{user,isLogin,register,login,logout,renderFieldError,forgetpassword,resetpassword,updateprofile,isLoding,isInfoLoding,navigate,sitesetting,metaData,loading,userAllInfo}}>
       {children}
     </UserContext.Provider>
   );

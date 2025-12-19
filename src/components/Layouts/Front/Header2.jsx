@@ -15,10 +15,12 @@ import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
 
 // ✅ Public folder images should be referenced via URL
 //const Logo = "/images&icons/SVG/logo.svg";
-const userDefult = "/images&icons/profile.png";
 
 
 const Header = ({ activeTab,setActiveTab,categories,sitesetting,magazines }) => {
+
+  const userDefult = "/images&icons/profile.png";
+
   const { user, isLoding, isInfoLoding, logout } = useAuth();
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
@@ -173,7 +175,7 @@ const Header = ({ activeTab,setActiveTab,categories,sitesetting,magazines }) => 
                       width="100"
                       height="100"
                       className="h-8 w-8 rounded-full ltr:xl:mr-2 rtl:xl:ml-2"
-                      src={imagsrc ? imagsrc : userDefult.src}
+                      src={imagsrc ? imagsrc : userDefult}
                       alt="Header Avatar 444"
                     />
                     <div className="w-50">
