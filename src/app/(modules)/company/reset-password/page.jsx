@@ -13,7 +13,8 @@ const Page = () => {
                <Suspense fallback={null}>
 
                <ResetPasswordForm />
-              
+                          <Right />
+
               </Suspense>
 
             
