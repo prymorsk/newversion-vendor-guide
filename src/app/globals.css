@@ -850,8 +850,10 @@ section.hero-section .hero-content .hero-button a {
 section.hero-section .hero-content .hero-button a:hover{
   background:#191919;
 }
+
 header.main-header .header-menu ul li ul.submenu {
     top: 100%;
+    z-index: 1;
 }
 section.searchbar-section h4 {
     font-size: 24px;
@@ -1217,3 +1219,7 @@ section.innerpage-wapper-sections .infobox-details {
 }
 
 .custom-text-black{color: #000 !important;}
+section.bannerad-sec li.slide.selected {
+    border: none !important;
+}
+.navcustom{margin-top: 4px;}

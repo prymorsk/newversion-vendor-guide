@@ -10,7 +10,7 @@ import TabComponent from "@/components/Front/TabComponent";
 import DashboardTopPage from "./DashboardTopPage";
 
 
-const Advertisepage = ({ bannerContent }) => {
+const CompanyDashboard = ({ bannerContent }) => {
   const [mounted, setMounted] = useState(false);
   
 const TopBarImage = "/images&icons/advertise/banner1.jpg";
@@ -32,15 +32,13 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
 
   return (
     <>
-      {loading ? (
-        <LoadingComponents />
-      ) : (
-        <section id="hero_section" className="inner hero-section commonpage" 
-    
-      >
-      {/* Hero Section */}
-      </section>
-      )}
+      
+
+  <section id="hero_section" className="inner hero-section commonpage" >
+  {/* Hero Section */}
+  </section>
+
+      
 <section className="innerpage-wapper-sections">
 <div className="container mx-auto">
   <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8   bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
@@ -63,9 +61,9 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
         </div>
       </div>
      </div>
-      </section>
+    </section>
     </>
   );
 };
 
-export default Advertisepage;
+export default CompanyDashboard;

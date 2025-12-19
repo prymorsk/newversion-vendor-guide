@@ -4,7 +4,7 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 # Node artifact files
-next.config
+next.config/
 node_modules2/
 node_modules/
 vendorguidenewversion.zip
@@ -48,6 +48,7 @@ Thumbs.db
 # Large media files
 *.mp4
 *.zip
+*.config
 *.tiff
 *.avi
 *.flv

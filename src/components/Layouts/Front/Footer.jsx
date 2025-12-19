@@ -21,7 +21,7 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
     <>
       {/* Banner Ad Section */}
       {parts[1] !== 'vendors' && (
-        <section className="bannerad-sec">
+        <section className="bannerad-sec ">
           <div className="container mx-auto items-center justify-items-center">
             <div className="adimg">
               <Carousel showIndicators={false} showThumbs={false} autoPlay infiniteLoop interval={3000} stopOnHover showStatus={false}>
