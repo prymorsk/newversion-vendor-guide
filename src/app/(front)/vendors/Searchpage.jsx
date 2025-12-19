@@ -18,13 +18,12 @@ const Searchpage = ({ bannerContent, states }) => {
       >
       {/* Hero Section */}
       </section>
-<<<<<<< HEAD
+
           
        <TopBannerSearch title="Search Results" backgroundimage={searchMeta} vendors={''} />
-=======
 
-        <TopBannerSearch title="Search Results" backgroundimage={searchMeta} vendors={''} />
->>>>>>> 7f992af15832be37d90e29cd94470fc305cc9b10
+
+       
 
       {/* <BannerSectionCard /> */}
       <SearchAllData states={states}  backgroundimage={searchMeta} vendors={''} />

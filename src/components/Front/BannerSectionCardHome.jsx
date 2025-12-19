@@ -12,7 +12,7 @@ const CACHE_EXPIRY_MS = 1 * 60 * 1000; // 2 minutes
 
 const BannerSectionCardHome = () => {
 
-  console.log('checking feature...');
+  console.log('checking');
   const { loading } = useAuth();
 
   const [latitude, setLatitude] = useState(null);
