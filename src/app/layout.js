@@ -57,7 +57,7 @@ export default function RootLayout({ children, ...props }) {
         {/* <GTM /> */}
       </head>
 
-      <body className={myFont.className}>
+      <body >
         <UserProvider>
           {/* Google Tag Manager (noscript) */}
           <noscript>
