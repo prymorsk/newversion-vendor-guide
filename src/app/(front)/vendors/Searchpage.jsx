@@ -1,6 +1,8 @@
 "use client"; // Ensure this component runs on the client
 
 import TopBannerSearch from "@/components/Front/TopBannerSearch";
+import SignUpcardNew from "@/components/Front/SignUpcardNew";
+
 import SearchAllData from "./SearchAllData";
 
 const Searchpage = ({ bannerContent, states }) => {
@@ -20,10 +22,7 @@ const Searchpage = ({ bannerContent, states }) => {
       </section>
 
           
-       <TopBannerSearch title="Search Results" backgroundimage={searchMeta} vendors={''} />
-
-
-       
+      <SignUpcardNew title="Search Results" backgroundimage={searchMeta} vendors={''} />
 
       {/* <BannerSectionCard /> */}
       <SearchAllData states={states}  backgroundimage={searchMeta} vendors={''} />
