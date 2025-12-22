@@ -209,15 +209,19 @@ const BannerSectionCardHome = () => {
 
 <div key={row.slug} className="Suppliersbox w-[45%] sm:w-[30%] md:w-[18%]">
         <div className="Suppliersbox-top">
-          <div className="Suppliersbox-logo">
-            <Link href={`/vendors/${row.slug}`}> 
-            <Image src={row.vendor_logo_url || ""}
-                    alt={row.slug || ""}
-                    width={209}
-                    height={80}/>
-                  </Link>
+         
+        <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px] mx-auto">
+          <Link href={`/vendors/${row.slug}`}>
+            <Image
+              src={row.vendor_logo_url || ""}
+              alt={row.slug || ""}
+              fill
+              className="object-contain"
+            />
+          </Link>
+        </div>
 
-                  </div>
+         
           <div className="Suppliersbox-name"><h6>{row.vendor_name || ""}</h6></div>
         </div>
       

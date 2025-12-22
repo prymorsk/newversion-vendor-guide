@@ -30,16 +30,18 @@ const FeaturSectionWord = ({ blogs, homeBannerText }) => {
               </div>
             </div>
 
-             <div class="w-full md:w-[60%]">
-		  	<div class="welcome-intro-content">
-		  		<div class="title">
+             <div className="w-full md:w-[60%]">
+		  	<div className="welcome-intro-content">
+		  		<div className="title">
 		  			<span>Welcome to</span>
 		  			<h2>Vendor Guide Online</h2>
 		  		</div>
-		  	<div
+
+          <div
             className="paragraph"
             dangerouslySetInnerHTML={{ __html: bannerDescription }}
           />
+
 
 		  	</div>
 
