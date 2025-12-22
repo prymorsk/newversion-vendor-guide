@@ -211,17 +211,23 @@ const BannerSectionCardHome = () => {
         <div className="Suppliersbox-top">
          
         <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px] mx-auto">
-          <Link href={`/vendors/${row.slug}`}>
-            <Image
-              src={row.vendor_logo_url || ""}
-              alt={row.slug || ""}
-              fill
-              className="object-contain"
-            />
-          </Link>
+          <Link
+  href={`/vendors/${row.slug}`}
+  className="block max-w-[209px]"
+>
+  <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px]">
+    <Image
+      src={row.vendor_logo_url || ""}
+      alt={row.slug || ""}
+      fill
+      className="object-contain object-left"
+    />
+  </div>
+</Link>
+
         </div>
 
-         
+
           <div className="Suppliersbox-name"><h6>{row.vendor_name || ""}</h6></div>
         </div>
       

@@ -44,10 +44,7 @@ export default function RootLayout({ children, ...props }) {
           src="https://tag.simpli.fi/sifitag/1b1b4113-f234-4312-aec9-3563eea748cd"
         />
 
-        <link
-          href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/tailwind.min.css"
-          rel="stylesheet"
-        />
+       
         <link
           href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
           rel="stylesheet"

@@ -118,15 +118,24 @@ const Header = ({ activeTab,setActiveTab,categories,sitesetting,magazines }) => 
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
-                <ul className="submenu absolute left-0 mt-2 w-44 bg-white text-black rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-h-[400px]">
-                  {categories?.data?.filter(row => [51,16,61,44,31].includes(row.id)).map(row => (
-                    <li key={row.id}>
-                      <Link href={`/vendors?category=${row.id}`} className="block px-4 py-2 hover:bg-gray-100">
-                        {row.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <ul className="submenu absolute left-0 mt-2 w-44 bg-white text-black rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-h-[400px]">
+              {categories?.data
+              ?.filter(row => [51, 16, 61, 44, 31].includes(row.id))
+              .map(row => (
+              <li key={row.id}>
+              <button
+              type="button"
+              className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+              onClick={() =>
+              window.location.assign(`/vendors?category=${row.id}`)
+              }
+              >
+              {row.title}
+              </button>
+              </li>
+              ))}
+              </ul>
+
               </li>
 
               <li><Link href="/advertise" className="hover:text-gray-300" onClick={menuClick}>Advertise</Link></li>

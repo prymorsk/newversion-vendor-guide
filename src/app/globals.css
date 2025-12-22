@@ -892,6 +892,7 @@ section.featured-suppliers-sections .contentright {
     background: #fff;
     border-radius: 0px 0px 0px 50px;
     position:relative;
+    z-index: 10;
 }
 
 section.featured-suppliers-sections .contentright h6 {
@@ -939,6 +940,8 @@ section.featured-suppliers-sections .row-featured-suppliers h3 {
     font-size: 30px;
     font-weight: 600;
 }
+
+.featuredsuppliers-listing {position: relative;z-index: 99;}
 section.featured-suppliers-sections .row-featured-suppliers .featuredsuppliers-listing .Suppliersbox {
     background: #fff;
     border-radius: 10px;

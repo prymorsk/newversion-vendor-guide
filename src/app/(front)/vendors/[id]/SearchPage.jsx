@@ -105,28 +105,28 @@ const SearchPage = ({ slug, bannerContent }) => {
               {/* Tabs */}
               <div className="details-tabsection mt-10">
                 <div className="flex gap-4 mb-6">
-                  {["multi", "comm", "resi"].map((t) => (
-                    (t !== "resi" ||
-                      (filterData?.residential &&
-                        filterData?.residential_description)) && (
+                      {["multi", "comm", "resi"].map((t) => (
+                      (t !== "resi" ||
+                      Boolean(filterData?.residential_description)) && (
                       <button
-                        key={t}
-                        onClick={() => setTab(t)}
-                        className={`px-6 py-2 rounded-full font-semibold ${
-                          tab === t
-                            ? "bg-[#B13634] text-white"
-                            : "bg-black text-white"
-                        }`}
+                      key={t}
+                      onClick={() => setTab(t)}
+                      className={`px-6 py-2 rounded-full font-semibold ${
+                      tab === t
+                      ? "bg-[#B13634] text-white"
+                      : "bg-black text-white"
+                      }`}
                       >
-                        {t === "multi"
-                          ? "Multifamily"
-                          : t === "comm"
-                          ? "Commercial"
-                          : "Residential"}{" "}
-                        Description
+                      {t === "multi"
+                      ? "Multifamily"
+                      : t === "comm"
+                      ? "Commercial"
+                      : "Residential"}{" "}
+                      Description
                       </button>
-                    )
-                  ))}
+                      )
+                      ))}
+
                 </div>
 
                 <div className="bg-white border rounded-3xl p-8">
