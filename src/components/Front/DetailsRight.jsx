@@ -65,25 +65,27 @@ console.log(filterData);
       <hr className="my-4" />
 
       {/* Services */}
-      <h2 className="font-semibold text-lg">Services Offered:</h2>
+      <h2 className="font-semibold text-lg inline">Services Offered:</h2>
 
-      <div className="grid grid-cols-2 mt-3 text-sm gap-y-1">
+     
 
           {filterData?.service_status ? (
           <>
+           <div className="grid grid-cols-2 mt-3 text-sm gap-y-1">
           {filterData.services &&
           filterData.services.map((rowmain, index) => (
           <p key={index}>• {rowmain.title}</p>
           ))}
+          </div>
           </>
           ) : (
-          ""
+          <span>NA</span>
           )}
 
 
 
 
-      </div>
+      
 
       <hr className="my-4" />
 
