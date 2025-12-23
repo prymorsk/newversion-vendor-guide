@@ -133,7 +133,7 @@ const SearchPage = ({ slug, bannerContent }) => {
                   {tab === "multi" && (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: filterData?.multi_family_description || "",
+                        __html: filterData?.multi_family_description || "NA",
                       }}
                     />
                   )}
@@ -141,7 +141,7 @@ const SearchPage = ({ slug, bannerContent }) => {
                   {tab === "comm" && (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: filterData?.commercial_description || "",
+                        __html: filterData?.commercial_description || "NA",
                       }}
                     />
                   )}
@@ -149,7 +149,7 @@ const SearchPage = ({ slug, bannerContent }) => {
                   {tab === "resi" && (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: filterData?.residential_description || "",
+                        __html: filterData?.residential_description || "NA",
                       }}
                     />
                   )}
