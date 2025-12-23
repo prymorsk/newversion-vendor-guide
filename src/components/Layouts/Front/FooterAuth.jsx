@@ -93,6 +93,36 @@ const rest = address?.slice(30);
                     {firstLine}<br />{rest}
                     </Link>
                     </p>
+                    <ul className="flex nav_list text-sm pl-10 sm:pl-0">
+               {sitesetting?.side_facebook_url && (
+                <li>
+                  <Link href={sitesetting?.side_facebook_url} rel="nofollow" target="_blank" className="p-1 text-xl">
+                    <FontAwesomeIcon icon={faFacebook} className="pr-2" />
+                  </Link>
+                  </li>
+                )}
+                {sitesetting?.side_lingding_url && (
+               <li>
+                  <Link href={sitesetting?.side_lingding_url} rel="nofollow" target="_blank" className="p-1 text-xl">
+                    <FontAwesomeIcon icon={faLinkedin} className="pr-2" />
+                  </Link>
+                </li>
+               )}
+               {sitesetting?.side_instagram_url && (
+                <li>
+                  <Link href={sitesetting?.side_instagram_url} rel="nofollow" target="_blank" className="p-1 text-xl">
+                    <FontAwesomeIcon icon={faInstagram} className="pr-2" />
+                  </Link>
+                </li>
+               )}
+               {sitesetting?.side_twitter_url && (
+                  <li>
+                    <Link href={sitesetting?.side_twitter_url} rel="nofollow" target="_blank" className="p-1 text-xl">
+                      <FontAwesomeIcon icon={faTwitter} className="pr-2" />
+                    </Link>
+                  </li>
+               )}
+              </ul>
 
             </div>
 
