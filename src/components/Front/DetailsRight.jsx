@@ -15,6 +15,7 @@ const DetailsRight = ({ filterData, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenMail, setIsModalOpenMail] = useState(false);
   const [vendorId, setVendorId] = useState(filterData?.id);
+  const flogo = "/images&icons/SVG/logo_white.svg";
 
 console.log('filterData details');
 console.log(filterData);
@@ -49,13 +50,16 @@ console.log(filterData);
           <p className="text-2xl font-medium mt-1">{vendorNewAddress}-{filterData.postal_code }</p>
         </div>
 
+        <div className="max-h-[85px]">
         <Image
-          src={filterData?.image_url}
-          alt="logo"
-          width={63}
-          height={85}
-          className="h-auto"
+        src={filterData?.image_url ? filterData?.image_url:flogo}
+        alt="logo"
+        width={200}
+        height={200}
+        className="max-h-[85px] w-auto object-contain"
         />
+        </div>
+
       </div>
 
       <hr className="my-4" />

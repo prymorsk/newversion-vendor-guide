@@ -2,10 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useAuth } from "@/context/UserContext";
+import { useState,useEffect } from "react";
 import { usePathname, useSearchParams } from 'next/navigation';
 import FeaturSection from "@/components/Front/FeaturSection";
-import { Carousel } from 'react-responsive-carousel';
+import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
   const pathname = usePathname();
@@ -16,6 +26,19 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
   const isBlogPage = pathname.includes("/blog"); // ✅ check if URL is blog
   const islogin = pathname.includes("/login"); // ✅ check if URL is blog
   const isregister = pathname.includes("/register"); // ✅ check if URL is blog
+
+
+
+const flogo = "/images&icons/SVG/logo_white.svg";
+const starImg = "/images&icons/SVG/star.svg";
+const PhoneIcon = "/images&icons/telephone.png";
+const envelopeIcon = "/images&icons/envelope.png";
+const mapIcon = "/images&icons/mapicon.png";
+const address = sitesetting?.side_address;
+const firstLine = address?.slice(0, 30);
+const rest = address?.slice(30);
+
+
 
   return (
     <>
@@ -28,7 +51,7 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
             <h2 className="text-3xl font-bold text-white">
               <div className="footer-logo">
                 <Link href="/">
-                  <Image src="/images&icons/SVG/logo_white.svg" alt="logo" width={350} height={48} />
+                  <Image src={sitesetting?.sidefooterlogo_url?sitesetting?.sidefooterlogo_url:flogo} alt="logo" width={350} height={48} />
                 </Link>
               </div>
             </h2>
@@ -44,11 +67,11 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
         <div className="w-full border-t border-white/30 my-8"></div>
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div>
-              <h3 className="font-semibold mb-4 text-white">Advertise</h3>
-              <p className="flex items-center gap-2 mb-2 text-white">📞 952-460-0305</p>
-              <p className="flex items-center gap-2 text-white">✉ info@vendorguideonline.com</p>
-            </div>
+          <div>
+<h3 className="font-semibold mb-4 text-white">Advertise</h3>
+<p className="flex items-center gap-2 mb-2 text-white">📞 <Link href={`tel:${sitesetting?.side_phone}`} >{sitesetting?.side_phone}</Link></p>
+<p className="flex items-center gap-2 text-white">✉ <Link href={`mailto:${sitesetting?.side_email}`} >{sitesetting?.side_email}</Link></p>
+</div>
 
             <div>
               <h3 className="font-semibold mb-4 text-white">Explore</h3>
@@ -61,19 +84,30 @@ const Footer = ({ sitesetting, nationalads, blogs, homeBannerText }) => {
 
             <div>
               <h3 className="font-semibold mb-4 text-white">Visit</h3>
-              <p className="text-white leading-relaxed">
-                10550 Wayzata Blvd Suite D<br />
-                Minnetonka, MN 55305
-              </p>
+            <p className="flex items-center text-white leading-relaxed max-w-[30ch] break-words">
+             <Link
+                    href="//g.page/planet-media-wayzata?share"
+                    rel="nofollow"
+                    target="_blank"
+                    >
+                    {firstLine}<br />{rest}
+                    </Link>
+                    </p>
+
             </div>
+
+
+
           </div>
         </div>
 
         <div className="w-full border-t border-white/30 my-8"></div>
         <div className="container mx-auto">
           <p className="text-center text-white text-sm">
-            &copy; 1994–2025 Vendor Guide Online
-          </p>
+  &copy; 1994–{new Date().getFullYear()} Vendor Guide Online
+</p>
+
+          
         </div>
       </footer>
     </>
