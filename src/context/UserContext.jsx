@@ -31,7 +31,7 @@ export function UserProvider({ children }) {
     const loadUserCommonInfo = async () => {
   
       try {
-        const response2 = await fetch(`${process.env.BASE_API_URL}site_setting`, {
+        const response2 = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, {
           method: 'GET',
         });
         // console.log('done');
@@ -87,7 +87,7 @@ export function UserProvider({ children }) {
       
       console.log('users data all check...');
 
-          console.log(res.data);
+      console.log(res.data);
        console.log('users data all check not reflecting...');
       
           setIsLoding(false);
@@ -115,7 +115,7 @@ export function UserProvider({ children }) {
       }).catch(error => {
 
           setIsLoding(false);
-      //console.log('users data all errors...');
+           console.log('users data all errors...');
            //console.log(error?.response?.data?.message);
            console.log(error?.response?.data?.message);
           if(error?.response?.data?.message=="Unauthenticated"){

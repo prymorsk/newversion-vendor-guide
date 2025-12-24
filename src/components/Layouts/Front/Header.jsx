@@ -57,9 +57,9 @@ const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
   const toggleMenu = () => setShowMenu(current => !current);
   const imagsrc = user ? user.image_url : null;
 
-  console.log('user.');
-  console.log(user);
-  console.log('user.');
+  //console.log('user.');
+  //console.log(user);
+  //console.log('user.');
 
   return (
     <>

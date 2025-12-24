@@ -17,8 +17,6 @@ const DetailsRight = ({ filterData, user }) => {
   const [vendorId, setVendorId] = useState(filterData?.id);
   const flogo = "/images&icons/SVG/logo_white.svg";
 
-console.log('filterData details');
-console.log(filterData);
 
 
   const vendorNewAddress = filterData?.address

@@ -50,7 +50,7 @@ const SearchPage = ({ slug, bannerContent }) => {
         const token = getCookie("token");
 
         const response = await fetch(
-          `${process.env.BASE_API_URL}vendor/${vendorId}`,
+          `${process.env.NEXT_PUBLIC_API_URL}vendor/${vendorId}`,
           {
             headers: {
               Authorization: token ? `Bearer ${token}` : "",
@@ -62,6 +62,9 @@ const SearchPage = ({ slug, bannerContent }) => {
         if (!response.ok) throw new Error("Failed to fetch vendor data");
 
         const dataProp = await response.json();
+         console.log('filterData details');
+         console.log(dataProp);
+
         setFilterData(dataProp?.data || {});
       } catch (error) {
         console.error("Vendor fetch error:", error);
