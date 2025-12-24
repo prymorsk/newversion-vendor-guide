@@ -1,10 +1,25 @@
-import styles from './styles.module.scss';
-import MessageComponent from "@/components/MessageComponent";
+import { Suspense } from "react";
+import ManagerMessageId from "./ManagerMessageId";
 
-export default function page({params}) {
-    const bidId = params.id[0];
-    const bidReceiverId = params.id[1];
-    return (
-        <MessageComponent bidId={bidId} receiverId={bidReceiverId} styles={styles} />
-    );
-};
+export const dynamic = "force-dynamic";
+export const metadata = {
+  title: 'Vendor Guide | Message',
+}
+export default async function Page({ params :paramenawait }) {
+
+  const datad = await paramenawait;
+  return (
+    <Suspense fallback={null}>
+      <ManagerMessageId  params={datad} />
+    </Suspense>
+  );
+}
+
+
+
+
+
+
+
+
+

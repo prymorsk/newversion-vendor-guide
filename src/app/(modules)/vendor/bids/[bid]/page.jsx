@@ -1,16 +1,22 @@
-import TableData from "./TableData";
+import { Suspense } from "react";
+
+import VendorBids from "./VendorBids";
+
 export const dynamic = "force-dynamic";
 
-const Page = ({ params }) => {
-  const id = params.bid;
-//   console.log(id)
-  return (
-    <section className="pt-14">
-    <div className="px-10">
-        <TableData bidId={id}  />
-    </div>
-  </section>
-  );
-};
+export default async function Page({ params :paramsawait }) {
+  const paramsawaitm = await paramsawait; // comes from folder name [bid]
+ const id=paramsawaitm.bid;
+   console.log("params:");
+    console.log(paramsawaitm);
 
-export default Page;
+
+  return (
+
+    <Suspense fallback={null}>
+        <VendorBids bidId={id} />
+    </Suspense>
+
+    
+  );
+}

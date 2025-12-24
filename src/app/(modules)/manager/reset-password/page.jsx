@@ -1,28 +1,23 @@
+
 import { Suspense } from "react";
+import ManagerReset from "./ManagerReset";
 
-import Right from "@/components/Front/Auth/Right";
-import ResetPasswordForm from "@/components/ResetPasswordForm";
 export const dynamic = "force-dynamic";
-
-
-const Page = () => {
+export const metadata = {
+  title: 'Vendor Guide | Sign UP',
+}
+export default function Page() {
   return (
-    <>
-
-     
-               <Suspense fallback={null}>
-
-               <ResetPasswordForm />
-                          <Right />
-
-              </Suspense>
-
-            
-
-         
-
-    </>
+    <Suspense fallback={null}>
+      <ManagerReset />
+    </Suspense>
   );
-};
+}
 
-export default Page;
+
+
+
+
+
+
+

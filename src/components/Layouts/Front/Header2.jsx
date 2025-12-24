@@ -42,7 +42,7 @@ const Header = ({ activeTab,setActiveTab,categories,sitesetting,magazines }) => 
 
 
 
-  console.log(getCookie('is_module_type'))
+  //console.log(getCookie('is_module_type'))
   //console.log('user.');
   //console.log(user);
 
