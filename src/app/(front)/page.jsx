@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages } from "@/app/lib/server-api";
+import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
 export const dynamic = "force-dynamic";
 
@@ -60,12 +60,14 @@ export default async function Home() {
   const categories = await getCategories({ cache: 'force-cache' });
   const states = await getStates({ cache: 'force-cache' });
   const homeBannerText = await getPages('home-banner-text', { cache: 'force-cache' });
+  const sitesetting = await getSiteSetting();
 
   return (
         
     <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
 
     <HomeComponent
+      sitesetting={sitesetting}
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
       bannerContent={pageMeta?.data.home}

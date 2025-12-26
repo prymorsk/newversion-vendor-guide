@@ -14,9 +14,12 @@ import { useState, useEffect } from "react";
 import RequestQuotebtnHome from "@/components/Front/RequestQuotebtnHome";
 
 
-const HomeComponent = ({ blogs, vendors, bannerContent, categories, states, homeBannerText }) => {
+const HomeComponent = ({sitesetting, blogs, vendors, bannerContent, categories, states, homeBannerText }) => {
 const {user,isLoding,isInfoLoding,logout}  = useAuth();
 const backgroundImage = bannerContent?.hero_background;
+
+
+
 const { metaData, loading } = useAuth();
 
 const [isActive, setIsActive] = useState(false);
@@ -26,8 +29,21 @@ const pathname = usePathname()
 const  UserType  = getCookie('user-type');
 const [UserTypeName, setUserTypeName] = useState("");
 
-const LogoHome = "/images/hero-image.jpg";
 
+const LogoHomestat = "/images/hero-image.jpg";
+
+const hometext = sitesetting?.data?.home_hero_text
+  ? sitesetting.data.home_hero_text
+  : '<h1>Exceptional commercial <strong>cleaning delivered</strong> by passionate people</h1><p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services4.</p>';
+
+const LogoHome = sitesetting?.data?.Homebanner_url
+  ? sitesetting.data.Homebanner_url
+  : LogoHomestat;
+
+
+console.log('sitesetting data');
+console.log(sitesetting );
+console.log('sitesetting data end');
 
 
   const [mounted, setMounted] = useState(false);
@@ -46,8 +62,10 @@ const LogoHome = "/images/hero-image.jpg";
       }}>
         <div className="container mx-auto px-4 flex flex-row gap-4 items-center">
           <div className="customrbutton hero-content">
-            <h1>Exceptional commercial <strong>cleaning delivered</strong> by passionate people</h1>
-            <p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services.</p>
+            
+            
+            <div className="home-text" dangerouslySetInnerHTML={{ __html: hometext }} />
+
             <div className="hero-button inline-block mt-6 button ">
               {UserType == 1 || !user ? (<RequestQuotebtnHome user={user} categories={categories} />): ''}
 
