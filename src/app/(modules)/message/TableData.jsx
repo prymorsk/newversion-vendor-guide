@@ -100,6 +100,20 @@ const TableData = () => {
   };
 
   return (
+<>
+ <section className="inner hero-section commonpage">
+        <div className="container mx-auto px-4 flex flex-row gap-4 items-center"></div>
+      </section>
+
+      <section className="innerpage-wapper-sections">
+        <div className="container mx-auto">
+          <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8 flex-col lg:flex-row gap-10 border border-gray-300 leading-relaxed text-gray-800">
+            <h1 className="text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato lg:px-10">
+              Message
+            </h1>
+
+
+
     <DataTable className="table w-full  text-gray-700  dataTable no-footer dt-responsive " value={vendorsData} paginator rows={10} paginatorTemplate="  PrevPageLink CurrentPageReport NextPageLink "
             currentPageReportTemplate="{first} to {last} of {totalRecords}" paginatorLeft={paginatorLeft} paginatorRight={paginatorRight} pt={{
                 thead:{className:'border-[1px] border-black'},
@@ -112,6 +126,11 @@ const TableData = () => {
                     }}  />
                 ))}
     </DataTable>
+
+      </div>
+        </div>
+      </section>
+      </>
   )
 }
 
