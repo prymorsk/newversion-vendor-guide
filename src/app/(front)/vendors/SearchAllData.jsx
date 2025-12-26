@@ -12,7 +12,7 @@ const SearchAllData = ({ states }) => {
   const [geoLongitude, setGeoLongitude] = useState(0);
   const [postalCode, setPostalCode] = useState("");
   const [locality, setLocality] = useState("");
-  const [isLoading, setIsLoding] = useState(true);
+  const [isLoading, setIsLoding] = useState(false);
   const [defaultinputvalue, setDefaultinputvalue] = useState();
 
   const searchParams = useSearchParams();
