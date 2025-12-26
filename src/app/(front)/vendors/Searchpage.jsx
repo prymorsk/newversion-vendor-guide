@@ -11,18 +11,12 @@ const Searchpage = ({ bannerContent, states }) => {
   return (
     <>
 
-    <section id="hero_section" className="inner hero-section commonpage" 
-      style={{
-      backgroundImage: searchMeta
-      ? `url(${searchMeta})`
-      : "none",
-      }}
-      >
-      {/* Hero Section */}
-      </section>
+    
 
           
       <SignUpcardNew title="Search Results" backgroundimage={searchMeta} vendors={''} />
+
+
 
       {/* <BannerSectionCard /> */}
       <SearchAllData states={states}  backgroundimage={searchMeta} vendors={''} />
