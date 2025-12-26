@@ -34,7 +34,7 @@ const LogoHomestat = "/images/hero-image.jpg";
 
 const hometext = sitesetting?.data?.home_hero_text
   ? sitesetting.data.home_hero_text
-  : '<h1>Exceptionals commercial <strong>cleaning delivered</strong> by passionate people</h1><p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services4.</p>';
+  : '<h1>Exceptional commercial <strong>cleaning delivered</strong> by passionate people</h1><p>Vendor Guide Online Maintenance is a national provider of premium facility cleaning and janitorial services4.</p>';
 
 const LogoHome = sitesetting?.data?.Homebanner_url
   ? sitesetting.data.Homebanner_url
