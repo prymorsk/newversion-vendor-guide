@@ -45,7 +45,7 @@ console.log('metaData end...');
   return (
     <>
       <Fragment>
-        {loading ? (
+        {isLoading ? (
           <div className="top_banner sm:relative">
             <LoadingComponents />
           </div>
