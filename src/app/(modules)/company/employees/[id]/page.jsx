@@ -3,10 +3,18 @@ import EmployeeDetailsClient from "./EmployeeDetailsClient";
 
 export const dynamic = "force-dynamic";
 
-export default function Page({ params }) {
+export default async function Page({ params: paramawait }) {
+  const empdata = await paramawait;
+
+   console.log('emp id');
+   console.log(empdata);
+   console.log('emp id end');
+
+
+
   return (
     <Suspense fallback={null}>
-      <EmployeeDetailsClient id={params.id} />
+      <EmployeeDetailsClient params={empdata} />
     </Suspense>
   );
 }
