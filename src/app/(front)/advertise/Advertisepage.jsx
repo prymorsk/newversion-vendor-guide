@@ -38,7 +38,7 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
       style={{
       backgroundImage: pagemetaData.background
       ? `url(${pagemetaData.background})`
-      : "none",
+      : "",
       }}
       >
       {/* Hero Section */}
