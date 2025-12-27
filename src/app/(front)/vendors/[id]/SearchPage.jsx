@@ -78,6 +78,14 @@ const SearchPage = ({ slug, bannerContent }) => {
 
   return (
     <>
+    <DetailsHero
+            filterData={filterData}
+            backgroundImage={bannerContent}
+          />
+
+          <section className="innerpage-wapper-sections">
+          <div className="container mx-auto">
+
       {isLoading ? (
         <div className="container mx-auto pt-12 flex justify-center">
           <div className="loading-wave flex gap-1">
@@ -88,13 +96,7 @@ const SearchPage = ({ slug, bannerContent }) => {
         </div>
       ) : (
         <>
-          <DetailsHero
-            filterData={filterData}
-            backgroundImage={bannerContent}
-          />
-
-          <section className="innerpage-wapper-sections">
-            <div className="container mx-auto">
+          
               <div className="infobox-details bg-white rounded-3xl p-8 flex flex-col lg:flex-row gap-10">
                 <div className="lg:w-[40%] border rounded-2xl p-6">
                   <DetailsCarosuel filterData={filterData} />
@@ -158,10 +160,12 @@ const SearchPage = ({ slug, bannerContent }) => {
                   )}
                 </div>
               </div>
-            </div>
-          </section>
+            
         </>
       )}
+
+      </div>
+      </section>
     </>
   );
 };
