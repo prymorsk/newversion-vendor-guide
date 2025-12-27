@@ -23,7 +23,7 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
   }, []);
 
   // Prevent hydration mismatch
-  if (!mounted) return null;
+  //if (!mounted) return null;
 
   console.log('advertise loaded...');
   //console.log(bannerContent);
@@ -31,10 +31,8 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
 
   return (
     <>
-      {loading ? (
-        <LoadingComponents />
-      ) : (
-        <section id="hero_section" className="inner hero-section commonpage" 
+      
+ <section id="hero_section" className="inner hero-section commonpage" 
       style={{
       backgroundImage: pagemetaData.background
       ? `url(${pagemetaData.background})`
@@ -43,7 +41,6 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
       >
       {/* Hero Section */}
       </section>
-      )}
 <section className="innerpage-wapper-sections">
 <div className="container mx-auto">
   <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8   bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
@@ -86,14 +83,10 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
           </div>
         </div>
 
-        {loading ? (
-          <LoadingComponents />
-        ) : (
-          <PartnerSection2
+        <PartnerSection2
             title={pagemetaData?.advertise_text}
             btnTitle="Contact Us Today"
           />
-        )}
 
         </div>
         </div>
