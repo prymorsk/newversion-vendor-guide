@@ -1,4 +1,5 @@
 import LoginForm from "./LoginForm"; // client component
+import Right from "@/components/Front/Auth/Right";
 
 export const dynamic = "force-dynamic"; // ✅ REQUIRED in Next.js 16
 
@@ -82,10 +83,8 @@ const Page = () => {
                 <div className="lg:mx-auto max-w-4xl grid grid-cols-2 md:gap-x-16 md:gap-y-16 lg:max-w-none">
 
                   <LoginForm />
-
-                 <div className="md:col-span-1 lg:col-span-1 col-span-12 order-2 sm:order-1">
-                    <div className="bg-[url('/images&icons/loginback.jpg')] h-full bg-cover bg-no-repeat"></div>
-                  </div>
+                    <Right />
+                 
 
                 </div>
               </div>

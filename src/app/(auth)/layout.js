@@ -3,13 +3,7 @@ import NewRegionalHeader from "@/components/Layouts/Front/NewRegionalHeader";
 import FooterAuth from "@/components/Layouts/Front/FooterAuth";
 import Header from "@/components/Layouts/Front/Header";
 import { UserProvider } from "@/context/UserContext";
-import {
-  getCategories,
-  getMagazines,
-  getSiteSetting,
-  getBlogs,
-  getPages,
-} from "@/app/lib/server-api";
+import {getCategories,getMagazines,getSiteSetting,getBlogs,getPages} from "@/app/lib/server-api";
 
 export default async function AuthLayout({ children }) {
   // Server-side data fetching

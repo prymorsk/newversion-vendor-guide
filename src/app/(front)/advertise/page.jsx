@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Advertisepage from "./Advertisepage";
 import { getPostMeta } from "@/app/lib/server-api";
 export const dynamic = "force-dynamic";
@@ -16,11 +17,6 @@ const clonedResponse = response.clone(); // Clone the response first
 const seoMetaData = await response.json();
 var metaData = seoMetaData?.data;
 
-
-  
-  
-  
-  
   
 
   return {
@@ -64,7 +60,10 @@ const Advertise = async () => {
   const pageMeta = await getPostMeta();
   return (
     <>
+       <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white">Loading...</div>}>
+
       <Advertisepage bannerContent={pageMeta?.data.advertise}/>
+      </Suspense>
     </>
   );
 };

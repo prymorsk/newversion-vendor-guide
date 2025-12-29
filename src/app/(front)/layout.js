@@ -2,31 +2,56 @@ import '@/app/globals.css'
 import '@/app/customstyle.css'
 import Footer from '@/components/Layouts/Front/Footer'
 import Header from '@/components/Layouts/Front/Header'
-import { Fragment} from 'react'
-import Image from "next/image";
+import { Fragment, Suspense } from 'react'
 
-import { getCategories, getMagazines, getSiteSetting,getBlogs,getPages } from '@/app/lib/server-api';
+import {
+  getCategories,
+  getMagazines,
+  getSiteSetting,
+  getBlogs,
+  getPages
+} from '@/app/lib/server-api'
 
 export default async function AuthLayout({ children }) {
-  const categories = await getCategories();
-  const magazines = await getMagazines();
-  const sitesetting = await getSiteSetting();
-  const blogs = await getBlogs({ cache: 'force-cache' });
-  const homeBannerText = await getPages('home-banner-text', { cache: 'force-cache' });
 
+  const [
+    categories,
+    magazines,
+    sitesetting,
+    blogs,
+    homeBannerText
+  ] = await Promise.all([
+    getCategories(),
+    getMagazines(),
+    getSiteSetting(),
+    getBlogs({ cache: 'force-cache' }),
+    getPages('home-banner-text', { cache: 'force-cache' })
+  ])
 
-  
   return (
     <Fragment>
 
-        <Header categories={categories} magazines={magazines}  sitesetting={sitesetting.data}/>
-      
-          {children}
-      
-       
-        <Footer  homeBannerText={homeBannerText?.data}
-      blogs={blogs}  sitesetting={sitesetting.data} nationalads={sitesetting.nationalads} />
-      
+      {/* HEADER FIRST – forced */}
+      <Suspense fallback={<div className="h-[80px] bg-black" />}>
+        <Header
+          categories={categories}
+          magazines={magazines}
+          sitesetting={sitesetting.data}
+        />
+      </Suspense>
+
+      {children}
+
+      {/* FOOTER LAST – forced */}
+      <Suspense fallback={null}>
+        <Footer
+          homeBannerText={homeBannerText?.data}
+          blogs={blogs}
+          sitesetting={sitesetting.data}
+          nationalads={sitesetting.nationalads}
+        />
+      </Suspense>
+
     </Fragment>
   )
 }

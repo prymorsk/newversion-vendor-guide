@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Resourcespage from "./Resourcepage";
 import { getPostMeta,getMagazineAllData } from "@/app/lib/server-api";
 // or Dynamic metadata
@@ -59,7 +61,10 @@ export default async function Page({params}){
   const pageMeta = await getPostMeta();
   const magazineAllData = await getMagazineAllData();
   return (
+           <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
+
     <Resourcespage bannerContent={pageMeta?.data.resources}/>
+    </Suspense>
   );
 };
 

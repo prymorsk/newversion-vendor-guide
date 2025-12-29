@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-
 import ContentPageAbout from "@/app/(front)/(pages)/ContentPageAbout";
 import { getPages, getPostMeta } from "@/app/lib/server-api";
 export const dynamic = "force-dynamic"; // ✅ REQUIRED for Next.js 16

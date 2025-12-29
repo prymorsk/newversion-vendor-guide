@@ -3,86 +3,79 @@ import Link from "next/link";
 import Image from "next/image";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useAuth } from "@/context/UserContext";
 import { getCookie } from 'cookies-next';
 import { usePathname, useRouter } from "next/navigation";
 import HeaderDropdown from "./HeaderDropdown";
-import Loading from "@/app/loadingScreen";
 import { Button } from "primereact/button";
 import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
 
-// ✅ Public folder images should be referenced via URL
-//const Logo = "/images&icons/SVG/logo.svg";
-
-
 const Header = ({ categories, magazines, sitesetting }) => {
-  const { user, isLoding, isInfoLoding, logout } = useAuth();
-  const router = useRouter();
-  const [isActive, setIsActive] = useState(false);
-  const [profileUrl, setProfileUrl] = useState("");
-  const cookie = getCookie('token');
-  const pathname = usePathname();
-  const UserType = getCookie('user-type');
-  const [UserTypeName, setUserTypeName] = useState("");
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [showMenu, setShowMenu] = useState(true);
-
-
+const { user, isLoding, logout } = useAuth();
+const router = useRouter();
+const pathname = usePathname();
+const [isActive, setIsActive] = useState(false);
+const [profileUrl, setProfileUrl] = useState("");
+const [UserTypeName, setUserTypeName] = useState("");
+const [UserType, setUserType] = useState(null);
+const [scrollPosition, setScrollPosition] = useState(0);
+const [showMenu, setShowMenu] = useState(true);
 const LogoMain = "/image/1700727849.png";
+const   userDefult = "/images&icons/profile.png";
 
-const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
 
+
+
+  // ✅ Memoized logo (prevents re-render)
+  const Logo = useMemo(() => {
+    return sitesetting?.sidelogo_url || LogoMain;
+  }, [sitesetting]);
+
+  // ✅ Read cookies AFTER mount
   useEffect(() => {
-    const handleScroll = () => setScrollPosition(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const type = getCookie('user-type');
+    setUserType(type);
 
-  useEffect(() => {
-    if (UserType == 1) {
+    if (type == 1) {
       setProfileUrl('/manager/dashboard');
       setUserTypeName('Manager');
-    } else if (UserType == 2) {
+    } else if (type == 2) {
       setProfileUrl('/company/dashboard');
       setUserTypeName('Company');
-    } else if (UserType == 0) {
+    } else if (type == 0) {
       setProfileUrl('/vendor/dashboard');
       setUserTypeName('Vendor');
     }
   }, []);
 
+  const toggleMenu = () => setIsActive(prev => !prev);
   const toggleclassName = () => setIsActive(!isActive);
   const menuClick = () => setIsActive(false);
-  const toggleMenu = () => setShowMenu(current => !current);
-  const imagsrc = user ? user.image_url : null;
+  //const toggleMenu = () => setShowMenu(current => !current);
+  const imagsrc = user ? user.image_url : userDefult;
 
-  //console.log('user.');
-  //console.log(user);
-  //console.log('user.');
 
   return (
-    <>
-      <header className="main-header">
-        <div className="container mx-auto px-4 flex flex-row gap-4 justify-between items-center">
-          <div className="header-logo">
-            <Link href="/">
-              <Image
-                src={Logo}
-                width={350}
-                height={48}
-                alt="logo"
-              />
-            </Link>
-          </div>
+    <header className="main-header">
+      <div className="container mx-auto px-4 flex flex-row gap-4 justify-between items-center">
 
-          {/* Header menu */}
+        {/* LOGO */}
+        <div className="header-logo">
+          <Link href="/">
+            <Image
+              src={Logo}
+              width={350}
+              height={48}
+              alt="logo"
+              priority // ✅ IMPORTANT
+            />
+          </Link>
+        </div>
 
-          
-
-
-          <div className="header-menu">
-            <ul className={`flex space-x-8 font-medium ${ Logo ? "text-white" : "text-black"}`}>
+        {/* MENU */}
+        <div className="header-menu">
+          <ul className={`flex space-x-8 font-medium ${ Logo ? "text-white" : "text-black"}`}>
               <li className="relative group cursor-pointer flex items-center">
                 <span className="flex items-center">
                   Solutions
@@ -138,10 +131,10 @@ const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
                 </ul>
               </li>
             </ul>
-          </div>
+        </div>
 
-          {/* Header right buttons */}
-          <div className="header-right-button">
+        {/* RIGHT BUTTONS */}
+        <div className="header-right-button">
             <ul className="links-menu flex flex-row gap-4 justify-between items-center">
               {user?.name ? (
                 <li>
@@ -202,9 +195,9 @@ const Logo = sitesetting?.sidelogo_url ? sitesetting.sidelogo_url : LogoMain;
               </li>
             </ul>
           </div>
-        </div>
-      </header>
-    </>
+
+      </div>
+    </header>
   );
 };
 

@@ -1,7 +1,5 @@
 import { Suspense } from "react";
-
 import ContentPage from "@/app/(front)/(pages)/ContentPage";
-
 import { getPages,getPostMeta } from "@/app/lib/server-api";
 export const dynamic = "force-dynamic"; // ✅ REQUIRED for Next.js 16
 
@@ -79,10 +77,9 @@ const SlugPages = async ({params}) => {
   const pageMeta = await getPostMeta();
   return (
     <>
-                    <Suspense fallback={<div></div>}>
-
-      <ContentPage page='contact-us' pageData={pages?.data} bannerContent={pageMeta.data}/>
-                      </Suspense>
+   <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
+  <ContentPage page='contact-us' pageData={pages?.data} bannerContent={pageMeta.data}/>
+  </Suspense>
 
     </>
   );

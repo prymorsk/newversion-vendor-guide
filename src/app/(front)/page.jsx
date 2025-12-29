@@ -64,8 +64,7 @@ export default async function Home() {
 
   return (
         
-    <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
-
+<Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
     <HomeComponent
       sitesetting={sitesetting}
       homeBannerText={homeBannerText?.data}

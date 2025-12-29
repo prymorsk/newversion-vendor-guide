@@ -23,7 +23,7 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
   }, []);
 
   // Prevent hydration mismatch
-  //if (!mounted) return null;
+  if (!mounted) return null;
 
   console.log('advertise loaded...');
   //console.log(bannerContent);
