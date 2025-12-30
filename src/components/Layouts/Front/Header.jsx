@@ -9,7 +9,7 @@ import { getCookie } from 'cookies-next';
 import { usePathname, useRouter } from "next/navigation";
 import HeaderDropdown from "./HeaderDropdown";
 import { Button } from "primereact/button";
-import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
+import RequestQuotebtnHome from "@/components/Front/RequestQuotebtnHome";
 
 const Header = ({ categories, magazines, sitesetting }) => {
 const { user, isLoding, logout } = useAuth();
@@ -191,7 +191,7 @@ const   userDefult = "/images&icons/profile.png";
               )}
 
               <li className="button ">
-                {(UserType == 1 || !user) && <RequestQuotebtn user={user} categories={categories} />}
+                {(UserType == 1 || !user) && <RequestQuotebtnHome user={user} categories={categories} />}
               </li>
             </ul>
           </div>
