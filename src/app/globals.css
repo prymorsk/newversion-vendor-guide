@@ -1291,3 +1291,6 @@ header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.h
     color: #fff;
 }
 
+header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.head_pulbication_dropdown-menu li:last-child a {
+    border: none;
+}
