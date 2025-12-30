@@ -75,6 +75,13 @@ const SearchPage = ({ slug, bannerContent }) => {
 
     fetchData();
   }, [vendorId]);
+  
+const cleanHtmlMul = filterData?.multi_family_description
+?.replace(/<p>(?:\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "");
+const cleanHtmlCom = filterData?.commercial_description
+?.replace(/<p>(?:\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "");
+const cleanHtmlRes = filterData?.residential_description
+?.replace(/<p>(?:\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "");
 
   return (
     <>
@@ -134,29 +141,44 @@ const SearchPage = ({ slug, bannerContent }) => {
 
                 </div>
 
-                <div className="bg-white border rounded-3xl p-8 customformat">
+               <div className="bg-white border rounded-3xl p-8 customformat prose">
                   {tab === "multi" && (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: filterData?.multi_family_description || "NA",
-                      }}
-                    />
+                    
+
+
+                  <div
+                  className="prose"
+                  dangerouslySetInnerHTML={{
+                  __html: cleanHtmlMul || "NA",
+                  }}
+                  />
+
                   )}
 
                   {tab === "comm" && (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: filterData?.commercial_description || "NA",
-                      }}
-                    />
+                 
+                <div
+                className="prose"
+                dangerouslySetInnerHTML={{
+                __html: cleanHtmlCom || "NA",
+                }}
+                />
+
+
+
+
                   )}
 
                   {tab === "resi" && (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: filterData?.residential_description || "NA",
-                      }}
-                    />
+                 
+                <div
+                className="prose"
+                dangerouslySetInnerHTML={{
+                __html: cleanHtmlRes || "NA",
+                }}
+                />
+
+
                   )}
                 </div>
               </div>
