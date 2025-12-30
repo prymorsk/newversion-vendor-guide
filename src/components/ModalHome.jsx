@@ -26,7 +26,7 @@ const ModalHome = ({ isOpen, onClose, children }) => {
             ✕
           </button>
 
-          <div className="py-8 sm:py-10 px-8 sm:px-16">
+          <div className="py-8 sm:py-10 px-8 sm:px-16 requestpopupc">
             {children}
           </div>
 
