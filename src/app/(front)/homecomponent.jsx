@@ -56,6 +56,7 @@ console.log('sitesetting data end');
   return (
     <>
       <section className="hero-section" style={{
+      backgroundColor:'#000',
       backgroundImage: LogoHome
       ? `url(${LogoHome})`
       : "none",
