@@ -1230,3 +1230,23 @@ section.bannerad-sec li.slide.selected {
 section.hero-section {
     background-size: cover;
 }
+
+.customformat ul {
+    margin: 0px 0px 20px;
+    list-style: inside;
+}
+.customformat h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.customformat p {
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+.customformat ul li {
+    margin-bottom: 5px;
+}
+.customformat a {
+    color: #B13534;
+}
