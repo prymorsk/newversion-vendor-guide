@@ -32,7 +32,7 @@ const DetailsCarosuel = ({ filterData }) => {
   };
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full imgdetailcusdmain">
 
       {/* LEFT ARROW */}
       {totalSlides > 1 && (
@@ -55,11 +55,11 @@ const DetailsCarosuel = ({ filterData }) => {
           emulateTouch
         >
           {extractedData.map((item, index) => (
-            <div key={index} className="h-full">
+            <div key={index} className=" imgdetailcusd">
               <Image
                 src={item.image_url}
                 alt={`Image of ${item.alt_tag}`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover imgdetailcusdimg"
                 width={572}
                 height={500}
               />
@@ -67,11 +67,11 @@ const DetailsCarosuel = ({ filterData }) => {
           ))}
         </Carousel>
       ) : (
-        <div className="h-full flex items-center justify-center">
+        <div className="imgdetailcusd flex items-center justify-center">
           <Image
             src="/images&icons/search_result/planetmedia.jpeg"
             alt="Default Image"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover imgdetailcusdimg"
             width={100}
             height={100}
           />
