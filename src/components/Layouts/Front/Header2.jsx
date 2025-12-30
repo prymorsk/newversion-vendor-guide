@@ -11,7 +11,7 @@ import HeaderDropdown from "./HeaderDropdown";
 import Loading from "@/app/loadingScreen";
 import { Button } from "primereact/button";
 
-import RequestQuotebtn from "@/components/Front/RequestQuotebtn";
+import RequestQuotebtnHome from "@/components/Front/RequestQuotebtnHome";
 
 // ✅ Public folder images should be referenced via URL
 //const Logo = "/images&icons/SVG/logo.svg";
@@ -330,7 +330,7 @@ const Header = ({ activeTab,setActiveTab,categories,sitesetting,magazines }) => 
                   <li className="mt-4"> 
                  
                {UserType == 1 || !user ? (
-              <RequestQuotebtn user={user} categories={categories} />
+              <RequestQuotebtnHome user={user} categories={categories} />
             ): ''}
             
             </li>
