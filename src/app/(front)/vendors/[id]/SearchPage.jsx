@@ -134,7 +134,7 @@ const SearchPage = ({ slug, bannerContent }) => {
 
                 </div>
 
-                <div className="bg-white border rounded-3xl p-8">
+                <div className="bg-white border rounded-3xl p-8 customformat">
                   {tab === "multi" && (
                     <div
                       dangerouslySetInnerHTML={{
