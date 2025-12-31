@@ -31,18 +31,13 @@ import LoadingComponents from "@/components/LoadingComponents";
 
 
 
-
-
-
-
   return (
     <>
 
-    <section id="hero_section" className="inner hero-section commonpage" >
-  {/* Hero Section */}
-  </section>
-
-      
+<section id="hero_section" className="inner hero-section commonpage" >
+{/* Hero Section */}
+</section>
+   
 <section className="innerpage-wapper-sections">
 <div className="container mx-auto">
   <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8   bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
