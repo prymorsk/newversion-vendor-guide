@@ -5,7 +5,7 @@ const ModalHome = ({ isOpen, onClose, children }) => {
 
   return (
     <div
-      className="fixed inset-0 z-40 bg-gray-500 bg-opacity-50"
+      className="fixed inset-0 z-40 bg-gray-500 bg-opacity-50 setzindexc"
       onClick={onClose} // overlay click
     >
       <div
