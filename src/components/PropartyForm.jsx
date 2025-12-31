@@ -388,7 +388,7 @@ const handleVendorbystate = async (e) => {
 
     return (
 
-        <div className="w-full">
+        <div className="w-full requestpropery"  >
             <form action="#" method="POST" id="myForm" className="mx-auto mt-6" onSubmit={makeRequest}>
                 <div className="w-full">
                     <div className="grid grid-cols-2 gap-x-4">

@@ -1030,7 +1030,7 @@ section.whychoose-sections .whychoose-innerrow {
     border-radius: 30px;
     padding: 30px;
     text-align: center;
-    z-index: 99;
+    z-index: 9;
     position: relative;
     background: #fff;
 }
@@ -1349,6 +1349,7 @@ header.main-header .header-right-button .dropdown-menu button {
     width: 100%;
     text-align: left;
 }
+
 .imgdetailcusd {
     display: block;
     width: 100%;
@@ -1380,6 +1381,9 @@ header.main-header .header-right-button .dropdown-menu button {
   }
 .imgdetailcusdmain .slider-wrapper{border-radius: 20px !important;
   overflow: hidden;}
+
+.requestpopupc{text-align: center;}
+.requestpropery{text-align: left;}
 
 .requestpopupc h1.request_title {
     text-transform: uppercase;
