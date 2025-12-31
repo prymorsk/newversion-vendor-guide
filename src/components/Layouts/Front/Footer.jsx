@@ -42,11 +42,10 @@ const firstLine = address?.slice(0, 30);
 const rest = address?.slice(30);
 
 
-
   return (
     <>
       {/* Banner Ad Section */}
-      {parts[1] !== 'vendors' && (
+      {parts[1] !== 'vendors' && nationalads && (
         <section className="bannerad-sec ">
           <div className="container mx-auto items-center justify-items-center">
             <div className="adimg">

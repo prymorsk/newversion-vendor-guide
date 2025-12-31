@@ -1380,3 +1380,15 @@ header.main-header .header-right-button .dropdown-menu button {
   }
 .imgdetailcusdmain .slider-wrapper{border-radius: 20px !important;
   overflow: hidden;}
+.requestpopupc {
+    text-align: center;
+}
+.requestpopupc h1.request_title {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.requestpopupc p.request_paragraph {
+    font-size: 20px !important;
+    margin-top: 10px !important;
+}
+
