@@ -24,13 +24,9 @@ const Profilepage = () => {
 
   return (
     <>
-      {isLoading ? (
-        <div className="flex justify-center items-center h-full">
-          <LoadingComponents />
-        </div>
-      ) : (
-        <>
-          <section id="hero_section" className="inner hero-section commonpage">
+
+
+    <section id="hero_section" className="inner hero-section commonpage">
             {/* Hero Section */}
           </section>
 
@@ -41,14 +37,23 @@ const Profilepage = () => {
                   <h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato lg:px-10">
                     Profile
                   </h1>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-full">
+          <LoadingComponents />
+        </div>
+      ) : (
+        <>
+          
 
                   <ProfileForm user={user} />
-                </div>
+               
+        </>
+      )}
+
+       </div>
               </div>
             </div>
           </section>
-        </>
-      )}
     </>
   );
 };

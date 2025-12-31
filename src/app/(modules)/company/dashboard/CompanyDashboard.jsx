@@ -11,23 +11,18 @@ import DashboardTopPage from "./DashboardTopPage";
 
 
 const CompanyDashboard = ({ bannerContent }) => {
-  const [mounted, setMounted] = useState(false);
-  
+
+const [isLoading, setIsLoading] = useState(true);
 const TopBarImage = "/images&icons/advertise/banner1.jpg";
+const pagemetaData = bannerContent;
+const { metaData, loading, user } = useAuth();
+const advertiseMeta = metaData?.advertise;
 
-  const pagemetaData = bannerContent;
-  const { metaData, loading, user } = useAuth();
-  const advertiseMeta = metaData?.advertise;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Prevent hydration mismatch
-  if (!mounted) return null;
-
-  console.log('advertise loaded...');
-  //console.log(bannerContent);
+   useEffect(() => {
+    if (user) {
+      setIsLoading(false);
+    }
+  }, [user]);
   
 
   return (
@@ -44,7 +39,12 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
   <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8   bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
 <div id="featurs_section" className="py-9 md:py-5 "><h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold    font-lato lg:px-10" >Company Dashboard</h1>
 
-
+ {isLoading ? (
+        <div className="text-center text-xl font-semibold text-[#171717] text-left leading-[1.5rem] my-4">
+          <LoadingComponents />
+        </div>
+      ) : (
+        <>
  <section className="top_grid">
         <div className="px-20">
           <DashboardTopPage />
@@ -56,7 +56,8 @@ const TopBarImage = "/images&icons/advertise/banner1.jpg";
         </div>
       </section>
       
-
+ </>
+      )}
       
         </div>
       </div>
