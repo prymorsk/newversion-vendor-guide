@@ -105,7 +105,7 @@ const cleanHtmlRes = filterData?.residential_description
         <>
           
               <div className="infobox-details bg-white rounded-3xl p-8 flex flex-col lg:flex-row gap-10">
-                <div className="lg:w-[40%] border rounded-2xl p-6">
+                <div className="lg:w-[40%]  rounded-2xl ">
                   <DetailsCarosuel filterData={filterData} />
                 </div>
 
