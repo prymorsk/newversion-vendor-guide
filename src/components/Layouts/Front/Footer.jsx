@@ -40,12 +40,14 @@ const newPhoneIcon = "/images&icons/newtelephone.png";
 const address = sitesetting?.side_address;
 const firstLine = address?.slice(0, 30);
 const rest = address?.slice(30);
-
+console.log('nationalads' );
+console.log(nationalads );
+console.log('nationalads end' );
 
   return (
     <>
       {/* Banner Ad Section */}
-      {parts[1] !== 'vendors' && nationalads && (
+      {parts[1] !== 'vendors' && nationalads.length > 0 && (
         <section className="bannerad-sec ">
           <div className="container mx-auto items-center justify-items-center">
             <div className="adimg">
