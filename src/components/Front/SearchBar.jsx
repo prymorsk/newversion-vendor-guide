@@ -107,9 +107,10 @@ const fetchData = async (stateName) => {
     <section className="searchbar-section w-full bg-[#000] p-8">
       <form onSubmit={handleSearch}>
         <div className="container mx-auto">
+         
           <h4 className="text-center mb-5 text-[#fff]"> {homeMeta?.hero_title}</h4>
-          <div className="searchbar flex flex-row gap-4 justify-between items-center">
-            <div className="w-full mx-auto flex items-center justify-center space-x-4">
+
+          <div className="searchbar grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
 
               <input 
                 type="text" 
@@ -171,7 +172,7 @@ const fetchData = async (stateName) => {
                 SEARCH NOW
               </button>
             
-            </div>
+           
           </div>
         </div>
         </form>
