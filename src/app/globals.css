@@ -1450,6 +1450,8 @@ div#mobileMenu.mobile-menu.open .header-right-button {
     padding-top: 20px;
 }
 
+header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.head_pulbication_dropdown-menu li:hover a{color:#fff}
+
 header.main-header button#menuBtn{display:none;}
 
 @media(max-width:1279px){
