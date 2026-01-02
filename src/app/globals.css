@@ -1441,10 +1441,6 @@ div#mobileMenu.mobile-menu.open .header-menu ul li ul.submenu li {
 div#mobileMenu.mobile-menu.open .header-menu ul li ul.submenu li button:hover, div#mobileMenu.mobile-menu.open .header-menu ul li ul.submenu li a:hover{background:none;}
 div#mobileMenu.mobile-menu.open .header-menu ul li ul.submenu li button:hover, div#mobileMenu.mobile-menu.open .header-menu ul li ul.submenu li button {background: none !important;color: #fff;}
 
-header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.head_pulbication_dropdown-menu {
-    position: inherit !important;
-    left: 0;
-}
 header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.head_pulbication_dropdown-menu li:hover a {
     color: #000;
 }
@@ -1471,4 +1467,8 @@ header.main-header button#menuBtn{display:none;}
   header.main-header .header-right-button{display:none;}
   header.main-header div#mobileMenu.mobile-menu.open .header-menu{display:block;}
   header.main-header div#mobileMenu.mobile-menu.open  .header-right-button{display:block;}
+  header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.head_pulbication_dropdown-menu {
+    position: inherit !important;
+    left: 0;
+}
 }
