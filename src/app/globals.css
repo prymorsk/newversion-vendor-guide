@@ -1483,4 +1483,13 @@ header.main-header button#menuBtn{display:none;}
 section.featured-suppliers-sections h3 {
     font-size: 24px !important;
 }
+section.whychoose-sections .whychoose-innerrow .title{padding:10px; margin-top:-57px;}
+section.whychoose-sections .whychoose-innerrow .title h5{font-size:22px;}
+section.whychoose-sections .whychoose-innerrow .whychoose-fourbox{padding:0px;}
+section.fourprofile-section h3 {
+    font-size: 30px !important;
+}
+section.fourprofile-section .fourprofile-listing {
+    margin-top: 50px;
+}
 }
