@@ -62,7 +62,7 @@ const [isOpen, setIsOpen] = useState(false);
 
 
   return (
-    <header className="main-header">
+    <header className="main-header newcustom">
       <div className="container mx-auto px-4 flex flex-row gap-4 justify-between items-center">
 
         {/* LOGO */}
