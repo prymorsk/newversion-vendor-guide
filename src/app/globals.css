@@ -1474,3 +1474,13 @@ header.main-header button#menuBtn{display:none;}
     left: 0;
 }
 }
+
+@media(max-width:767px){
+  section.featured-suppliers-sections {
+    padding-top: 50px;
+}
+
+section.featured-suppliers-sections h3 {
+    font-size: 24px !important;
+}
+}
