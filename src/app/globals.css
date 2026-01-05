@@ -1059,7 +1059,7 @@ section.whychoose-sections .whychoose-innerrow .whychoose-fourbox {
 
 section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-iconbox {
     text-align: center;
-    padding: 0px 20px;
+    padding: 20px;
 }
 
 section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-iconbox .icon {
@@ -1635,6 +1635,9 @@ section.fourprofile-section h3 {
 section.fourprofile-section .fourprofile-listing {
     margin-top: 30px;
 }
+    section.fourprofile-section h3 {
+        font-size: 20px !important;
+    }
 }
 
 
