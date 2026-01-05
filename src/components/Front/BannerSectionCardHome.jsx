@@ -211,35 +211,27 @@ const BannerSectionCardHome = () => {
         <div className="Suppliersbox-top">
          
         <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px] mx-auto">
-          <Link
-  href={`/vendors/${row.slug}`}
-  className="block max-w-[209px]"
->
-  <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px]">
-    <Image
-      src={row.vendor_logo_url || ""}
-      alt={row.slug || ""}
-      fill
-      className="object-contain object-left"
-    />
-  </div>
-</Link>
+              <Link
+              href={`/vendors/${row.slug}`}
+              className="block max-w-[209px]"
+              >
+              <div className="Suppliersbox-logo relative max-w-[272px] max-h-[272px] w-full h-[272px]">
+              <Image
+              src={row.image_url || ""}
+              alt={row.slug || ""}
+              fill
+              className="object-contain object-left"
+              />
+              </div>
+              </Link>
 
         </div>
 
 
-          <div className="Suppliersbox-name"><h6>{row.vendor_name || ""}</h6></div>
+         
         </div>
       
-<div className="Suppliersbox-points">
-  {row?.categories?.length > 0 ? (
-    <ul>
-      {row.categories.map((rowcat, index) => (
-        <li key={index}>{rowcat || ""}</li>
-      ))}
-    </ul>
-  ) : null}
-</div>
+
 
 
       </div>

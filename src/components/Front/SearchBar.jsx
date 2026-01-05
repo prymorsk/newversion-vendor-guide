@@ -112,29 +112,9 @@ const fetchData = async (stateName) => {
 
           <div className="searchbar grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
 
-              <input 
-                type="text" 
-                name="keyword"
-                id="default-search"
-                placeholder="Company Name"
-                className="w-full px-5 py-3 rounded-full border border-gray-300 bg-white text-sm w-48 focus:outline-none" value={searchInput}
-                        onChange={(e) => setSearchInput(e.target.value)}
-              />
+              
 
-              <div className="relative w-full inline-block">
-                <select 
-                  className="w-full appearance-none px-5 py-3 rounded-full border border-blue-400 bg-white text-sm w-48 cursor-pointer focus:outline-none" value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)} >
-                        <option className="" value="">Select Category</option>
-                        {categories?.data && categories?.data.map((row,i)=>{
-                          return(
-                            <option key={i} value={row.id}>{row.title}</option>
-                          )
-                        })}
-                </select>
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <Image src="images/down-arrow.svg" alt="down" width={10} height={6} />
-                </span>
-              </div>
+
 
               <div className="relative w-full inline-block">
                 <select 
@@ -166,6 +146,31 @@ const fetchData = async (stateName) => {
                   <Image src="images/down-arrow.svg" alt="down" width={10} height={6} />
                 </span>
               </div>
+
+
+<div className="relative w-full inline-block">
+                <select 
+                  className="w-full appearance-none px-5 py-3 rounded-full border border-blue-400 bg-white text-sm w-48 cursor-pointer focus:outline-none" value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)} >
+                        <option className="" value="">Select Category</option>
+                        {categories?.data && categories?.data.map((row,i)=>{
+                          return(
+                            <option key={i} value={row.id}>{row.title}</option>
+                          )
+                        })}
+                </select>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <Image src="images/down-arrow.svg" alt="down" width={10} height={6} />
+                </span>
+              </div>
+              <input 
+                type="text" 
+                name="keyword"
+                id="default-search"
+                placeholder="Company Name"
+                className="w-full px-5 py-3 rounded-full border border-gray-300 bg-white text-sm w-48 focus:outline-none" value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+              />
+              
 
               <button   type="submit"
                 className="w-full px-6 py-3 rounded-full bg-[#A32424] text-white text-sm font-medium border border-white hover:bg-[#8b1e1e] transition">
