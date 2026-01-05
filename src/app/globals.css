@@ -1486,6 +1486,42 @@ section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-ico
 section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-iconbox p {
     font-size: 14px;
 }
+section.whychoose-sections .whychoose-innerrow .whychoose-fourbox{padding:0px;}
+section.fourprofile-section .fourprofile-leftcontent h3 {
+    font-size: 36px;
+    margin: 10px 0px;
+}
+
+section.fourprofile-section .fourprofile-leftcontent span {
+    font-size: 16px;
+}
+
+section.fourprofile-section .fourprofile-leftcontent p {
+    font-size: 20px;
+    max-width: 550px;
+}
+
+section.fourprofile-section .fourprofile-listing .gap-8 {
+    gap: 1rem;
+}
+
+section.fourprofile-section .fourprofile-listing .mt-4 .flex {
+    display: block;
+    position: relative;
+}
+
+section.fourprofile-section .fourprofile-listing .mt-4 .flex span {
+    width: 100%;
+    display: block;
+}
+
+section.fourprofile-section .fourprofile-listing .mt-4 h3 span {
+    width: .75rem !important;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
 
 }
 
