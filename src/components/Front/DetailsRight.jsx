@@ -105,7 +105,7 @@ const DetailsRight = ({ filterData, user }) => {
           }}
           className="bg-[#B13634] text-white px-5 py-2 rounded-full flex items-center gap-2 text-sm"
         >
-          Request a Quotes →
+          Request a Quotes 
         </button>
 
         <button
@@ -113,9 +113,9 @@ const DetailsRight = ({ filterData, user }) => {
             setVendorId(filterData?.id);
             setIsModalOpenMail(true);
           }}
-          className="border border-gray-400 px-5 py-2 rounded-full flex items-center gap-2 text-sm"
+          className="bg-[#B13634] text-white border border-gray-400 px-5 py-2 rounded-full flex items-center gap-2 text-sm"
         >
-          Contact Vendor →
+          Contact Vendor 
         </button>
 
 
@@ -137,7 +137,7 @@ filterData.website_url.includes("http")
 rel="nofollow"
 target="_blank"
 >
-Website
+Website ↗
 </Link>
 </button>
 )}

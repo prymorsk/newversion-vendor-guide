@@ -201,7 +201,9 @@ const VendorCard = (props) => {
                     <div className="h-full" key={row.id}>
                       <div className="card mb-0 bg-white px-3 shadow h-full relative">
                         <div className="card-body">
+                          <Link href={`/vendors/${row.slug}`}>
                           <div className="text-center">
+                            
                             <div className="w-36 h-28 pt-2 mx-auto flex justify-center">
                               <div className="vendore-image-logo object-cover">
                                 <Link href={`/vendors/${row.slug}`} className="flex justify-center items-center h-full">
@@ -214,7 +216,9 @@ const VendorCard = (props) => {
                                   />
                                 </Link>
                               </div>
+
                             </div>
+
                             <Link href={`/vendors/${row.slug}`}>
                               <h3 className="text-[#B13634] font-bold whitespace-nowrap text-16 mb-1 text-ellipsis overflow-hidden">
                                 {row.name}
@@ -238,7 +242,12 @@ const VendorCard = (props) => {
                             ) : (
                               <div style={{ height: "3.9rem" }}></div>
                             )}
+
                           </div>
+                          </Link>
+
+
+
                           <div className="py-10" role="group">
                             <div className="flex items-center justify-center xl:gap-x-4 gap-x-6 md:text-center">
                               <div>

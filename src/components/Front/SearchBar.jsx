@@ -132,6 +132,24 @@ const fetchData = async (stateName) => {
                 </span>
               </div>
 
+
+
+            <div className="relative w-full inline-block">
+            <select 
+            className="w-full appearance-none px-5 py-3 rounded-full border border-blue-400 bg-white text-sm w-48 cursor-pointer focus:outline-none" value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)} >
+            <option className="" value="">Select Category</option>
+            {categories?.data && categories?.data.map((row,i)=>{
+            return(
+            <option key={i} value={row.id}>{row.title}</option>
+            )
+            })}
+            </select>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+            <Image src="images/down-arrow.svg" alt="down" width={10} height={6} />
+            </span>
+            </div>
+
+
               <div className="relative w-full inline-block">
                 <select 
                   className="w-full appearance-none px-5 py-3 rounded-full border border-gray-300 bg-white text-sm w-40 cursor-pointer focus:outline-none" value={SearchCity} onChange={(e) => setSearchCity(e.target.value)}>
@@ -148,20 +166,8 @@ const fetchData = async (stateName) => {
               </div>
 
 
-<div className="relative w-full inline-block">
-                <select 
-                  className="w-full appearance-none px-5 py-3 rounded-full border border-blue-400 bg-white text-sm w-48 cursor-pointer focus:outline-none" value={searchCategory} onChange={(e) => setSearchCategory(e.target.value)} >
-                        <option className="" value="">Select Category</option>
-                        {categories?.data && categories?.data.map((row,i)=>{
-                          return(
-                            <option key={i} value={row.id}>{row.title}</option>
-                          )
-                        })}
-                </select>
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <Image src="images/down-arrow.svg" alt="down" width={10} height={6} />
-                </span>
-              </div>
+
+
               <input 
                 type="text" 
                 name="keyword"

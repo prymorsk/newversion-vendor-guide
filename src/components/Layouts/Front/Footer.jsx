@@ -161,7 +161,7 @@ console.log('nationalads end' );
         <div className="w-full border-t border-white/30 my-8"></div>
         <div className="container mx-auto">
           <p className="text-center text-white text-sm">
-  &copy; 1994–{new Date().getFullYear()} Vendor Guide Online
+  &copy; 2011–{new Date().getFullYear()} Vendor Guide Online
 </p>
         </div>
       </footer>

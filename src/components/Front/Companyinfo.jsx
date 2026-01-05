@@ -161,6 +161,35 @@ const Companyinfo = (props) => {
                     </div>
                   </div>
 
+
+
+<div className="grid xl:grid-cols-12 lg:mx-4 items-center mb-3 company_search">
+                    <div className="col-span-12 mb-1">
+                      <label className="font-bold xl:text-sm lg:text-sm text-base text-[#221F20]">
+                        Category
+                      </label>
+                    </div>
+
+                    <div className="col-span-12 mt-3">
+                      <select
+                        className="w-full h-[34px] border-gray-300 lg:w-[10rem] placeholder:text-sm border-solid rounded border-[1px] pl-2"
+                        value={props.categoryInput}
+                        onChange={onCategoryChange}
+                      >
+                        <option value="">Select Category</option>
+                        {props.categoryData?.data?.map((row, i) => (
+                          <option key={i} value={row.id}>
+                            {row.title}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+
+
+                  
+
                   {/* City */}
                   <div className="grid xl:grid-cols-12 lg:mx-4 items-center mb-3 company_search">
                     <div className="col-span-12 mb-1">
@@ -212,28 +241,7 @@ const Companyinfo = (props) => {
                 </div>
 
   {/* Category */}
-                  <div className="grid xl:grid-cols-12 lg:mx-4 items-center mb-3 company_search">
-                    <div className="col-span-12 mb-1">
-                      <label className="font-bold xl:text-sm lg:text-sm text-base text-[#221F20]">
-                        Category
-                      </label>
-                    </div>
-
-                    <div className="col-span-12 mt-3">
-                      <select
-                        className="w-full h-[34px] border-gray-300 lg:w-[10rem] placeholder:text-sm border-solid rounded border-[1px] pl-2"
-                        value={props.categoryInput}
-                        onChange={onCategoryChange}
-                      >
-                        <option value="">Select Category</option>
-                        {props.categoryData?.data?.map((row, i) => (
-                          <option key={i} value={row.id}>
-                            {row.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                  
 {/* Search Company */}
                   <div className="grid xl:grid-cols-12 mb-3 company_search">
                     <div className="col-span-12 mb-1">

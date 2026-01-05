@@ -89,7 +89,7 @@ console.log('sitesetting data end');
               <h3>Your one-stop-shop for contractor sourcing & management.</h3>
             </div>
             <div className="columnright contentright p-10">
-              <h6>Save time, money and headaches when dealing with vendors through our simplified and vetted marketplace.</h6>
+              <h6>Cut the hassle, save time and money with our easy to use vendor marketplace.</h6>
               <Link href="/register" className="button-signup">
                 <em><Image src="/images/finger.svg" alt="finger" width={10} height={6} /></em> 
                 Sign Up Today

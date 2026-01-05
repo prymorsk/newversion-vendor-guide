@@ -14,7 +14,21 @@ const SearchPage = ({ slug, bannerContent }) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [filterData, setFilterData] = useState({});
-  const [tab, setTab] = useState("multi");
+
+const [tab, setTab] = useState("");
+
+useEffect(() => {
+  if (filterData?.multi_family) {
+    setTab("multi");
+  } else if (filterData?.commercial) {
+    setTab("comm");
+  } else if (filterData?.residential) {
+    setTab("resi");
+  }
+}, [filterData]);
+
+
+
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -117,35 +131,49 @@ const cleanHtmlRes = filterData?.residential_description
               {/* Tabs */}
               <div className="details-tabsection mt-10">
                 <div className="flex gap-4 mb-6">
-                      {["multi", "comm", "resi"].map((t) => (
-                      (t !== "resi" ||
-                      Boolean(filterData?.residential_description)) && (
-                      <button
-                      key={t}
-                      onClick={() => setTab(t)}
-                      className={`px-6 py-2 rounded-full font-semibold ${
-                      tab === t
-                      ? "bg-[#B13634] text-white"
-                      : "bg-black text-white"
-                      }`}
-                      >
-                      {t === "multi"
-                      ? "Multifamily"
-                      : t === "comm"
-                      ? "Commercial"
-                      : "Residential"}{" "}
-                      Description
-                      </button>
-                      )
-                      ))}
+
+                    {!!filterData?.multi_family && (
+                    <button
+                    onClick={() => setTab("multi")}
+                    className={`px-6 py-2 rounded-full font-semibold ${
+                    tab === "multi" ? "bg-[#B13634] text-white" : "bg-black text-white"
+                    }`}
+                    >
+                    Multifamily Description
+                    </button>
+                    )}
+
+                    {!!filterData?.commercial && (
+                    <button
+                    onClick={() => setTab("comm")}
+                    className={`px-6 py-2 rounded-full font-semibold ${
+                    tab === "comm" ? "bg-[#B13634] text-white" : "bg-black text-white"
+                    }`}
+                    >
+                    Commercial Description
+                    </button>
+                    )}
+
+                    {!!filterData?.residential && (
+                    <button
+                    onClick={() => setTab("resi")}
+                    className={`px-6 py-2 rounded-full font-semibold ${
+                    tab === "resi" ? "bg-[#B13634] text-white" : "bg-black text-white"
+                    }`}
+                    >
+                    Residential Description
+                    </button>
+                    )}
+
+                          
+
+
 
                 </div>
 
                <div className="bg-white border rounded-3xl p-8 customformat prose">
-                  {tab === "multi" && (
-                    
-
-
+                  {!!filterData?.multi_family && tab === "multi" && (
+                   
                   <div
                   className="prose"
                   dangerouslySetInnerHTML={{
@@ -155,7 +183,7 @@ const cleanHtmlRes = filterData?.residential_description
 
                   )}
 
-                  {tab === "comm" && (
+                {!!filterData?.commercial && tab === "comm" && (
                  
                 <div
                 className="prose"
@@ -165,11 +193,9 @@ const cleanHtmlRes = filterData?.residential_description
                 />
 
 
-
-
                   )}
 
-                  {tab === "resi" && (
+                {!!filterData?.residential && tab === "resi" && (
                  
                 <div
                 className="prose"
