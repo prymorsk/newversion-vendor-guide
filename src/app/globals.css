@@ -1561,6 +1561,9 @@ header.main-header .header-logo img {
     position: inherit !important;
     left: 0;
 }
+section.fourprofile-section .flex {
+    display: block;
+}
 }
 
 @media(max-width:767px){
