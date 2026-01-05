@@ -1571,6 +1571,50 @@ section.fourprofile-section .w-full {
 section.fourprofile-section .w-full .fourprofile-leftcontent {
     margin-bottom: 50px;
 }
+section.fourprofile-section .w-full {
+    width: 100%;
+}
+
+section.fourprofile-section .w-full .fourprofile-leftcontent {
+    margin-bottom: 50px;
+}
+
+.featuredsuppliers-listing .flex {
+    display: flex;
+}
+
+.featuredsuppliers-listing .flex .shadow-sm {
+    width: 31% !important;
+}
+section.fourprofile-section .w-full {
+    width: 100%;
+}
+
+section.fourprofile-section .w-full .fourprofile-leftcontent {
+    margin-bottom: 50px;
+}
+
+.featuredsuppliers-listing .flex {
+    display: flex;
+}
+
+.featuredsuppliers-listing .flex .shadow-sm {
+    width: 31% !important;
+}
+
+footer .container .grid {
+    display: block;
+}
+
+footer .container .grid div {
+    margin-bottom: 30px;
+}
+
+section.featured-suppliers-sections {
+    border-radius: 0px 0px 30px 30px;
+    padding-bottom: 50px;
+}
+section.Resources-sections .Resources-listing .card h3{font-size:18px;}
 
 }
 
