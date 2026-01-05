@@ -26,7 +26,7 @@ const FeaturSectionWord = ({ blogs, homeBannerText }) => {
           <div className="flex flex-col md:flex-row gap-10 items-center">
             <div className="w-full md:w-[40%]">
               <div className="welcome-intro-image">
-                <Image src="/images/welcome-img.png" alt="welcome" width={500} height={500} />
+                <Image src="/images/welcome-img.webp" alt="welcome" width={500} height={500} />
               </div>
             </div>
 
