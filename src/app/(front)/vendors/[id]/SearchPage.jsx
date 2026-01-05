@@ -132,7 +132,7 @@ const cleanHtmlRes = filterData?.residential_description
               <div className="details-tabsection mt-10">
                 <div className="flex gap-4 mb-6">
 
-                    {!!filterData?.multi_family && (
+                    {!!filterData?.multi_family &&  cleanHtmlMul?.trim()?.length > 0 && (
                     <button
                     onClick={() => setTab("multi")}
                     className={`px-6 py-2 rounded-full font-semibold ${
@@ -143,7 +143,7 @@ const cleanHtmlRes = filterData?.residential_description
                     </button>
                     )}
 
-                    {!!filterData?.commercial && (
+                    {!!filterData?.commercial &&  cleanHtmlCom?.trim()?.length > 0 && (
                     <button
                     onClick={() => setTab("comm")}
                     className={`px-6 py-2 rounded-full font-semibold ${
@@ -154,7 +154,7 @@ const cleanHtmlRes = filterData?.residential_description
                     </button>
                     )}
 
-                    {!!filterData?.residential && (
+                    {!!filterData?.residential &&  cleanHtmlRes?.trim()?.length > 0 && (
                     <button
                     onClick={() => setTab("resi")}
                     className={`px-6 py-2 rounded-full font-semibold ${
@@ -172,7 +172,7 @@ const cleanHtmlRes = filterData?.residential_description
                 </div>
 
                <div className="bg-white border rounded-3xl p-8 customformat prose">
-                  {!!filterData?.multi_family && tab === "multi" && (
+                  {!!filterData?.multi_family && tab === "multi" &&  cleanHtmlMul?.trim()?.length > 0 && (
                    
                   <div
                   className="prose"
@@ -183,7 +183,7 @@ const cleanHtmlRes = filterData?.residential_description
 
                   )}
 
-                {!!filterData?.commercial && tab === "comm" && (
+                {!!filterData?.commercial && tab === "comm" &&  cleanHtmlCom?.trim()?.length > 0 && (
                  
                 <div
                 className="prose"
@@ -195,7 +195,7 @@ const cleanHtmlRes = filterData?.residential_description
 
                   )}
 
-                {!!filterData?.residential && tab === "resi" && (
+                {!!filterData?.residential && tab === "resi" &&  cleanHtmlRes?.trim()?.length > 0 && (
                  
                 <div
                 className="prose"
