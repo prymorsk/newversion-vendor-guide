@@ -1636,3 +1636,30 @@ section.fourprofile-section .fourprofile-listing {
     margin-top: 30px;
 }
 }
+
+
+@media(max-width:593px){
+section.searchbar-section .container {
+    padding: 0;
+}
+.featuredsuppliers-listing .flex .shadow-sm {
+      width: 100% !important;
+}
+section.searchbar-section .container {
+    padding: 0;
+}
+
+section.whychoose-sections {margin-top: 50px;}
+section.searchbar-section .container {
+    padding: 0;
+}
+
+section.whychoose-sections {margin-top: 50px;}
+
+footer ul.flex.nav_list {
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+
+}
