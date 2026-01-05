@@ -204,37 +204,27 @@ const BannerSectionCardHome = () => {
             </div>
         </div>
         ) : vendors?.data?.length > 0 ? (
-          vendors.data.map((row) => (
+          vendors.data.map((row, i) => (
 
 
-<div key={row.slug} className="Suppliersbox w-[45%] sm:w-[30%] md:w-[18%]">
-        <div className="Suppliersbox-top">
-         
-        <div className="Suppliersbox-logo relative max-w-[209px] max-h-[80px] w-full h-[80px] mx-auto">
-              <Link
-              href={`/vendors/${row.slug}`}
-              className="block max-w-[209px]"
-              >
-              <div className="Suppliersbox-logo relative max-w-[272px] max-h-[272px] w-full h-[272px]">
-              <Image
-              src={row.image_url || ""}
-              alt={row.slug || ""}
-              fill
-              className="object-contain object-left"
-              />
-              </div>
-              </Link>
+          <div  key={i}
 
-        </div>
+          className=" lg:col-span-1  shadow-sm border border-gray-300 bg-gray-200 h-full w-1/5"
+          >
+          <div className="sm:mt-0 flex justify-center md:justify-end h-full items-center p-1">
+          <Link href={`/vendors/`+ row.slug }>
+          <Image
+          src={row.image_url?row.image_url:""}
+          alt={row.name?row.name:""}
+          className="w-full w-auto"
+          width="100"
+          height="100"
+          />
+          </Link>
+          </div>
+          </div>
 
 
-         
-        </div>
-      
-
-
-
-      </div>
 
             
           ))
