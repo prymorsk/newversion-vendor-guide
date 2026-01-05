@@ -1562,8 +1562,16 @@ header.main-header .header-logo img {
     left: 0;
 }
 section.fourprofile-section .flex {
-    display: block;
+    display: block !important;
 }
+section.fourprofile-section .w-full {
+    width: 100%;
+}
+
+section.fourprofile-section .w-full .fourprofile-leftcontent {
+    margin-bottom: 50px;
+}
+
 }
 
 @media(max-width:767px){
