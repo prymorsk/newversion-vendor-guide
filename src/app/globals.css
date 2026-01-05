@@ -1454,12 +1454,39 @@ header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.h
 
 header.main-header button#menuBtn{display:none;}
 
+
+
+
+/******** Website Responsive ***********/
+
+
+
 @media(max-width:1279px){
 .container {
     max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
 }
+section.featured-suppliers-sections .columnleft.contentleft h3 {
+    font-size: 26px !important;
+}
+
+section.featured-suppliers-sections .row-featured-suppliers {
+    margin-top: 50px;
+}
+
+section.whychoose-sections .whychoose-innerrow .title h5 {
+    font-size: 30px;
+}
+
+section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-iconbox h6 {
+    font-size: 18px;
+}
+
+section.whychoose-sections .whychoose-innerrow .whychoose-fourbox .whychoose-iconbox p {
+    font-size: 14px;
+}
+
 }
 
 
@@ -1490,6 +1517,6 @@ section.fourprofile-section h3 {
     font-size: 30px !important;
 }
 section.fourprofile-section .fourprofile-listing {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 }
