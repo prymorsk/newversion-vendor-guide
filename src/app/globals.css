@@ -1539,6 +1539,14 @@ footer ul li a {
     font-size: 16px;
 }
 
+header.main-header .header-menu a {
+    font-size: 14px;
+}
+
+header.main-header .header-logo img {
+    width: 80%;
+}
+
 
 }
 
