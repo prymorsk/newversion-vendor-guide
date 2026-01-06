@@ -241,7 +241,7 @@ const [isOpen, setIsOpen] = useState(false);
 
          <button id="menuBtn"  onClick={toggleMenunew}
         className="menu-btn">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="#fffff" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="size-6">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="#fffff" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
 </svg>
 
