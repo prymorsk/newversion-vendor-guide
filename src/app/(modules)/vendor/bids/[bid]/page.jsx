@@ -4,6 +4,9 @@ import VendorBids from "./VendorBids";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: 'Vendor Guide | Bids',
+}
 export default async function Page({ params :paramsawait }) {
   const paramsawaitm = await paramsawait; // comes from folder name [bid]
  const id=paramsawaitm.bid;

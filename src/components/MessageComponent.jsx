@@ -12,6 +12,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Modal from "@/components/Modal";
 import ModalCarosuel from "@/components/Front/ModalCarosuel";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function MessageComponent({bidId,receiverId,styles}) {
     const bidReceiverId = receiverId;

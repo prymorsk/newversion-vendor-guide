@@ -1,8 +1,11 @@
+
 import { Button } from 'primereact/button';
 import Loading from "@/app/loadingScreen" 
 import { useState } from 'react';
 import { getCookie } from 'cookies-next';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const BidFavoriteButton = ({bid}) => {
     const [isLoading, setLoading] = useState(false)
     const [isFavorite, setIsFavorite] = useState(bid.favorite)

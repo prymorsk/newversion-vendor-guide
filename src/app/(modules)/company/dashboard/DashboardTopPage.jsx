@@ -5,6 +5,9 @@ import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import LoadingComponents from "@/components/LoadingComponents";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const DashboardTopPage = () => {
   const [isPageLoading,setIsPageLoading] = useState(true);

@@ -11,6 +11,9 @@ import { faEye,faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import ButtonNew from "@/components/Common/ButtonNew";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const DeleteComponent = ({resultData,property,setPropertieData}) => {
     const [isDeleteLoding, setIsDeleteLoding] = useState(false);
