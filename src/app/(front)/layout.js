@@ -25,10 +25,10 @@ export default async function AuthLayout({ children }) {
   ] = await Promise.all([
     getCategories(),
     getMagazines(),
-    getSiteSetting(),
+    getSiteSetting({ cache: 'force-cache' }),
     getBlogs({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' })
-    home_setting()
+    home_setting({ cache: 'force-cache' })
   ])
 
   return (

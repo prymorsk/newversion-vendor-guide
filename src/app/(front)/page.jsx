@@ -71,8 +71,8 @@ const [
     getCategories({ cache: 'force-cache' }),
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
-    getSiteSetting(),
-    home_setting()
+    getSiteSetting({ cache: 'force-cache' }),
+    home_setting({ cache: 'force-cache' })
   ]);
 
 
