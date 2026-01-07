@@ -223,6 +223,22 @@ export async function getSiteSettingnew() {
     return siteSettingRes;
 }
 
+export async function home_setting() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}home_setting`, { next: { revalidate: 3600 } });
+    
+
+    if (res.status === 429) {
+        // Handle rate limit exceeded, maybe implement retry logic
+        //console.warn('Rate limit exceeded. Retry after some time.');
+        return null; // or throw an error
+    }
+    if (!res.ok) {
+        throw new Error(`API request failed with status: ${res.status}`);
+    }
+    const clonedResponse = res.clone();  // Clone the response
+    const siteSettingRes = await res.json()
+    return siteSettingRes;
+}
 
 export async function getSiteSetting() {
     // 1️⃣ Try primary API
