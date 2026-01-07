@@ -8,8 +8,6 @@ import {
   getCategories,
   getMagazines,
   getSiteSetting,
-    getSiteSettingnew,
-
   getBlogs,
   getPages
 } from '@/app/lib/server-api'
@@ -20,15 +18,12 @@ export default async function AuthLayout({ children }) {
     categories,
     magazines,
     sitesetting,
-    getSiteSettingnew,
     blogs,
     homeBannerText
   ] = await Promise.all([
     getCategories(),
     getMagazines(),
     getSiteSetting(),
-        getSiteSettingnew(),
-
     getBlogs({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' })
   ])
@@ -41,7 +36,7 @@ export default async function AuthLayout({ children }) {
         <Header
           categories={categories}
           magazines={magazines}
-          sitesetting={getSiteSettingnew.data}
+          sitesetting={sitesetting.data}
         />
       </Suspense>
 
@@ -52,8 +47,8 @@ export default async function AuthLayout({ children }) {
         <Footer
           homeBannerText={homeBannerText?.data}
           blogs={blogs}
-          sitesetting={getSiteSettingnew.data}
-          nationalads={getSiteSettingnew.nationalads}
+          sitesetting={sitesetting.data}
+          nationalads={sitesetting.nationalads}
         />
       </Suspense>
 
