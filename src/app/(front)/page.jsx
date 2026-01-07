@@ -85,6 +85,7 @@ console.log('home_setting');
         
 <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
     <HomeComponent
+      home_setting={home_setting}
       sitesetting={home_setting}
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
