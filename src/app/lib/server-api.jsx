@@ -221,7 +221,7 @@ export async function getSiteSettingoldd() {
     return siteSettingRes;
 }
 export async function getSiteSetting() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_settingnew`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 100 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
         //console.warn('Rate limit exceeded. Retry after some time.');
