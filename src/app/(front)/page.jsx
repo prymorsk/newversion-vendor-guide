@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting } from "@/app/lib/server-api";
+import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting,getSiteSettingnew } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
 export const dynamic = "force-dynamic";
 
