@@ -36,7 +36,7 @@ export default async function AuthLayout({ children }) {
         <Header
           categories={categories}
           magazines={magazines}
-          sitesetting={}
+          sitesetting={sitesetting.data}
         />
       </Suspense>
 
@@ -47,8 +47,8 @@ export default async function AuthLayout({ children }) {
         <Footer
           homeBannerText={homeBannerText?.data}
           blogs={blogs}
-          sitesetting={}
-          nationalads={}
+          sitesetting={sitesetting.data}
+          nationalads={sitesetting.nationalads}
         />
       </Suspense>
 
