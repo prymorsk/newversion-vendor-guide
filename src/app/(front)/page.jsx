@@ -76,7 +76,10 @@ const [
   ]);
 
 
+console.log('home_setting');
+console.log(home_setting);
 
+console.log('home_setting');
 
   return (
         

@@ -224,7 +224,7 @@ export async function getSiteSettingnew() {
 }
 
 export async function home_setting() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}home_setting`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}home_setting`, { next: { revalidate: 100 } });
     
 
     if (res.status === 429) {
