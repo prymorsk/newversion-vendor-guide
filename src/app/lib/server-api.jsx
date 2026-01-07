@@ -206,7 +206,7 @@ export async function getPostMeta() {
     return pageMetaRes;
 }
 
-export async function getSiteSettingoldd() {
+export async function getSiteSettingnew() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 3600 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
@@ -220,6 +220,8 @@ export async function getSiteSettingoldd() {
     const siteSettingRes = await res.json()
     return siteSettingRes;
 }
+
+
 export async function getSiteSetting() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 3600 } });
     if (res.status === 429) {

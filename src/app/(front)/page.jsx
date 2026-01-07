@@ -63,14 +63,16 @@ const [
     categories,
     states,
     homeBannerText,
-    sitesetting
+    sitesetting,
+    sitesettingnew
   ] = await Promise.all([
     getBlogs({ cache: 'force-cache' }),
     getPostMeta({ cache: 'force-cache' }),
     getCategories({ cache: 'force-cache' }),
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
-    getSiteSetting()
+    getSiteSetting(),
+    getSiteSettingnew()
   ]);
 
 
@@ -80,13 +82,13 @@ const [
         
 <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
     <HomeComponent
-      sitesetting={sitesetting}
+      sitesetting={sitesettingnew}
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
       bannerContent={pageMeta?.data.home}
       categories={categories}
       states={states}
-      contractors={sitesetting.contractors}
+      contractors={sitesettingnew.contractors}
     />
     </Suspense>
   );
