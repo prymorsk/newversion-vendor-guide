@@ -29,7 +29,7 @@ import { usePathname, useRouter } from "next/navigation";
   const [UserTypeName, setUserTypeName] = useState("");
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showMenu, setShowMenu] = useState(true);
-  const LogoMain = "/image/1700727849.png";
+  const LogoMain = "/images/1700727849.png";
 
   // ✅ Memoized logo (prevents re-render)
   const Logo = useMemo(() => {
