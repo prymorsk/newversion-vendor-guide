@@ -223,22 +223,32 @@ export async function getSiteSettingnew() {
     return siteSettingRes;
 }
 
+
 export async function getSiteSetting() {
-    const res = await fetch(
+    // 1️⃣ Try primary API
+    let res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}site_setting`,
-        {
-            cache: 'no-store', // 🔴 prevent cached CORS
-        }
+        { cache: 'no-store' }
     );
 
+    // 2️⃣ Rate limit handling
     if (res.status === 429) {
-        return null;
+        //return null;
     }
 
+    // 3️⃣ If site_setting fails → try home_setting
     if (!res.ok) {
-        throw new Error(`API request failed with status: ${res.status}`);
+        res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}home_setting`,
+            { cache: 'no-store' }
+        );
+
+        if (!res.ok) {
+            throw new Error(`API request failed with status: ${res.status}`);
+        }
     }
 
+    // 4️⃣ Return JSON
     return await res.json();
 }
 
