@@ -3,12 +3,12 @@
 const allowedDevOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-  "newversion-vendor-guide.vercel.app",
-  "https://newversion-vendor-guide.vercel.app",
-  "newversion-vendor-guide-git-main-prymorsks-projects.vercel.app",
-  "newversion-vendor-guide-i5g6556y2-prymorsks-projects.vercel.app",
 
+  "https://newversion-vendor-guide.vercel.app",
+  "https://newversion-vendor-guide-git-main-prymorsks-projects.vercel.app",
+  "https://newversion-vendor-guide-i5g6556y2-prymorsks-projects.vercel.app",
 ];
+
 
 const nextConfig = {
   reactStrictMode: false,
