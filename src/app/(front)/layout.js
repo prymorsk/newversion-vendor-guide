@@ -42,7 +42,7 @@ export default async function AuthLayout({ children }) {
 
       {children}
 
-      {/* FOOTER LAST – forced */}
+      {/* FOOTER LAST – forced  sup*/}
       <Suspense fallback={null}>
         <Footer
           homeBannerText={homeBannerText?.data}
