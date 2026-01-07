@@ -206,7 +206,7 @@ export async function getPostMeta() {
     return pageMetaRes;
 }
 
-export async function getSiteSetting() {
+export async function getSiteSettingoldd() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 3600 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
@@ -220,7 +220,20 @@ export async function getSiteSetting() {
     const siteSettingRes = await res.json()
     return siteSettingRes;
 }
-
+export async function getSiteSetting() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_settingnew`, { next: { revalidate: 3600 } });
+    if (res.status === 429) {
+        // Handle rate limit exceeded, maybe implement retry logic
+        //console.warn('Rate limit exceeded. Retry after some time.');
+        return null; // or throw an error
+    }
+    if (!res.ok) {
+        throw new Error(`API request failed with status: ${res.status}`);
+    }
+    const clonedResponse = res.clone();  // Clone the response
+    const siteSettingRes = await res.json()
+    return siteSettingRes;
+}
 export  async function getMagazineData(slug) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}magazine/${slug}`, { next: { revalidate: 3600 } });
 	if (res.status === 429) {return null; }
