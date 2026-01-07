@@ -53,14 +53,28 @@ export async function generateMetadata({ params }) {
 
 // Home page with SSR caching and revalidation
 export default async function Home() {
-  // Use server-side fetch with caching
-  const blogs = await getBlogs({ cache: 'force-cache' });
+
   // const vendors = await getVendors({ cache: 'force-cache' });
-  const pageMeta = await getPostMeta({ cache: 'force-cache' });
-  const categories = await getCategories({ cache: 'force-cache' });
-  const states = await getStates({ cache: 'force-cache' });
-  const homeBannerText = await getPages('home-banner-text', { cache: 'force-cache' });
-  const sitesetting = await getSiteSetting();
+  
+
+const [
+    blogs,
+    pageMeta,
+    categories,
+    states,
+    homeBannerText,
+    sitesetting
+  ] = await Promise.all([
+    getBlogs({ cache: 'force-cache' }),
+    getPostMeta({ cache: 'force-cache' }),
+    getCategories({ cache: 'force-cache' }),
+    getStates({ cache: 'force-cache' }),
+    getPages('home-banner-text', { cache: 'force-cache' }),
+    getSiteSetting()
+  ]);
+
+
+
 
   return (
         
@@ -72,6 +86,7 @@ export default async function Home() {
       bannerContent={pageMeta?.data.home}
       categories={categories}
       states={states}
+      contractors={sitesetting.contractors}
     />
     </Suspense>
   );

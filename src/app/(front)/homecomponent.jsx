@@ -12,9 +12,12 @@ import { useSearchParams,usePathname,useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import RequestQuotebtnHome from "@/components/Front/RequestQuotebtnHome";
+import ContractorHomepage from "@/components/Front/ContractorHomepage";
 
 
-const HomeComponent = ({sitesetting, blogs, vendors, bannerContent, categories, states, homeBannerText }) => {
+
+
+const HomeComponent = ({sitesetting, blogs, vendors, bannerContent, categories, states, homeBannerText,contractors }) => {
 const {user,isLoding,isInfoLoding,logout}  = useAuth();
 const backgroundImage = bannerContent?.hero_background;
 
@@ -173,73 +176,10 @@ console.log('sitesetting data end');
               </div>
             </div>
 
-            <div className="w-full md:w-[40%]">
-              <div className="fourprofile-listing">
-                <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+          
+      <ContractorHomepage contractors={contractors}  />
 
-                  {/* CARD 1 */}
-                  <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="/images/profile-pic1.jpg" alt="profile1" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
-                    <div className="mt-4">
-                      <h3 className="font-semibold text-lg flex items-center">
-                        M. Martinson
-                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
-                      </h3>
-                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
-                        <span className="text-gray-500">Profession</span>
-                        <span className="font-semibold ml-1">Electrician</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* CARD 2 */}
-                  <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="/images/profile-pic2.jpg" alt="profile2" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
-                    <div className="mt-4">
-                      <h3 className="font-semibold text-lg flex items-center">
-                        O. Richarleson
-                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
-                      </h3>
-                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
-                        <span className="text-gray-500">Profession</span>
-                        <span className="font-semibold ml-1">Plumber</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* CARD 3 */}
-                  <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="/images/profile-pic3.jpg" alt="profile3" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
-                    <div className="mt-4">
-                      <h3 className="font-semibold text-lg flex items-center">
-                        V. Lomanovies
-                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
-                      </h3>
-                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
-                        <span className="text-gray-500">Profession</span>
-                        <span className="font-semibold ml-1">Carpenter</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* CARD 4 */}
-                  <div className="bg-white rounded-xl shadow-xl p-4">
-                    <Image src="/images/profile-pic4.jpg" alt="profile4" className="rounded-lg w-full h-56 object-cover" width={300} height={300} />
-                    <div className="mt-4">
-                      <h3 className="font-semibold text-lg flex items-center">
-                        J. Mitchell
-                        <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span>
-                      </h3>
-                      <div className="flex mt-2 text-sm border border-gray-300 rounded-lg p-3 justify-between items-center">
-                        <span className="text-gray-500">Profession</span>
-                        <span className="font-semibold ml-1">Carpenter</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+               
 
           </div>
         </div>
