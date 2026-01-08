@@ -1454,7 +1454,54 @@ header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.h
 
 header.main-header button#menuBtn{display:none;}
 
+section.innerpage-wapper-sections .details-tabsection .prose h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
+section.innerpage-wapper-sections .details-tabsection .prose h2 {
+    font-size: 30px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose p {
+    font-size: 18px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose ul {
+    margin: 10px 0px;
+}
+
+
+section.innerpage-wapper-sections .details-tabsection .prose ul li ul {
+    padding-left: 20px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose  ol {
+    margin: 10px 0px;
+    list-style: auto;
+    padding-left: 20px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose ol li {
+    margin-bottom: 10px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose blockquote {
+    border-left: 4px solid #3b82f6; /* Tailwind's blue-500 */
+    padding-left: 1rem;             /* Equivalent to pl-4 */
+    margin: 1rem 0;                  /* Vertical spacing */
+    font-style: italic;
+    color: #374151;                  /* Tailwind's gray-700 */
+    background-color: #f9fafb;      /* Tailwind's gray-50 */
+    border-radius: 0.25rem;          /* Rounded corners */';;
+    padding: 20px;
+}
 
 
 /******** Website Responsive ***********/
