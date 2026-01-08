@@ -1492,6 +1492,17 @@ section.innerpage-wapper-sections .details-tabsection .prose ol li {
     margin-bottom: 10px;
 }
 
+blockquote {
+    border-left: 4px solid #3b82f6; 
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #374151;
+    background-color: #f9fafb;
+    border-radius: 0.25rem;
+    padding: 20px;
+}
+
 
 /******** Website Responsive ***********/
 
