@@ -1503,6 +1503,30 @@ blockquote {
     padding: 20px;
 }
 
+section.innerpage-wapper-sections .details-tabsection .prose table {
+    width: 100%;
+    border: 1px solid #000 !important;
+    border-collapse: inherit !important;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose table thead {
+    padding: 20px;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose table thead th {
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #191919;
+    text-align: left;
+}
+
+section.innerpage-wapper-sections .details-tabsection .prose table td {
+    padding: 15px;
+    border: 1px solid #000000e3;
+}
+
+
 
 /******** Website Responsive ***********/
 
