@@ -28,7 +28,7 @@ export default async function AuthLayout({ children }) {
     getSiteSetting({ cache: 'force-cache' }),
     getBlogs({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' })
-    home_setting({ cache: 'force-cache' })
+    home_setting()
   ])
 
   return (

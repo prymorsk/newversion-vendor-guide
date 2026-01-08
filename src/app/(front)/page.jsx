@@ -72,7 +72,7 @@ const [
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
     getSiteSetting({ cache: 'force-cache' }),
-    home_setting({ cache: 'force-cache' })
+    home_setting()
   ]);
 
 
