@@ -17,7 +17,7 @@ import ContractorHomepage from "@/components/Front/ContractorHomepage";
 
 
 
-const HomeComponent = ({home_setting,sitesetting, blogs, vendors, bannerContent, categories, states, homeBannerText,contractors }) => {
+const HomeComponent = ({sitesetting, blogs, vendors, bannerContent, categories, states, homeBannerText,contractors }) => {
 const {user,isLoding,isInfoLoding,logout}  = useAuth();
 const backgroundImage = bannerContent?.hero_background;
 
@@ -44,9 +44,9 @@ const LogoHome = sitesetting?.data?.Homebanner_url
   : LogoHomestat;
 
 
-console.log('home_setting data');
-console.log(home_setting );
-console.log('home_setting data end');
+console.log('sitesetting data');
+console.log(sitesetting );
+console.log('sitesetting data end');
 
 
   const [mounted, setMounted] = useState(false);
@@ -176,10 +176,10 @@ console.log('home_setting data end');
               </div>
             </div>
 
-         
-                  
-                     <ContractorHomepage contractors={contractors}  />
+          
+      <ContractorHomepage contractors={contractors}  />
 
+               
 
           </div>
         </div>

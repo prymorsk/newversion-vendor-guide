@@ -70,28 +70,23 @@ const [
     getCategories({ cache: 'force-cache' }),
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
-    getSiteSetting({ cache: 'force-cache' })
-    
+    getSiteSetting()
   ]);
 
 
-console.log('sitesetting');
-console.log(sitesetting);
 
-console.log('sitesetting end now');
 
   return (
         
 <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
     <HomeComponent
-      home_setting={sitesetting}
       sitesetting={sitesetting}
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
       bannerContent={pageMeta?.data.home}
       categories={categories}
       states={states}
-      contractors={sitesetting?.contractors}
+      contractors={sitesetting.contractors}
     />
     </Suspense>
   );

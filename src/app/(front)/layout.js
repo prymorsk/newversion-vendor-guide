@@ -9,8 +9,7 @@ import {
   getMagazines,
   getSiteSetting,
   getBlogs,
-  getPages,
- 
+  getPages
 } from '@/app/lib/server-api'
 
 export default async function AuthLayout({ children }) {
@@ -20,15 +19,13 @@ export default async function AuthLayout({ children }) {
     magazines,
     sitesetting,
     blogs,
-    homeBannerText,
-    
+    homeBannerText
   ] = await Promise.all([
     getCategories(),
     getMagazines(),
-    getSiteSetting({ cache: 'force-cache' }),
+    getSiteSetting(),
     getBlogs({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' })
-    
   ])
 
   return (
@@ -39,19 +36,19 @@ export default async function AuthLayout({ children }) {
         <Header
           categories={categories}
           magazines={magazines}
-          sitesetting={sitesetting?.data}
+          sitesetting={sitesetting.data}
         />
       </Suspense>
 
       {children}
 
-      {/* FOOTER LAST – forced  sup*/}
+      {/* FOOTER LAST – forced */}
       <Suspense fallback={null}>
         <Footer
           homeBannerText={homeBannerText?.data}
           blogs={blogs}
-          sitesetting={sitesetting?.data}
-          nationalads={sitesetting?.nationalads}
+          sitesetting={sitesetting.data}
+          nationalads={sitesetting.nationalads}
         />
       </Suspense>
 

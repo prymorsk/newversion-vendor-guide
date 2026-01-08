@@ -47,7 +47,7 @@ console.log('nationalads end' );
   return (
     <>
       {/* Banner Ad Section */}
-      {parts[1] !== 'vendors' && nationalads && nationalads.length > 0 && (
+      {parts[1] !== 'vendors' && nationalads.length > 0 && (
         <section className="bannerad-sec ">
           <div className="container mx-auto items-center justify-items-center">
             <div className="adimg">

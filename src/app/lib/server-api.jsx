@@ -1,5 +1,5 @@
 export async function getCategories() {
-    
+	
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}category`, { next: { revalidate: 3600 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
@@ -10,7 +10,7 @@ export async function getCategories() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+	const clonedResponse = res.clone();  // Clone the response
     const vendorRes = await res.json()
     return vendorRes;
 }
@@ -25,7 +25,7 @@ export async function getStates() {
     if (!resSta.ok) {
         throw new Error(`API request failed with status: ${resSta.status}`);
     }
-    const clonedResponse = resSta.clone();  // Clone the response
+	const clonedResponse = resSta.clone();  // Clone the response
     return await resSta.json()
 }
 export async function getMagazines() {
@@ -38,7 +38,7 @@ export async function getMagazines() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+	const clonedResponse = res.clone();  // Clone the response
     const vendorRes = await res.json()
     return vendorRes;
 }
@@ -53,7 +53,7 @@ export async function getBlogs() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+	const clonedResponse = res.clone();  // Clone the response
     const blogRes = await res.json()
     console.log('blog...');
     console.log(blogRes);
@@ -104,20 +104,20 @@ export async function getVendors(props = {}) {
  
 export async function getVendors_old(props) {
     
-    let state_id='' ;
-    let state_name='' ;
-    let city_name='' ;
-    
-    if (props && props.state_id !== undefined ) {
+	let state_id='' ;
+	let state_name='' ;
+	let city_name='' ;
+	
+	if (props && props.state_id !== undefined ) {
         state_id=props.state_id;
     } 
-    if (props && props.stateName !== undefined ) {
+	if (props && props.stateName !== undefined ) {
         state_name=props.stateName;
     } 
-    if (props && props.city !== undefined ) {
+	if (props && props.city !== undefined ) {
         city_name=props.city;
     } 
-    
+	
     let url = `${process.env.NEXT_PUBLIC_API_URL}vendor-advertisement?limit=5&offset=0&state_id=`+state_id+`&state_name=`+state_name+`&city_name=`+city_name;
     // console.log('url hai',url)
     if (props && props.latitude !== undefined && props.longitude !== undefined) {
@@ -178,7 +178,7 @@ export async function getPages(slug) {
 
 export  async function getPages_old(slug) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}page/${slug}`, { next: { revalidate: 3600 } });
-     if (res.status === 429) {
+	 if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
        // console.warn('Rate limit exceeded. Retry after some time.');
         return null; // or throw an error
@@ -186,7 +186,7 @@ export  async function getPages_old(slug) {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-     const clonedResponse = res.clone();  // Clone the response
+	 const clonedResponse = res.clone();  // Clone the response
      const pageRes = await res.json();
     return pageRes;
 }
@@ -201,88 +201,38 @@ export async function getPostMeta() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+	const clonedResponse = res.clone();  // Clone the response
     const pageMetaRes = await res.json()
     return pageMetaRes;
 }
 
-export async function getSiteSettingnew() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 3600 } });
-    
-
-    if (res.status === 429) {
-        // Handle rate limit exceeded, maybe implement retry logic
-        //console.warn('Rate limit exceeded. Retry after some time.');
-        return null; // or throw an error
-    }
-    if (!res.ok) {
-        throw new Error(`API request failed with status: ${res.status}`);
-    }
-    const clonedResponse = res.clone();  // Clone the response
-    const siteSettingRes = await res.json()
-    return siteSettingRes;
-}
-
-export async function home_setting() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}home_setting`, { next: { revalidate: 100 } });
-    
-
-    if (res.status === 429) {
-        // Handle rate limit exceeded, maybe implement retry logic
-        //console.warn('Rate limit exceeded. Retry after some time.');
-        return null; // or throw an error
-    }
-    if (!res.ok) {
-        throw new Error(`API request failed with status: ${res.status}`);
-    }
-    const clonedResponse = res.clone();  // Clone the response
-    const siteSettingRes = await res.json()
-    return siteSettingRes;
-}
-
 export async function getSiteSetting() {
-    // 1️⃣ Try primary API
-    let res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}site_setting`,
-        { cache: 'no-store' }
-    );
-
-    // 2️⃣ Rate limit handling
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { next: { revalidate: 3600 } });
     if (res.status === 429) {
-        //return null;
+        // Handle rate limit exceeded, maybe implement retry logic
+        //console.warn('Rate limit exceeded. Retry after some time.');
+        return null; // or throw an error
     }
-
-    // 3️⃣ If site_setting fails → try home_setting
     if (!res.ok) {
-        res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}home_setting`,
-            { cache: 'no-store' }
-        );
-
-        if (!res.ok) {
-            throw new Error(`API request failed with status: ${res.status}`);
-        }
+        throw new Error(`API request failed with status: ${res.status}`);
     }
-
-    // 4️⃣ Return JSON
-    return await res.json();
+	const clonedResponse = res.clone();  // Clone the response
+    const siteSettingRes = await res.json()
+    return siteSettingRes;
 }
-
-
-
 
 export  async function getMagazineData(slug) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}magazine/${slug}`, { next: { revalidate: 3600 } });
-    if (res.status === 429) {return null; }
-    const clonedResponse = res.clone();  // Clone the response
+	if (res.status === 429) {return null; }
+	const clonedResponse = res.clone();  // Clone the response
     const magazineDataRes = await res.json()
     return magazineDataRes;
 }
 
 export  async function getMagazineAllData() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}magazine`, { next: { revalidate: 3600 } });
-    if (res.status === 429) {return null; }
-    const clonedResponse = res.clone();  // Clone the response
+	if (res.status === 429) {return null; }
+	const clonedResponse = res.clone();  // Clone the response
     const magazineAllDataRes = await res.json()
     return magazineAllDataRes;
 }
