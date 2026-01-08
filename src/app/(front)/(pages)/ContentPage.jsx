@@ -21,7 +21,7 @@ const ContentPage = ({ page, pageData, bannerContent }) => {
 
   if (!mounted) return null; // IMPORTANT for Next.js 15 hydration
 
- console.log(pageData.slug);
+ //console.log(pageData.slug);
  //console.log(pageData);
   return (
     <>

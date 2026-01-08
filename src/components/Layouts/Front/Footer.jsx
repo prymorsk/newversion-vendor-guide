@@ -40,9 +40,6 @@ const newPhoneIcon = "/images&icons/newtelephone.png";
 const address = sitesetting?.side_address;
 const firstLine = address?.slice(0, 30);
 const rest = address?.slice(30);
-console.log('nationalads' );
-console.log(nationalads );
-console.log('nationalads end' );
 
   return (
     <>

@@ -31,7 +31,7 @@ const ContentPageAbout = ({ page, pageData, bannerContent, aboutBannerText }) =>
   useEffect(() => {setMounted(true);}, []);
 // Prevent hydration mismatch
   if (!mounted) return null;
-   console.log('about loaded');
+   //console.log('about loaded');
    //console.log(pageData);
 
   return (
