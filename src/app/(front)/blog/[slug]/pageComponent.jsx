@@ -66,17 +66,17 @@ export default function PageComponent({ slug, serverBlogData }) {
 
 
             {/* Blog Content Section */}
-            <section className="innerpage-wapper-sections" >
+            <section className="innerpage-wapper-sections">
               <div className="container mx-auto">
                 <div className="infobox-details w-full mx-auto bg-white rounded-3xl p-8 flex flex-col lg:flex-row gap-10 bg-white border border-gray-300 rounded-3xl p-8 leading-relaxed text-gray-800">
                   
 <div id="featurs_section"className="py-9 md:py-5 blogpgeMain">
 
-<h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold    font-lato lg:px-10" >{blog?.title}</h1>
+<h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato lg:px-10" >{blog?.title}</h1>
 
 
 
-                    <div className="container mx-auto overflow-hidden pb-5 pt-5 md:pt-12 px-5 md:px-8 xl:px-24">
+                    <div className="container mx-auto">
                       <div className="mx-auto max-w-7xl">
 
 
