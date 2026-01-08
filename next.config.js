@@ -3,7 +3,6 @@
 const allowedDevOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-
   "https://newversion-vendor-guide.vercel.app",
   "https://newversion-vendor-guide-git-main-prymorsks-projects.vercel.app",
   "https://newversion-vendor-guide-i5g6556y2-prymorsks-projects.vercel.app",
@@ -72,35 +71,31 @@ const nextConfig = {
   /**
    * ✅ CORS headers (Next.js 16 compatible)
    */
-  async headers() {
-    return [
-      {
-        source: "/api/:path*",
-        headers: [
-          {
-            key: "Access-Control-Allow-Credentials",
-            value: "true",
-          },
-          {
-            key: "Access-Control-Allow-Origin",
-            value:
-              process.env.NODE_ENV === "development"
-                ? allowedDevOrigins.join(",")
-                : "https://your-production-domain.com",
-          },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-          },
-          {
-            key: "Access-Control-Allow-Headers",
-            value:
-              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization",
-          },
-        ],
-      },
-    ];
-  },
+    async headers() {
+      return [
+        {
+          // matching all API routes
+          // https://vercel.com/guides/how-to-enable-cors
+          source: "/api/:path*",
+          headers: [
+            { key: "Access-Control-Allow-Credentials", value: "true" },
+            { key: "Access-Control-Allow-Origin", value: "*" },
+            {
+              key: "Access-Control-Allow-Methods",
+              value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+            },
+            {
+              key: "Access-Control-Allow-Headers",
+              value:
+                "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+            },
+          ],
+        },
+      ];
+    },
+
+
+  
 };
 
 module.exports = nextConfig;
