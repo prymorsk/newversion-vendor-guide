@@ -44,14 +44,8 @@ const LogoHome = sitesetting?.data?.Homebanner_url
   : LogoHomestat;
 
 
-console.log('sitesetting data');
-console.log(sitesetting );
-console.log('sitesetting data end');
 
 
-console.log('process.env');
-console.log(process.env);
-console.log('process.env end');
 
 
   const [mounted, setMounted] = useState(false);
@@ -172,7 +166,11 @@ console.log('process.env end');
         <div className="container mx-auto items-center">
           <div className="flex flex-col md:flex-row gap-4 items-center">
 
-            <div className="w-full md:w-[60%]">
+            
+          <div className={`w-full ${contractors?.length > 0 ? "md:w-[60%]" : "md:w-[100%] contrfullwith"}` } >
+                 
+
+
               <div className="fourprofile-leftcontent">
                 <span>PROPERTY MAINTENANCE CONTRACTORS MARKETPLACE</span>
                 <h3>Your one-stop-shop for contractor sourcing & management.</h3>
