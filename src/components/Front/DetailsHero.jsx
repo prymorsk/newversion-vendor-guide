@@ -9,9 +9,9 @@ const DetailsHero = ({ filterData, backgroundImage }) => {
 const vendorMainImage = filterData?.vendormainimgedit || [];
 const Dyn_vendor_banner=vendorMainImage?.[0]?.vendormainimageview?.vendormain_image_url ?? metabanner;
 
- console.log('vendorMainImage');
- console.log(Dyn_vendor_banner);
- console.log('vendorMainImage end');
+ //console.log('vendorMainImage');
+ //console.log(Dyn_vendor_banner);
+ //console.log('vendorMainImage end');
 
   
 

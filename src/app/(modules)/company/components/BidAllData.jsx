@@ -55,7 +55,7 @@ const BidAllData = () => {
         // Handle response if necessary
         var dataProp = await response2.json()
         var newData = dataProp.data;
-        console.log(newData)
+        //console.log(newData)
         const bidenumber = new Date().getFullYear();
         const updatedRows = newData.map(item => ({
           'favorite':item.favourite,

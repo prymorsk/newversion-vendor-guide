@@ -13,7 +13,7 @@ const ModalCarosuel = ({filterData}) => {
         return item.img.image_url;
       });
     
-      console.log(vendoreimgedit);
+      //console.log(vendoreimgedit);
 
       const customRenderThumb = (children) =>
       children.map((row, index) => (

@@ -19,7 +19,7 @@ const LoginForm = () => {
     formData.append("email", loginData.email);
     formData.append("password", loginData.password);
 
-    console.log("FormData before sending:", Object.fromEntries(formData.entries()));
+    //console.log("FormData before sending:", Object.fromEntries(formData.entries()));
 
     // Call login function
     login(formData);

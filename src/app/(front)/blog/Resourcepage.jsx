@@ -18,7 +18,7 @@ const Resourcespage = ({ bannerContent }) => {
   // Prevent hydration mismatch
   if (!mounted) return null;
 
-console.log('blog loading...');
+//console.log('blog loading...');
 //console.log(bannerContent);
 
 

@@ -85,10 +85,10 @@ export function UserProvider({ children }) {
           const res = response.data;
       
       
-      console.log('users data all check...');
+      //console.log('users data all check...');
 
-      console.log(res.data);
-       console.log('users data all check not reflecting...');
+      //console.log(res.data);
+      // console.log('users data all check not reflecting...');
       
           setIsLoding(false);
           if(res.success==true) {
@@ -104,7 +104,7 @@ export function UserProvider({ children }) {
                 setUser(res.data.data.managers)
               }
               if(res.data.data.type==0)
-        {
+              {
                 setUser(res.data.data.vendor)
               }
               if(res.data.data.type==2){
@@ -115,9 +115,9 @@ export function UserProvider({ children }) {
       }).catch(error => {
 
           setIsLoding(false);
-           console.log('users data all errors...');
+          // console.log('users data all errors...');
            //console.log(error?.response?.data?.message);
-           console.log(error?.response?.data?.message);
+           //console.log(error?.response?.data?.message);
           if(error?.response?.data?.message=="Unauthenticated"){
             if(hasCookie('token')){
               deleteCookie('token')
@@ -283,7 +283,7 @@ export function UserProvider({ children }) {
 
     }).catch(error => {
         setIsLoding(false);
-        console.log(error.response.data);
+        //console.log(error.response.data);
         var errors = error?.response?.data?.data;
         if(errors){
             const errorArray = Object.keys(errors).map((key) => {

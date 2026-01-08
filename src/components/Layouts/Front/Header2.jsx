@@ -448,10 +448,8 @@ const [isOpen, setIsOpen] = useState(false);
                     </li>
                   ))}
                   <li className="mt-4"> 
-                 
-               {UserType == 1 || !user ? (
-              <RequestQuotebtnHome user={user} categories={categories} />
-            ): ''}
+
+                {(UserType && UserType == 1 ) && <RequestQuotebtnHome user={user} categories={categories} />}
             
             </li>
                 </ul>

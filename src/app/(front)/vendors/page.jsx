@@ -70,7 +70,7 @@ const Page = async () => {
 const vendors = ""; // placeholder, can be replaced later
 const pageMeta = await getPostMeta();
 const states = await getStates();
-console.log("venodrs loading...");
+//console.log("venodrs loading...");
 //console.log(pageMeta);
 
 

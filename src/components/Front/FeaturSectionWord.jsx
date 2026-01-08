@@ -10,7 +10,7 @@ const FeaturSectionWord = ({ blogs, homeBannerText }) => {
 
   // Log only once on mount
   useEffect(() => {
-    console.log("homeBannerText", homeBannerText);
+   // console.log("homeBannerText", homeBannerText);
   }, [homeBannerText]);
 
   // Memoize description so UI doesn't re-render unnecessarily

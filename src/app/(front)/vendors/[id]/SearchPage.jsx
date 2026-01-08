@@ -76,8 +76,8 @@ useEffect(() => {
         if (!response.ok) throw new Error("Failed to fetch vendor data");
 
         const dataProp = await response.json();
-         console.log('filterData details');
-         console.log(dataProp);
+         //console.log('filterData details');
+        // console.log(dataProp);
 
         setFilterData(dataProp?.data || {});
       } catch (error) {

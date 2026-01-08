@@ -22,7 +22,7 @@ const ResourceListCards = (props) => {
       const params = new URLSearchParams();
       const offset = (page - 1) * pageSize;
       params.set("page", offset);
-      console.log('offset', offset);
+      //console.log('offset', offset);
       const urlString = params.toString();
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}blog?limit=9&${urlString}`
@@ -35,9 +35,9 @@ const ResourceListCards = (props) => {
         const result = response.data;
         setItems(result.data);
         setTotalPage(Math.ceil(result.Count / pageSize));
-        console.log('totalPage', totalPage);
-        console.log('result.data=', result.data);
-        console.log('result.Count=', result.Count);
+        //console.log('totalPage', totalPage);
+        //console.log('result.data=', result.data);
+        //console.log('result.Count=', result.Count);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);

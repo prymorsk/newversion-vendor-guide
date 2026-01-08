@@ -19,9 +19,9 @@ const icon3 = "/images&icons/signup/icon3.png";
 
 
 
-console.log("advertiseMeta start:");
-console.log(advertiseMeta);
-console.log("advertiseMeta end:");
+//console.log("advertiseMeta start:");
+//console.log(advertiseMeta);
+//console.log("advertiseMeta end:");
 
 
 

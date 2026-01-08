@@ -9,10 +9,10 @@ import { Fragment, useEffect, useState } from "react";
 export default function PageComponent({ slug, serverBlogData }) {
   const { metaData, loading } = useAuth();
   const resourceMeta = metaData?.blog || {};
-  console.log('metaData...');
+  //console.log('metaData...');
 
-console.log(resourceMeta);
-console.log('metaData end...');
+//console.log(resourceMeta);
+//console.log('metaData end...');
 
   const [blog, setBlog] = useState(serverBlogData || null);
   const [isLoading, setLoading] = useState(!serverBlogData);

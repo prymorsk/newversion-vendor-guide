@@ -10,7 +10,7 @@ export async function getCategories() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const vendorRes = await res.json()
     return vendorRes;
 }
@@ -25,7 +25,7 @@ export async function getStates() {
     if (!resSta.ok) {
         throw new Error(`API request failed with status: ${resSta.status}`);
     }
-    const clonedResponse = resSta.clone();  // Clone the response
+    //const clonedResponse = resSta.clone();  // Clone the response
     return await resSta.json()
 }
 export async function getMagazines() {
@@ -38,7 +38,7 @@ export async function getMagazines() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const vendorRes = await res.json()
     return vendorRes;
 }
@@ -53,10 +53,10 @@ export async function getBlogs() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const blogRes = await res.json()
-    console.log('blog...');
-    console.log(blogRes);
+    //console.log('blog...');
+    //console.log(blogRes);
     return blogRes;
 }
 
@@ -139,7 +139,7 @@ export async function getVendors_old(props) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
 
-     const clonedResponse = res.clone();  // Clone the response
+     //const clonedResponse = res.clone();  // Clone the response
      const vendorRes = await res.json();
     return vendorRes;
 }
@@ -186,7 +186,7 @@ export  async function getPages_old(slug) {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-     const clonedResponse = res.clone();  // Clone the response
+     //const clonedResponse = res.clone();  // Clone the response
      const pageRes = await res.json();
     return pageRes;
 }
@@ -201,13 +201,13 @@ export async function getPostMeta() {
     if (!res.ok) {
         throw new Error(`API request failed with status: ${res.status}`);
     }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const pageMetaRes = await res.json()
     return pageMetaRes;
 }
 
 export async function getWebsiteSetting() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, { next: { revalidate: 10 } });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, { next: { revalidate: 3600 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
         //console.warn('Rate limit exceeded. Retry after some time.');
@@ -223,7 +223,7 @@ export async function getWebsiteSetting() {
 export  async function getMagazineData(slug) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}magazine/${slug}`, { next: { revalidate: 3600 } });
     if (res.status === 429) {return null; }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const magazineDataRes = await res.json()
     return magazineDataRes;
 }
@@ -231,7 +231,7 @@ export  async function getMagazineData(slug) {
 export  async function getMagazineAllData() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}magazine`, { next: { revalidate: 3600 } });
     if (res.status === 429) {return null; }
-    const clonedResponse = res.clone();  // Clone the response
+    //const clonedResponse = res.clone();  // Clone the response
     const magazineAllDataRes = await res.json()
     return magazineAllDataRes;
 }

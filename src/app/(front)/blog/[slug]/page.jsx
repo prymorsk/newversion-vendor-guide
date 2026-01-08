@@ -69,7 +69,7 @@ export default async function Page({ params: maybeAsyncParams }) {
   const params = await maybeAsyncParams; // ✅ await params
 
   //console.log('1 blog loading...');
-  console.log(params);
+  //console.log(params);
 
   
   const slug = params.slug;
