@@ -1455,17 +1455,17 @@ header.main-header .header-menu ul li ul.submenu .head_pulbication_dropdown ul.h
 header.main-header button#menuBtn{display:none;}
 
 section.innerpage-wapper-sections .details-tabsection .prose h1 {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 section.innerpage-wapper-sections .details-tabsection .prose h2 {
-    font-size: 30px;
+    font-size: 26px;
 }
 
 section.innerpage-wapper-sections .details-tabsection .prose h3 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
