@@ -70,7 +70,7 @@ const ResourceBannerSection = ({ title }) => {
   ];
 
   return (
-    <div className="image_grid block relative bottom-[7rem] md:px-16 lg:px-8 xl:px-20 px-10">
+    <div className="image_grid block relative bottom-[7rem]">
       <div className="rounded-xl overflow-hidden shadow-lg bg-white flex flex-col">
         <div className="blogimage_content text-center px-2 sm:px-0 pt-3 md:pt-4 lg:pt-6">
           <h2 className="lg:text-2xl sm:text-xl text-lg font-bold tracking-tight text-[#171717b]">
