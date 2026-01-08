@@ -1526,6 +1526,15 @@ section.innerpage-wapper-sections .details-tabsection .prose table td {
     border: 1px solid #000000e3;
 }
 
+section.fourprofile-section .contrfullwith .fourprofile-leftcontent {
+    text-align: center;
+}
+
+section.fourprofile-section .contrfullwith .fourprofile-leftcontent h3 {margin: auto;max-width: 1000px;margin: 20px auto;}
+
+section.fourprofile-section .contrfullwith .fourprofile-leftcontent p {
+    margin: auto;
+}
 
 
 /******** Website Responsive ***********/

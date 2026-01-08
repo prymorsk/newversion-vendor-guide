@@ -12,7 +12,7 @@ const CACHE_EXPIRY_MS = 1 * 60 * 1000; // 2 minutes
 
 const BannerSectionCardHome = () => {
 
-  console.log('checking');
+  //console.log('checking');
   const { loading } = useAuth();
 
   const [latitude, setLatitude] = useState(null);
@@ -33,7 +33,7 @@ const BannerSectionCardHome = () => {
       const now = Date.now();
 
       if (now - cached.timestamp < CACHE_EXPIRY_MS) {
-        console.log("Using c vendors — skipping location entirely");
+        //console.log("Using c vendors — skipping location entirely");
         setVendors(cached.data);
         setIsFetching(false);
         return; // EXIT → no need for coordinates
@@ -57,7 +57,7 @@ const BannerSectionCardHome = () => {
       const now = Date.now();
 
       if (now - cached.timestamp < CACHE_EXPIRY_MS) {
-        console.log("Using c coords");
+        //console.log("Using c coords");
         setLatitude(cached.lat);
         setLongitude(cached.lng);
 
@@ -73,7 +73,7 @@ const BannerSectionCardHome = () => {
     // Try IP-based location first (fast)
     const ipLoc = await getIPLocation();
     if (ipLoc) {
-      console.log("Using IP "+ipLoc.latitude+"-"+ipLoc.longitude);
+      //console.log("Using IP "+ipLoc.latitude+"-"+ipLoc.longitude);
         //setLatitude('45.0949961');
         //setLongitude('-93.24372989999999');
       setLatitude(ipLoc.latitude);
@@ -88,7 +88,7 @@ const BannerSectionCardHome = () => {
     }
 
     // If IP failed → use GPS as backup
-    console.log("IP failed → trying GPS");
+    //console.log("IP failed → trying GPS");
     tryGPSLocation();
   }
 
@@ -108,7 +108,7 @@ const BannerSectionCardHome = () => {
       }
       return null;
     } catch (e) {
-      console.warn("IP API failed:", e);
+      //console.warn("IP API failed:", e);
       return null;
     }
   }
@@ -119,7 +119,7 @@ const BannerSectionCardHome = () => {
   function tryGPSLocation() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log("GPS success");
+        //console.log("GPS success");
 
 
         const lat = pos.coords.latitude;
@@ -128,7 +128,7 @@ const BannerSectionCardHome = () => {
         setLatitude(lat);
         setLongitude(lng);
 
-        console.log("GPS IP "+lat+"-"+lng);
+       // console.log("GPS IP "+lat+"-"+lng);
 
 
         localStorage.setItem(
@@ -155,7 +155,7 @@ const BannerSectionCardHome = () => {
 
     const fetchVendorsData = async () => {
       try {
-        console.log("Fetching vendors from API...");
+        //console.log("Fetching vendors from API...");
         const data = await getVendors({ latitude, longitude });
         setVendors(data || null);
 
@@ -179,9 +179,9 @@ const BannerSectionCardHome = () => {
      6. UI Rendering
   ------------------------------------------ */
 
-  console.log('vendors.data');
-  console.log(vendors);
-  console.log('vendors.data');
+  //console.log('vendors.data');
+  //console.log(vendors);
+  //console.log('vendors.data');
   
   return (
     <div className="container mt-15 mx-auto row-featured-suppliers">
