@@ -49,6 +49,11 @@ console.log(sitesetting );
 console.log('sitesetting data end');
 
 
+console.log('process.env');
+console.log(process.env);
+console.log('process.env end');
+
+
   const [mounted, setMounted] = useState(false);
  useEffect(() => {
     setMounted(true);
