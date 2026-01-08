@@ -76,7 +76,7 @@ export default function PageComponent({ slug, serverBlogData }) {
 
 
 
-                    <div className="container mx-auto cpt-0" style={{display: "none" }}>
+                    <div className="container mx-auto cpt-0">
                       <div className="mx-auto full-w">
 
 
