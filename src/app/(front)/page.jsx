@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting,home_setting } from "@/app/lib/server-api";
+import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
 export const dynamic = "force-dynamic";
 
@@ -63,36 +63,35 @@ const [
     categories,
     states,
     homeBannerText,
-    sitesetting,
-    home_setting
+    sitesetting
   ] = await Promise.all([
     getBlogs({ cache: 'force-cache' }),
     getPostMeta({ cache: 'force-cache' }),
     getCategories({ cache: 'force-cache' }),
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
-    getSiteSetting({ cache: 'force-cache' }),
-    home_setting()
+    getSiteSetting({ cache: 'force-cache' })
+    
   ]);
 
 
-console.log('home_setting');
-console.log(home_setting);
+console.log('sitesetting');
+console.log(sitesetting);
 
-console.log('home_setting');
+console.log('sitesetting end now');
 
   return (
         
 <Suspense fallback={<div className="text-center py-10 min-h-[500px] bg-black text-white"></div>}>
     <HomeComponent
-      home_setting={home_setting}
-      sitesetting={home_setting}
+      home_setting={sitesetting}
+      sitesetting={sitesetting}
       homeBannerText={homeBannerText?.data}
       blogs={blogs}
       bannerContent={pageMeta?.data.home}
       categories={categories}
       states={states}
-      contractors={home_setting?.contractors}
+      contractors={sitesetting?.contractors}
     />
     </Suspense>
   );
