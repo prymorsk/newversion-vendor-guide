@@ -24,7 +24,7 @@ const ContractorHomepage = ({ contractors }) => {
                           href={item?.url || "#"}
                           target="_blank"
                           rel="noopener noreferrer"
-                          >
+                          > 
                           <Image
                           src={item.image_url}
                           alt={item.title || "profile"}
