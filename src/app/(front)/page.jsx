@@ -86,7 +86,7 @@ const [
       bannerContent={pageMeta?.data.home}
       categories={categories}
       states={states}
-      contractors={sitesetting.contractors}
+      contractors={sitesetting?.contractors}
     />
     </Suspense>
   );
