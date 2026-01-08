@@ -1195,7 +1195,10 @@ section.innerpage-wapper-sections .container {
 }
 section.innerpage-wapper-sections .infobox-details {
     margin-top: -160px;
+  /*  max-width:1100px;
+    box-shadow: 0px 0px 10px #ddd;*/
 }
+
 
 .details-tabsection button.bg-\[\#B13634\] {
     position: relative;
