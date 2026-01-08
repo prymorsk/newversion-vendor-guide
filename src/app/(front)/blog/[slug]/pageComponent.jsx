@@ -72,15 +72,12 @@ export default function PageComponent({ slug, serverBlogData }) {
                   
 <div id="featurs_section"className="py-9 md:py-5 blogpgeMain">
 
-<h1 className="text:sm sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato" >{blog?.title}</h1>
+<h1 className="text:sm mb-5 sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.50rem] -tracking-tight md:leading-10 lg:leading-[3.5rem] font-semibold font-lato" >{blog?.title}</h1>
 
 
 
                     <div className="container mx-auto cpt-0">
                       <div className="mx-auto full-w">
-
-
-
 
                         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5 relative">
                           {blog && (
