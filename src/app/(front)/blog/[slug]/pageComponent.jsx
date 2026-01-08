@@ -76,7 +76,7 @@ export default function PageComponent({ slug, serverBlogData }) {
 
 
 
-                    <div className="container mx-auto">
+                    <div className="container mx-auto cpt-0" style={{display: "none" }}>
                       <div className="mx-auto full-w">
 
 
@@ -84,7 +84,7 @@ export default function PageComponent({ slug, serverBlogData }) {
 
                         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-3 xl:gap-x-5 relative">
                           {blog && (
-                            <div className="col-span-2 mt-4 md:ml-10 md:text-left text-center">
+                            <div className="md:text-left text-center">
                               <div className="col-span-1 aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-64">
                                 {blog.image_url && (
                                   <Image
