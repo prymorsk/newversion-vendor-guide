@@ -6,7 +6,7 @@ import { UserProvider } from "@/context/UserContext";
 import {
   getCategories,
   getMagazines,
-  getSiteSetting,
+  getWebsiteSetting,
   getBlogs,
   getPages,
 } from "@/app/lib/server-api";
@@ -15,7 +15,7 @@ export default async function ModuleLayout({ children }) {
   // Server-side data fetching
   const categories = await getCategories();
   const magazines = await getMagazines();
-  const sitesetting = await getSiteSetting();
+  const sitesetting = await getWebsiteSetting();
   const blogs = await getBlogs({ cache: "force-cache" });
   const homeBannerText = await getPages("home-banner-text", {
     cache: "force-cache",

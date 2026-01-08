@@ -7,7 +7,7 @@ import { Fragment, Suspense } from 'react'
 import {
   getCategories,
   getMagazines,
-  getSiteSetting,
+  getWebsiteSetting,
   getBlogs,
   getPages
 } from '@/app/lib/server-api'
@@ -23,7 +23,7 @@ export default async function AuthLayout({ children }) {
   ] = await Promise.all([
     getCategories(),
     getMagazines(),
-    getSiteSetting(),
+    getWebsiteSetting(),
     getBlogs({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' })
   ])

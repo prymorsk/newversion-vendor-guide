@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getSiteSetting } from "@/app/lib/server-api";
+import { getBlogs, getVendors, getPostMeta, getCategories, getStates, getPages,getWebsiteSetting } from "@/app/lib/server-api";
 import HomeComponent from "./homecomponent";
 export const dynamic = "force-dynamic";
 
@@ -70,7 +70,7 @@ const [
     getCategories({ cache: 'force-cache' }),
     getStates({ cache: 'force-cache' }),
     getPages('home-banner-text', { cache: 'force-cache' }),
-    getSiteSetting()
+    getWebsiteSetting()
   ]);
 
 

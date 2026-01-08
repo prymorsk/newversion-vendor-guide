@@ -5,13 +5,13 @@ const SiteContext = createContext();
 
 export async function SiteProvider({ children }) {
 
-    async function getSettings() {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, { cache: 'no-store' })
+    async function getWebsiteSetting() {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, { cache: 'no-store' })
         const vendorRes = await res.json()
         return vendorRes
     }
 
-    const sitesetting = await getSettings();
+    const sitesetting = await getWebsiteSetting();
 
     return (
         <SiteContext.Provider value={{sitesetting}}>

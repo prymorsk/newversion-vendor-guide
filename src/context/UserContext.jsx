@@ -31,7 +31,7 @@ export function UserProvider({ children }) {
     const loadUserCommonInfo = async () => {
   
       try {
-        const response2 = await fetch(`${process.env.NEXT_PUBLIC_API_URL}site_setting`, {
+        const response2 = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, {
           method: 'GET',
         });
         // console.log('done');
@@ -41,7 +41,7 @@ export function UserProvider({ children }) {
         // Handle response if necessary
         const dataProp = await response2.json();
         // console.log(dataProp.data);
-        setSiteSetting(dataProp.data); 
+        setSiteSetting(dataProp?.data); 
       } catch (error) {
         console.error(error)
       }
