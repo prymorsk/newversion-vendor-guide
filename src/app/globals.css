@@ -534,6 +534,9 @@ footer {
 .block.text-left.requestButtons {
     text-align: center;
 }
+
+section.innerpage-wapper-sections .infobox-details.innersearch{margin-top:0px !important;}
+
 }
 @media (max-width: 676px) {
 .block.text-left.requestButtons  a{
