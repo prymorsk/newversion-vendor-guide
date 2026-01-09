@@ -257,34 +257,7 @@ const [isOpen, setIsOpen] = useState(false);
   <div id="mobileMenu" className={`mobile-menu ${isOpen ? "open" : ""}`}>
        <div className="header-menu">
           <ul className={`flex space-x-8 font-medium ${ Logo ? "text-white" : "text-black"}`}>
-              <li className="relative group cursor-pointer flex items-center">
-                <span className="flex items-center">
-                  Solutions
-                  <svg className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180"
-                       fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
-              <ul className="submenu absolute left-0 mt-2 w-44 bg-white text-black rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 max-h-[400px]">
-              {categories?.data
-              ?.filter(row => [51, 16, 61, 44, 31].includes(row.id))
-              .map(row => (
-              <li key={row.id}>
-              <button
-              type="button"
-              className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-              onClick={() =>
-              window.location.assign(`/vendors?category=${row.id}`)
-              }
-              >
-              {row.title}
-              </button>
-              </li>
-              ))}
-              </ul>
-
-              </li>
-
+              
               <li><Link href="/advertise" className="hover:text-gray-300" onClick={menuClick}>Advertise</Link></li>
               <li><Link href="/about-us" className="hover:text-gray-300" onClick={menuClick}>Company</Link></li>
               <li><Link href="/contact-us" className="hover:text-gray-300" onClick={menuClick}>Contact</Link></li>
