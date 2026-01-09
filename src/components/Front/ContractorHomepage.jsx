@@ -30,10 +30,10 @@ const ContractorHomepage = ({ contractors }) => {
                           alt={item.title || "profile"}
                           width={288}
                           height={354}
-                          className="object-cover"
+                          className="object-cover  mx-auto"
                           />
                           <div className="mt-4">
-                                     <h3 className="font-semibold text-lg flex items-center">{item.title} <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span></h3>
+                              <h3 className="font-semibold text-lg flex items-center">{item.title} <span className="w-3 h-3 bg-green-500 rounded-full ml-2"></span></h3>
                            </div>
                           </Link>
                            
