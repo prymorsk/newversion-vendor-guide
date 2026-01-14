@@ -207,7 +207,7 @@ export async function getPostMeta() {
 }
 
 export async function getWebsiteSetting() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}website_setting`, { next: { revalidate: 10 } });
     if (res.status === 429) {
         // Handle rate limit exceeded, maybe implement retry logic
         //console.warn('Rate limit exceeded. Retry after some time.');
