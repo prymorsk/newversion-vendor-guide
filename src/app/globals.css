@@ -1754,3 +1754,12 @@ footer ul.flex.nav_list {
 
 
 }
+
+.contrtitle{
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 400;
+    
+}
