@@ -1649,13 +1649,6 @@ header.main-header .header-logo img {
     position: inherit !important;
     left: 0;
 }
-
-.fourprofile-listing .flex.cotrtitletop {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
 section.fourprofile-section .flex {
     display: block !important;
 }
@@ -1770,15 +1763,4 @@ footer ul.flex.nav_list {
     font-weight: 400;
     margin-bottom: 30px;
     
-}
-
-
-.fourprofile-listing .flex.cotrtitletop {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.cotrtitlegren {
-    margin-top: 8px;
 }
