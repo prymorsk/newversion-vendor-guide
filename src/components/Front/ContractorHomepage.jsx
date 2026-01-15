@@ -42,9 +42,6 @@ const ContractorHomepage = ({ contractors }) => {
                           className="object-cover mx-auto"
                         />
 
-
-
-
                         <div className="mt-4 flex items-center cotrtitletop">
                           <h3 className="font-semibold text-lg cotrtitletopsub ">
 
@@ -53,10 +50,8 @@ const ContractorHomepage = ({ contractors }) => {
                             {tag && (
                               <>
                                 <br />
-                               
-                                  {tag}
-                                  
-                               
+                                {tag}
+                                
                               </>
                             )}
 
